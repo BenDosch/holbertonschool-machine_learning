@@ -5,17 +5,7 @@ import numpy as np
 
 
 def np_transpose(matrix):
-    """F"""
-
-
-if __name__ is not "__main__":
-    mat1 = np.array([1, 2, 3, 4, 5, 6])
-    mat2 = np.array([])
-    mat3 = np.array([[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]],
-                     [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]])
-    print(np_transpose(mat1))
-    print(mat1)
-    print(np_transpose(mat2))
-    print(mat2)
-    print(np_transpose(mat3))
-    print(mat3)
+    """Function that transposes matrix. Assumes that matrix can be interpreted
+    as a numpy.ndarray. Returns a new numpy.ndarray"""
+    new = matrix.copy().T
+    return new
