@@ -7,9 +7,8 @@ import numpy as np
 def np_shape(matrix):
     """Function that calculates the shape of a numpy.ndarray. The shape will
     be returned as a tuple of integers"""
-    if isinstance(matrix, np.ndarray):
-        return matrix.shape
-    return None
+    return matrix.shape
+
 
 
 if __name__ is not "__main__":
