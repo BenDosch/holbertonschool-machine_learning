@@ -5,7 +5,17 @@ import numpy as np
 
 
 def np_slice(matrix, axes={}):
-    """F"""
+    """Function that slices a matrix along specific axes. Assumea that matrix
+    is a numpy.ndarray. Axes is a dictionary where the key is an axis to
+    slice along and the value is a tuple representing the slice to make along
+    that axis. Assumes that axes represents a valid slice. Returns a new
+    numpy.ndarray."""
+    matrix_axis = len(matrix.shape)
+    slice_per_axis = matrix_axis * [slice(None)]
+    for key, value in axes.items():
+        slice_per_axis[key] = slice(*value)  #value as tuple of args not tuple
+    return matrix[tuple(slice_per_axis)]
+
 
 
 if __name__ is not "__main__":
