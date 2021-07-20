@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Exponential decat of C-14 ploted uing logarithmic scale"""
 
 import numpy as np
 import matplotlib.pyplot as plt

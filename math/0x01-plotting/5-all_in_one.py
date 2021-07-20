@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Plots the previous 5 plots in 1 figure and arranges them"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,6 +29,7 @@ np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
 fig = plt.figure()
+plt.subplots_adjust(hspace=0.9, wspace=0.3)
 plt.suptitle("All in One")
 sp_1 = plt.subplot2grid((3, 2), (0, 0))
 sp_1.plot(y0, "r-")

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Plot of a line"""
 
 import numpy as np
 import matplotlib.pyplot as plt

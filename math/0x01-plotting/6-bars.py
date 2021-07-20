@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Plots a stacking bar chart"""
 
 import numpy as np
 import matplotlib.pyplot as plt

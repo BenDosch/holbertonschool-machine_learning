@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Plots 2 lines at once"""
 
 import numpy as np
 import matplotlib.pyplot as plt

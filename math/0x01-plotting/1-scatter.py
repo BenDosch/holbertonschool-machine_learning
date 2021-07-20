@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Docstring"""
+"""Scatter plot of mens weight vs height"""
 
 import numpy as np
 import matplotlib.pyplot as plt
