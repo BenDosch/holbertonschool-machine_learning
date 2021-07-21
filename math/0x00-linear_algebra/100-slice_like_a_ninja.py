@@ -17,7 +17,7 @@ def np_slice(matrix, axes={}):
     return matrix[tuple(slice_per_axis)]
 
 
-if __name__ is not "__main__":
+""" if __name__ is not "__main__":
     mat1 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
     print(np_slice(mat1, axes={1: (1, 3)}))
     print(mat1)
@@ -25,4 +25,4 @@ if __name__ is not "__main__":
                      [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]],
                      [[21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]])
     print(np_slice(mat2, axes={0: (2,), 2: (None, None, -2)}))
-    print(mat2)
+    print(mat2) """
