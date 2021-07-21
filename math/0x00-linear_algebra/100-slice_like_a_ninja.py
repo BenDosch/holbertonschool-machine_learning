@@ -13,9 +13,8 @@ def np_slice(matrix, axes={}):
     matrix_axis = len(matrix.shape)
     slice_per_axis = matrix_axis * [slice(None)]
     for key, value in axes.items():
-        slice_per_axis[key] = slice(*value)  #value as tuple of args not tuple
+        slice_per_axis[key] = slice(*value)  # value as tuple of args not tuple
     return matrix[tuple(slice_per_axis)]
-
 
 
 if __name__ is "__main__":
