@@ -15,7 +15,7 @@ def add_arrays(arr1, arr2):
         return sum_list
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     arr1 = [1, 2, 3, 4]
     arr2 = [5, 6, 7, 8]
     print(add_arrays(arr1, arr2))

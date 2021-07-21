@@ -19,7 +19,7 @@ def add_matrices2D(mat1, mat2):
         return new_matrix
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     mat1 = [[1, 2], [3, 4]]
     mat2 = [[5, 6], [7, 8]]
     print(add_matrices2D(mat1, mat2))

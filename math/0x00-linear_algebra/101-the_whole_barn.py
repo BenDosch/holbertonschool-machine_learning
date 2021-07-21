@@ -8,7 +8,7 @@ def add_matrices(mat1, mat2):
     """F"""
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     mat1 = [1, 2, 3]
     mat2 = [4, 5, 6]
     print(add_matrices(mat1, mat2))

@@ -18,7 +18,7 @@ def matrix_transpose(matrix):
     return t_matrix
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     mat1 = [[1, 2], [3, 4]]
     print(mat1)
     print(matrix_transpose(mat1))

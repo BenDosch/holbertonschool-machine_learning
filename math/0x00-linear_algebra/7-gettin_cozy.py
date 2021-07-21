@@ -20,7 +20,7 @@ def cat_matrices2D(mat1, mat2, axis=0):
     return None
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     mat1 = [[1, 2], [3, 4]]
     mat2 = [[5, 6]]
     mat3 = [[7], [8]]

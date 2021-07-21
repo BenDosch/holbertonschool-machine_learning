@@ -22,7 +22,7 @@ def mat_mul(mat1, mat2):
     return None
 
 
-if __name__ is not "__main__":
+if __name__ is "__main__":
     mat1 = [[1, 2],
             [3, 4],
             [5, 6]]
