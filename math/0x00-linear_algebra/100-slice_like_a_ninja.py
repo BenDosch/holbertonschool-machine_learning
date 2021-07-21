@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module that contains the function np_slice"""
-
-import numpy as np
+#
+# import numpy as np
 
 
 def np_slice(matrix, axes={}):
@@ -17,7 +17,7 @@ def np_slice(matrix, axes={}):
     return matrix[tuple(slice_per_axis)]
 
 
-if __name__ is "__main__":
+if __name__ is not "__main__":
     mat1 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
     print(np_slice(mat1, axes={1: (1, 3)}))
     print(mat1)
