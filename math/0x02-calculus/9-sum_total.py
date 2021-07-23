@@ -19,4 +19,4 @@ def summation_i_squared(n):
 
 """if __name__ == "__main__":
     n = 5
-    print(summation_i_squared(n))""""""
+    print(summation_i_squared(n))"""
