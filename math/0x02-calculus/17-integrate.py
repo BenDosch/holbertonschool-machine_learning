@@ -17,13 +17,15 @@ def poly_integral(poly, C=0):
     Return:
         List of coefficients representing the integral of the polynomial.
     """
+    if !isinstance(poly, list) and !isinstance(C, int):
+        return None
     new_list = [C]
     for i in range(len(poly)):
         temp = poly[i] / (i + 1)
         if temp.is_integer():
             temp = int(temp)
         new_list.append(temp)
-    while new_list[-1] == 0:
+    while new_list[-1] == 0 and len(new_list > 1):
         new_list.pop()
     return new_list
 
