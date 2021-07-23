@@ -4,7 +4,7 @@
 
 
 def summation_i_squared(n):
-    """Function that calculates a sumation for i=1, f(i) = i^2, until n. 
+    """Function that calculates a sumation for i=1, f(i) = i^2, until n.
     """
     if isinstance(n, int) and n > 1:
         total = n ** 2
@@ -15,7 +15,9 @@ def summation_i_squared(n):
     temp = summation_i_squared(n - 1)
     if temp:
         return total + temp
-    else: return None
+    else:
+        return None
+
 
 """if __name__ == "__main__":
     n = 5
