@@ -17,7 +17,7 @@ def poly_integral(poly, C=0):
     Return:
         List of coefficients representing the integral of the polynomial.
     """
-    if not isinstance(poly, list) and  not isinstance(C, int):
+    if not isinstance(poly, list) and not isinstance(C, int):
         return None
     new_list = [C]
     for i in range(len(poly)):
@@ -25,7 +25,7 @@ def poly_integral(poly, C=0):
         if temp.is_integer():
             temp = int(temp)
         new_list.append(temp)
-    while new_list[-1] == 0 and len(new_list > 1):
+    while new_list[-1] == 0 and len(new_list) > 1:
         new_list.pop()
     return new_list
 
