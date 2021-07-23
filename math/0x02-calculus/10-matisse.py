@@ -19,7 +19,7 @@ def poly_derivative(poly):
         return None
     for item in poly:
         if not isinstance(item, (int, float)):
-            return  None
+            return None
     new = []
     for i in range(len(poly)):
         if i == 0:
