@@ -18,7 +18,8 @@ class Poisson():
             lambtha (Float, optional): Expected number of occurences in a
                 given time frame. Defaults to 1.
         """
-        self.lambtha = float(lambtha)
+        if isinstance(lambtha, (int, float)) and lambtha < 0:
+            raise ValueError("lambtha must be a positive value")
         if data is not None:
             if not isinstance(data, list):
                 TypeError("data must be a list")
@@ -27,8 +28,8 @@ class Poisson():
                 ValueError("data must contain multipule values")
                 return
             self.lambtha = float(sum(data) / len(data))
-        if self.lambtha < 0:
-            raise ValueError("lambtha must be a positive value")
+        else:
+                self.lambtha = float(lambtha)
 
     def pmf(self, k):
         """Calculates the value of the PMF for a given number of “successes”
