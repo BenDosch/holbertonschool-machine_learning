@@ -8,7 +8,6 @@ class Poisson():
     represent the probablity that a number of events will happen in a
     given time independently.
     """
-    pi = 3.1415926536
     e = 2.7182818285
 
     def __init__(self, data=None, lambtha=1.):
