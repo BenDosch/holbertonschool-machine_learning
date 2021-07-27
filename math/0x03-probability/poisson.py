@@ -23,13 +23,11 @@ class Poisson():
         if data is not None:
             if not isinstance(data, list):
                 TypeError("data must be a list")
-                return
             elif len(data) <= 1:
                 ValueError("data must contain multipule values")
-                return
             self.lambtha = float(sum(data) / len(data))
         else:
-                self.lambtha = float(lambtha)
+            self.lambtha = float(lambtha)
 
     def pmf(self, k):
         """Calculates the value of the PMF for a given number of “successes”
