@@ -18,15 +18,14 @@ class Poisson():
             lambtha (Float, optional): Expected number of occurences in a
                 given time frame. Defaults to 1.
         """
-        if isinstance(lambtha, (int, float)) and lambtha < 0:
+        if isinstance(lambtha, (int, float)) and lambtha <= 0:
             raise ValueError("lambtha must be a positive value")
         if data is not None:
             if not isinstance(data, list):
                 raise TypeError("data must be a list")
-            elif len(data) <= 1:
+            if len(data) < 2:
                 raise ValueError("data must contain multipule values")
-            else:
-                self.lambtha = float(sum(data) / len(data))
+            self.lambtha = float(sum(data) / len(data))
         else:
             self.lambtha = float(lambtha)
 
