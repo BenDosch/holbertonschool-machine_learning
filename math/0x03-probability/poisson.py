@@ -25,7 +25,8 @@ class Poisson():
                 TypeError("data must be a list")
             elif len(data) <= 1:
                 ValueError("data must contain multipule values")
-            self.lambtha = float(sum(data) / len(data))
+            else:
+                self.lambtha = float(sum(data) / len(data))
         else:
             self.lambtha = float(lambtha)
 
