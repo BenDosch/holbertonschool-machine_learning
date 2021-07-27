@@ -22,9 +22,9 @@ class Poisson():
             raise ValueError("lambtha must be a positive value")
         if data is not None:
             if not isinstance(data, list):
-                TypeError("data must be a list")
+                raise TypeError("data must be a list")
             elif len(data) <= 1:
-                ValueError("data must contain multipule values")
+                raise ValueError("data must contain multipule values")
             else:
                 self.lambtha = float(sum(data) / len(data))
         else:
