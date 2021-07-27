@@ -23,7 +23,7 @@ class Exponential():
                 raise TypeError("data must be a list")
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            self.lambtha = float(1 / ((sum(data) / len(data))))
+            self.lambtha = float(1 / (sum(data) / len(data)))
         else:
             self.lambtha = float(lambtha)
 
@@ -38,8 +38,8 @@ class Exponential():
         """
         if isinstance(x, (float, int)) or (isinstance(x, str) and
                                            x.isnumeric()):
-            x = int(x)
-        if isinstance(x, int) and x >= 0:
+            x = float(x)
+        if isinstance(x, float) and x >= 0:
             pdf = (self.lambtha) * (self.e ** (-self.lambtha * x))
             return pdf
         else:
@@ -56,8 +56,8 @@ class Exponential():
         """
         if isinstance(x, (float, int)) or (isinstance(x, str) and
                                            x.isnumeric()):
-            x = int(x)
-        if isinstance(x, int) and x >= 0:
+            x = float(x)
+        if isinstance(x, float) and x >= 0:
             cdf = 1 - (self.e ** -(self.lambtha * x))
             return cdf
         else:
