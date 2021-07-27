@@ -6,7 +6,6 @@
 class Exponential():
     """[summary]
     """
-    pi = 3.1415926536
     e = 2.7182818285
 
     def __init__(self, data=None, lambtha=1.):
@@ -24,7 +23,7 @@ class Exponential():
                 raise TypeError("data must be a list")
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            self.lambtha = float(1 / (sum(data) / len(data)))
+            self.lambtha = float(1 / ((sum(data) / len(data))))
         else:
             self.lambtha = float(lambtha)
 
