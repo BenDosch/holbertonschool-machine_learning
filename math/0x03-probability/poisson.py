@@ -24,7 +24,7 @@ class Poisson():
             if not isinstance(data, list):
                 raise TypeError("data must be a list")
             if len(data) < 2:
-                raise ValueError("data must contain multipule values")
+                raise ValueError("data must contain multiple values")
             self.lambtha = float(sum(data) / len(data))
         else:
             self.lambtha = float(lambtha)
