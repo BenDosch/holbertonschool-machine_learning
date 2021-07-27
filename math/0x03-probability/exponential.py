@@ -41,12 +41,8 @@ class Exponential():
                                            x.isnumeric()):
             x = int(x)
         if isinstance(x, int) and x >= 0:
-            factorial = 1
-            for i in range(1, x + 1):
-                factorial = factorial * i
-            pmf = (((self.e ** -(self.lambtha)) * (self.lambtha ** x)) /
-                   factorial)
-            return pmf
+            pdf = ((self.e ** -(self.lambtha * x)) * (self.lambtha))
+            return pdf
         else:
             return 0
 
