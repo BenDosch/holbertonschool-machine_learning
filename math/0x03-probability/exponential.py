@@ -41,7 +41,7 @@ class Exponential():
                                            x.isnumeric()):
             x = int(x)
         if isinstance(x, int) and x >= 0:
-            pdf = ((self.e ** -(self.lambtha * x)) * (self.lambtha))
+            pdf = (self.lambtha) * (self.e ** (-self.lambtha * x))
             return pdf
         else:
             return 0
