@@ -17,17 +17,16 @@ class Exponential():
             lambtha (Float, optional): Expected number of occurences in a
                 given time frame. Defaults to 1.
         """
-        self.lambtha = float(lambtha)
+        if isinstance(lambtha, (int, float)) and lambtha <= 0:
+            raise ValueError("lambtha must be a positive value")
         if data is not None:
             if not isinstance(data, list):
-                TypeError("data must be a list")
-                return
-            elif len(data) <= 1:
-                ValueError("data must contain multipule values")
-                return
+                raise TypeError("data must be a list")
+            if len(data) < 2:
+                raise ValueError("data must contain multiple values")
             self.lambtha = float(1 / (sum(data) / len(data)))
-        if self.lambtha < 0:
-            raise ValueError("lambtha must be a positive value")
+        else:
+            self.lambtha = float(lambtha)
 
     def pdf(self, x):
         """Calculates the value of the PDF for a given number of “successes”
