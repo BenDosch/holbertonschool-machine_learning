@@ -160,7 +160,7 @@ class Neuron():
 
         for i in range(iterations):
             A = self.forward_prop(X)
-            self.gradient_descent(X, Y, A)
+            self.gradient_descent(X, Y, A, alpha)
 
         A = self.forward_prop(X)
         cost = self.cost(Y, A)
