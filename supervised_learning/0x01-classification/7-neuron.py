@@ -192,10 +192,6 @@ class Neuron():
             print("Cost after {} iterations: {}"
                   .format((i + 1), cost))
 
-        A = self.forward_prop(X)
-        cost = self.cost(Y, A)
-        A = np.where(A >= 0.5, 1, 0)
-
         if graph:
             plt.plot(x, y, "b-")
             plt.xlabel('iteration')
