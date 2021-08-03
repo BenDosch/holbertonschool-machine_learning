@@ -142,12 +142,8 @@ class Neuron():
             alpha (float, optional): The learning rate. Defaults to 0.05.
 
         Returns:
-            A (numpy.ndarray): The neuron’s prediction after iterations of
-                training has occured. The predictions shape will be (1, m),
-                containing the predicted labels for each example.
-            cost (float): The cost of the network after iterations of
-                training has occured.
-
+            Evaluation of the training data after iterations of training
+            have occurred.
         """
         if not isinstance(iterations, int):
             raise TypeError("iterations must be an integer")
