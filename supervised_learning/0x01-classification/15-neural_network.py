@@ -72,7 +72,7 @@ class NeuralNetwork():
         Args:
             X (numpy.ndarray): N-dimensional array with shape (nx, m) that
             contains the input data, where nx is the number of input features
-            to the neuron and m is the number of examples.
+            to the neural network and m is the number of examples.
 
         Returns:
             self.__A1 (numpy.ndarray[(float)]): The activated output for
