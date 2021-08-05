@@ -76,7 +76,7 @@ class NeuralNetwork():
         Returns:
             self.__A1 (numpy.ndarray[(float)]): The activated output for
                 the hidden layer
-            self.__A2 (float): The activated output for the output neuron
+            self.__A2 (float): The activated output for the neural network.
         """
 
         z = np.dot(self.W1, X) + self.__b1
