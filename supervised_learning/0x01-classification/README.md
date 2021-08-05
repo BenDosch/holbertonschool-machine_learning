@@ -1,1 +1,0 @@
-Directory for Hoblerton School projects on clasification.
