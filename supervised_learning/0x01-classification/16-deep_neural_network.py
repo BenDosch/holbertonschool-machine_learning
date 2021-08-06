@@ -32,6 +32,8 @@ class DeepNeuralNetwork():
         weights = {}
         prev = nx
         for i, l in enumerate(layers, 1):
+            if not isinstance(l, int) and l < 1:
+                raise TypeError("layers must be a list of positive integers")
             weights["b{}".format(i)] = np.zeros((l, 1))
             weights["W{}".format(i)] = (np.random.randn(l, prev) *
                                         np.sqrt(2 / prev))
