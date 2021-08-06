@@ -3,7 +3,6 @@
 with one hidden layer performing binary classification."""
 
 import numpy as np
-from numpy.core.shape_base import atleast_1d
 
 
 class NeuralNetwork():
