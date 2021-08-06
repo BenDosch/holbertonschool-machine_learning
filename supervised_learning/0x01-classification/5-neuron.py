@@ -3,7 +3,6 @@
 binary classification"""
 
 import numpy as np
-from numpy.core.fromnumeric import shape
 
 
 class Neuron():
@@ -78,7 +77,7 @@ class Neuron():
                 the activated output of the neuron for each example.
                 Sometiems refered to as "y hat" a y with a "^" above it.
         """
-        shape = np.shape(Y)
+        shape = Y.shape
         m = shape[1]
         cost_array = -((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
         return np.sum(cost_array) / m
