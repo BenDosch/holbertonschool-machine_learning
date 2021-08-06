@@ -77,7 +77,7 @@ class Neuron():
                 the activated output of the neuron for each example.
                 Sometiems refered to as "y hat" a y with a "^" above it.
         """
-        shape = y.shape
+        shape = Y.shape
         m = shape[1]
         cost_array = -((Y * np.log(A)) + ((1 - Y) * np.log(1.0000001 - A)))
         return np.sum(cost_array) / m
