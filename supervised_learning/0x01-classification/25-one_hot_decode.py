@@ -17,7 +17,7 @@ def one_hot_decode(one_hot):
         lables (numpy.ndarray): N-dimensional array with shape (m, ) containing
         the numeric labels for each example, or None on failure.
     """
-    if not isinstance(one_hot, np.ndarray):
+    if not isinstance(one_hot, np.ndarray) or one_hot.ndim != 2:
         return None
 
     lables = one_hot.argmax(0)

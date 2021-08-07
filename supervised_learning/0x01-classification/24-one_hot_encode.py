@@ -16,7 +16,7 @@ def one_hot_encode(Y, classes):
     Returns:
         A one-hot encoding of Y with shape (classes, m), or None on failure.
     """
-    if not isinstance(Y, np.ndarray) or not(classes, int):
+    if not isinstance(Y, np.ndarray) or not(classes, int) or Y.ndim != 1:
         return None
     try:
         m = Y.shape[0]
