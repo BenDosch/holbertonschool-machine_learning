@@ -24,8 +24,8 @@ class DeepNeuralNetwork():
         elif not isinstance(layers, list) or len(layers) < 1:
             raise TypeError("layers must be a list of positive integers")
 
-        self.L = len(layers)
-        self.cache = {}
+        self.__L = len(layers)
+        self.__cache = {}
         weights = {}
         prev = nx
         for i, l in enumerate(layers, 1):
@@ -35,7 +35,7 @@ class DeepNeuralNetwork():
             weights["W{}".format(i)] = (np.random.randn(l, prev) *
                                         np.sqrt(2 / prev))
             prev = l
-        self.weights = weights
+        self.__weights = weights
 
     @property
     def L(self):
