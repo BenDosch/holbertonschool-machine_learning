@@ -3,6 +3,26 @@
 
 import numpy as np
 
+
 def one_hot_encode(Y, classes):
     """[summary]
+
+    Args:
+        Y (numpy.ndarray): N-dimensional array with shape (m,) containing
+        numeric class labels, where m is the number of examples.
+        classes (int): The maximum number of classes found in Y
+
+    Returns:
+        A one-hot encoding of Y with shape (classes, m), or None on failure.
     """
+    if not isinstance(Y, np.ndarray) or not(classes, int):
+        return None
+    try:
+        one_hot = np.zeros((Y.shape[0], classes))
+        rows = np.arange(Y.shape[0])
+        one_hot[rows, Y] = 1
+    except Exception:
+        return None
+
+    return one_hot.T
+        
