@@ -18,8 +18,9 @@ def one_hot_encode(Y, classes):
     if not isinstance(Y, np.ndarray) or not(classes, int):
         return None
     try:
-        one_hot = np.zeros((Y.shape[0], classes))
-        rows = np.arange(Y.shape[0])
+        m = Y.shape[0]
+        one_hot = np.zeros((m, classes))
+        rows = np.arange(m)
         one_hot[rows, Y] = 1
     except Exception:
         return None
