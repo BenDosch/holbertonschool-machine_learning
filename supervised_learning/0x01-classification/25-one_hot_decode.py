@@ -23,4 +23,3 @@ def one_hot_decode(one_hot):
     lables = one_hot.argmax(0)
 
     return lables
-
