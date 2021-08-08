@@ -225,7 +225,6 @@ class DeepNeuralNetwork():
         except Exception:
             return None
 
-
     def load(filename):
         """Function that loads a pickled DeepNeuralNetwork object.
 
