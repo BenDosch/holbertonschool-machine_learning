@@ -31,12 +31,12 @@ class DeepNeuralNetwork():
         weights = {}
         prev = nx
         for i, L in enumerate(layers, 1):
-            if not isinstance(l, int) and L < 0:
+            if not isinstance(L, int) and L < 0:
                 raise TypeError("layers must be a list of positive integers")
-            weights["b{}".format(i)] = np.zeros((l, 1))
-            weights["W{}".format(i)] = (np.random.randn(l, prev) *
+            weights["b{}".format(i)] = np.zeros((L, 1))
+            weights["W{}".format(i)] = (np.random.randn(L, prev) *
                                         np.sqrt(2 / prev))
-            prev = l
+            prev = L
         self.__weights = weights
 
     @property
