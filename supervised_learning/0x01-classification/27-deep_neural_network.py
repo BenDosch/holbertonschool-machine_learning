@@ -30,8 +30,8 @@ class DeepNeuralNetwork():
         self.__cache = {}
         weights = {}
         prev = nx
-        for i, l in enumerate(layers, 1):
-            if not isinstance(l, int) and l < 0:
+        for i, L in enumerate(layers, 1):
+            if not isinstance(l, int) and L < 0:
                 raise TypeError("layers must be a list of positive integers")
             weights["b{}".format(i)] = np.zeros((l, 1))
             weights["W{}".format(i)] = (np.random.randn(l, prev) *
@@ -69,17 +69,17 @@ class DeepNeuralNetwork():
         """
         A = X
         self.cache["A{}".format(0)] = X
-        for l in range(1, self.L + 1):
+        for L in range(1, self.L + 1):
             prev = A
-            W = self.weights["W{}".format(l)]
-            b = self.weights["b{}".format(l)]
+            W = self.weights["W{}".format(L))]
+            b = self.weights["b{}".format(L))]
             Z = np.matmul(W, A) + b
-            if l == self.L:
+            if L == self.L:
                 T = np.exp(Z)
                 A = T / np.sum(T, axis=0, keepdims=True)  # Softmax
             else:
                 A = 1/(1 + np.exp(-Z))  # Sigmoid
-            self.__cache["A{}".format(l)] = A
+            self.__cache["A{}".format(L))] = A
         return A, self.cache
 
     def cost(self, Y, A):
