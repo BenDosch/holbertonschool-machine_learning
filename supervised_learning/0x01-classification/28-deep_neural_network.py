@@ -25,7 +25,7 @@ class DeepNeuralNetwork():
             raise ValueError("nx must be a positive integer")
         elif not isinstance(layers, list) or len(layers) < 1:
             raise TypeError("layers must be a list of positive integers")
-        elif activation is not 'sig' or activation is not 'tanh':
+        elif activation is not 'sig' and activation is not 'tanh':
             raise ValueError("activation must be 'sig' or 'tanh'")
 
         self.__L = len(layers)
