@@ -71,15 +71,15 @@ class DeepNeuralNetwork():
         self.cache["A{}".format(0)] = X
         for L in range(1, self.L + 1):
             prev = A
-            W = self.weights["W{}".format(L))]
-            b = self.weights["b{}".format(L))]
+            W = self.weights["W{}".format(L)]
+            b = self.weights["b{}".format(L)]
             Z = np.matmul(W, A) + b
             if L == self.L:
                 T = np.exp(Z)
                 A = T / np.sum(T, axis=0, keepdims=True)  # Softmax
             else:
                 A = 1/(1 + np.exp(-Z))  # Sigmoid
-            self.__cache["A{}".format(L))] = A
+            self.__cache["A{}".format(L)] = A
         return A, self.cache
 
     def cost(self, Y, A):
