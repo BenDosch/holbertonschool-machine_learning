@@ -258,7 +258,7 @@ class DeepNeuralNetwork():
         except Exception:
             return None
 
-    def sigmoid(Z):
+    def sigmoid(self, Z):
         """Does the math for the Sigmoid activation function.
 
         Args:
@@ -270,7 +270,7 @@ class DeepNeuralNetwork():
         """
         return 1/(1 + np.exp(-Z))
 
-    def sigmoid_prime(A):
+    def sigmoid_prime(self, A):
         """Does the math for the Sigmoid` activation function.
 
         Args:
