@@ -3,7 +3,6 @@
 binary classification"""
 
 import numpy as np
-from numpy.core.fromnumeric import shape
 
 
 class Neuron():
