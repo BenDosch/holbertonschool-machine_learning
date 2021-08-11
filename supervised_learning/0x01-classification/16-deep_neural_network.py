@@ -29,7 +29,6 @@ class DeepNeuralNetwork():
         weights = {}
         prev = nx
         for i, l in enumerate(layers, 1):
-            print(l)
             if not isinstance(l, int) or l < 1:
                 raise TypeError("layers must be a list of positive integers")
             weights["b{}".format(i)] = np.zeros((l, 1))
