@@ -11,7 +11,7 @@ def create_train_op(loss, alpha):
     Args:
         loss ([type]): The loss of the network’s prediction.
         alpha ([type]): The learning rate.
-    
+
     Returns:
         An operation that trains the network using gradient descent.
     """
