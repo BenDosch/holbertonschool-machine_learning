@@ -2,8 +2,8 @@
 """Module containing the function calculate_loss.
 """
 
-import numpy as np
 import tensorflow as tf
+
 
 def calculate_loss(y, y_pred):
     """Function that calculates the softmax cross-entropy loss of a prediction.
