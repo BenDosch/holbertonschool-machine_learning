@@ -2,7 +2,6 @@
 """Module containing the function create_placeholders
 """
 
-import numpy as np
 import tensorflow as tf
 
 
@@ -17,4 +16,6 @@ def create_placeholders(nx, classes):
         x ([type]): The placeholder for the input data to the neural network.
         y ([type]): The placeholder for the one-hot labels for the input data.
     """
-    # Code
+    x = tf.placeholder(tf.float32, shape=(None, nx))
+    y = tf.placeholder(tf.float32, shape=(None, classes))
+    return x, y
