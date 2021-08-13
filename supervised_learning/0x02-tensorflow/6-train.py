@@ -2,7 +2,6 @@
 """Module containing the function train.
 """
 
-from re import X
 import tensorflow as tf
 
 
