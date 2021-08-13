@@ -3,6 +3,11 @@
 """
 
 import tensorflow as tf
+create_placeholders = __import__('0-create_placeholders').create_placeholders
+forward_prop = __import__('2-forward_prop').forward_prop
+calculate_accuracy = __import__('3-calculate_accuracy').calculate_accuracy
+calculate_loss = __import__('4-calculate_loss').calculate_loss
+create_train_op = __import__('5-create_train_op').create_train_op
 
 
 def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
@@ -30,14 +35,6 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations,
     Returns:
         The path where the model was saved.
     """
-    create_placeholders = (__import__('0-create_placeholders')
-                           .create_placeholders)
-    forward_prop = __import__('2-forward_prop').forward_prop
-    calculate_accuracy = __import__('3-calculate_accuracy').calculate_accuracy
-    calculate_loss = __import__('4-calculate_loss').calculate_loss
-    create_train_op = __import__('5-create_train_op').create_train_op
-
-    # tf. Opperations?
     x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
     tf.add_to_collection('x', x)
     tf.add_to_collection('y', y)
