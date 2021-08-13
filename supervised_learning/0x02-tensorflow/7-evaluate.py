@@ -2,17 +2,31 @@
 """Module containing the function evaluate.
 """
 
-import numpy as np
 import tensorflow as tf
+
 
 def evaluate(X, Y, save_path):
     """Function that evaluates the output of a neural network.
 
     Args:
-        X (numpy.ndarray): N-dimensional array containing the input data to evaluate.
-        Y (numpy.ndarray): N-dimensional array containing the one-hot labels for X.
+        X (numpy.ndarray): N-dimensional array containing the input data to
+            evaluate.
+        Y (numpy.ndarray): N-dimensional array containing the one-hot
+            labels for X.
         save_path (str): The location to load the model from.
+
     Returns:
         The network's prediction, accuracy, and loss, respectively.
     """
-    # Code
+    sess = tf.Session()
+    saver = tf.train.import_meta_graph(save_path + '.meta')
+    saver.restore(sess, save_path)
+    x = tf.get_collection('x')[0]
+    y = tf.get_collection('y')[0]
+    y_pred = tf.get_collection('y_pred')[0]
+    accuracy = tf.get_collection('accuracy')[0]
+    loss = tf.get_collection('loss')[0]
+    y_pred = sess.run(y_pred, feed_dict={x: X, y: Y})
+    accuracy = sess.run(accuracy, feed_dict={x: X, y: Y})
+    loss = sess.run(loss, feed_dict={x: X, y: Y})
+    return (y_pred, accuracy, loss)
