@@ -20,3 +20,4 @@ def normalize(X, m, s):
     Returns:
         The normalized X matrix.
     """
+    return (X - m) / (s)
