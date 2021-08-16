@@ -12,10 +12,13 @@ def shuffle_data(X, Y):
         X (numpy.ndarray): First N-dimensional array with (m, nx) to shuffle.
             Where m is the number of data points and nx is the number of
             features in X.
-        Y (numpy.ndarray): Second N-dimensional array with (m, nx) to shuffle.
-            Where m is the number of data points and nx is the number of
+        Y (numpy.ndarray): Second N-dimensional array with (m, ny) to shuffle.
+            Where m is the number of data points and ny is the number of
             features in Y
 
     Returns:
         The shuffled X and Y matrices
     """
+    m = X.shape[0]
+    shuffler = np.random.permutation(m)
+    return X[shuffler], Y[shuffler]
