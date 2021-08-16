@@ -190,6 +190,11 @@ class NeuralNetwork():
             raise TypeError("alpha must be a float")
         elif alpha <= 0:
             raise ValueError("alpha must be positive")
+        elif verbose or graph:
+            if not isinstance(step, int):
+                raise TypeError("step must be an integer")
+            elif step < 1 or step > iterations:
+                raise ValueError("step must be positive and <= iterations")
 
         x = np.arange(0, iterations, step)
         y = []
