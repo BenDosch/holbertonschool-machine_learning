@@ -1,0 +1,1 @@
+Directory contianing Holberton school projects on optomizing neural networks.
