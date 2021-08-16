@@ -11,8 +11,10 @@ def normalization_constants(X):
 
     Args:
         X (numpy.ndarray): N-dimensional array with shape (m,nx) to normailze.
-            Where m is the number of data points, and nx is the number of features.
+            Where m is the number of data points, and nx is the number of
+            features.
 
     Returns:
         The mean and standard deviation of each feature, respectively.
     """
+    return X.mean(axis=0), X.std(axis=0)
