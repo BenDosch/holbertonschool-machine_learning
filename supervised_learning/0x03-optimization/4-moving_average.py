@@ -4,7 +4,7 @@
 
 
 def moving_average(data, beta):
-    """Function that
+    """Function that calculates the weighted moving average of a data set.
 
     Args:
         data (list): The list of data to calculate the moving average of.
