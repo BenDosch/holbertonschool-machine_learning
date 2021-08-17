@@ -2,8 +2,9 @@
 """Module containing the function moving_avrage.
 """
 
+
 def moving_average(data, beta):
-    """Function that 
+    """Function that
 
     Args:
         data (list): The list of data to calculate the moving average of.
@@ -12,3 +13,9 @@ def moving_average(data, beta):
     Returns:
         A list containing the moving avrages of data.
     """
+    v = 0
+    moving = []
+    for i in range(len(data)):
+        v = (beta * v) + ((1 - beta) * data[i])
+        moving.append(v / (1 - (beta ** (i + 1))))
+    return moving
