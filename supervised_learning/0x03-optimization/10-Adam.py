@@ -19,3 +19,5 @@ def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
     Returns:
         The Adam optimization operation.
     """
+    return tf.train.AdamOptimizer(learning_rate=alpha, beta1=beta1,
+                                  beta2=beta2, epsilon=epsilon).minimize(loss)
