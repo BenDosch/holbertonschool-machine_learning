@@ -21,3 +21,4 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     Returns:
         The updated value for alpha.
     """
+    return alpha / (1 + (decay_rate * int(global_step / decay_step)))
