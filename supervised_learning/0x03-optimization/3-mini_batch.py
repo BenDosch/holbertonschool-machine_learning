@@ -28,7 +28,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             Defaults to "/tmp/model.ckpt".
         save_path (str, optional): The path to where the model should be saved
             after training. Defaults to "/tmp/model.ckpt".
-        
+
     Returns: the path where the model was saved
     """
     shuffle_data = __import__('2-shuffle_data').shuffle_data
@@ -45,7 +45,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
     for epoch in range(epochs + 1):
         train = sess.run([loss, accuracy], feed_dict={x: X_train, y: Y_train})
         valid = sess.run([loss, accuracy], feed_dict={x: X_valid, y: Y_valid})
-        
+
         print("After {} epochs:".format(epoch))
         print("\tTraining Cost: {}".format(train[0]))
         print("\tTraining Accuracy: {}".format(train[1]))
@@ -73,11 +73,11 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     X_t = X_train_s[batch_start:batch_end, :]
                     Y_t = Y_train_s[batch_start:batch_end, :]
                 results = sess.run([accuracy, loss, train_op],
-                                    feed_dict={x: X_t, y: Y_t})
-                
+                                   feed_dict={x: X_t, y: Y_t})
+
                 if step % 100 == 0:
                     print("\tStep {}:".format(step))
                     print("\t\tCost: {}".format(results[1]))
-                    print("\t\tAccuracy: {}".format(results[0]))               
+                    print("\t\tAccuracy: {}".format(results[0]))
 
     return store.save(sess, save_path)
