@@ -3,7 +3,6 @@
 """
 
 import tensorflow as tf
-from tensorflow.python.keras.backend import epsilon
 
 
 def create_batch_norm_layer(prev, n, activation):
