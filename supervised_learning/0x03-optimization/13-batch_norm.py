@@ -4,8 +4,10 @@
 
 import numpy as np
 
+
 def batch_norm(Z, gamma, beta, epsilon):
-    """Function that 
+    """Function that normalizes an unactivated output of a neural network using
+    batch normalization.
 
     Args:
         Z (numpy.ndarray): N-dimensional array with the shape (m, n) that
@@ -20,3 +22,8 @@ def batch_norm(Z, gamma, beta, epsilon):
     Returns:
         The normalized Z matrix.
     """
+    #  Formula: Z_norm = (Z - avrage) / sqrt(variance + episalon)
+    Z_norm = ((Z - np.average(Z, axis=0)) /
+              (((np.var(Z, axis=0) + epsilon) ** 0.5)))
+    #  Formula: Z~ = (gamma)Z_norm + beta
+    return (gamma * Z_norm) + beta
