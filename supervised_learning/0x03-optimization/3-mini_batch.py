@@ -40,11 +40,10 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
     accuracy = tf.get_collection('accuracy')[0]
     loss = tf.get_collection('loss')[0]
     train_op = tf.get_collection('train_op')[0]
-
     init = tf.global_variables_initializer()
     store = tf.train.Saver()
+    
     sess.run(init)
-    m = X_train.shape[0]
 
     for epoch in range(epochs + 1):
         train = sess.run([loss, accuracy], feed_dict={x: X_train, y: Y_train})
@@ -56,9 +55,16 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         print("\tValidation Accuracy: {}".format(valid[1]))
         if epoch < epochs:
             X_train_s, Y_train_s = shuffle_data(X_train, Y_train)
-            batch_start = 0
             step = 0
-            while batch_start < m:
+            m = X_train.shape[0]
+
+            if m % batch_size == 0:
+                total_batches = m / batch_size
+            else:
+                total_batches = int(m / batch_size) + 1
+
+            for batch in range(total_batches):
+                batch_start = batch * batch_size
                 batch_end = batch_start + batch_size
                 if batch_end >= m:
                     X_t = X_train[batch_start:, :]
@@ -68,13 +74,10 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     Y_t = Y_train_s[batch_start:batch_end, :]
                 results = sess.run([accuracy, loss, train_op],
                                     feed_dict={x: X_t, y: Y_t})
-                if step % 100 == 0 and step > 0:
+                step += 1
+                if step % 100 == 0:
                     print("\tStep {}:".format(step))
                     print("\t\tCost: {}".format(results[1]))
-                    print("\t\tAccuracy: {}".format(results[0]))
-                step += 1
-                batch_start += batch_size
-
-                
+                    print("\t\tAccuracy: {}".format(results[0]))               
 
     return store.save(sess, save_path)
