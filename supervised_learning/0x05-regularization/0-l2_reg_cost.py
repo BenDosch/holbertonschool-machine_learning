@@ -20,4 +20,8 @@ def l2_reg_cost(cost, lambtha, weights, L, m):
     Returns:
         The cost of the network accounting for L2 regularization.
     """
-    # Code
+    frobenious_norm = 0  # squared norm
+    for layer in range(1, L + 1):
+        frobenious_norm += np.linalg.norm(weights["W{}".format(layer)])
+
+    return cost + ((lambtha / (2 * m)) * frobenious_norm)
