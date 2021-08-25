@@ -23,16 +23,18 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         L (int): The number of layers of the network
     """
     m = Y.shape[1]
-    for layer in range(L, 0, -1):
-        Ai = cache["A{}".format(layer)]
-        Ai_next = cache["A{}".format(layer - 1)]
-        if layer == L:
+    for i in range(L, 0, -1):
+        Ai = cache["A{}".format(i)]
+        Ai_next = cache["A{}".format(i - 1)]
+        if i == L:
             dZi = (Ai - Y)
         else:
             dZi = dAi_next * 1 - (Ai ** 2)  # tanh_prime
-        Wi = weights["W{}".format(layer)]
+        Wi = weights["W{}".format(i)]
+        bi = weights["b{}".format(i)]
         dWi = (np.matmul(dZi, Ai_next.T) / m) + ((lambtha / m) * Wi)
-        dbi = np.sum(dZi, axis=1, keepdims=True) / m
+        dbi = (np.sum(dZi, axis=1, keepdims=True) / m) + (
+            (lambtha / m) * bi)
         dAi_next = np.matmul(Wi.T, dZi)
-        weights["W{}".format(layer)] -= (alpha * dWi)
-        weights["b{}".format(layer)] -= (alpha * dbi)
+        weights["W{}".format(i)] -= (alpha * dWi)
+        weights["b{}".format(i)] -= (alpha * dbi)
