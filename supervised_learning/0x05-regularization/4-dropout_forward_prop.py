@@ -3,8 +3,6 @@
 """
 
 import numpy as np
-from tensorflow.python.layers.core import dropout
-from tensorflow.python.ops.gen_array_ops import size
 
 
 def dropout_forward_prop(X, weights, L, keep_prob):
