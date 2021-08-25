@@ -3,6 +3,8 @@
 """
 
 import numpy as np
+from tensorflow.python.layers.core import dropout
+from tensorflow.python.ops.gen_array_ops import size
 
 
 def dropout_forward_prop(X, weights, L, keep_prob):
@@ -23,4 +25,22 @@ def dropout_forward_prop(X, weights, L, keep_prob):
         A dictionary containing the outputs of each layer and the dropout mask
         used on each layer.
     """
-    # Code
+    cache = {}
+    cache["A{}".format(0)] = X
+    A = X
+    for layer in range(1, L + 1):
+        prev = A
+        W = weights["W{}".format(layer)]
+        b = weights["b{}".format(layer)]
+        Z = np.matmul(W, A) + b
+        if layer == L:
+            T = np.exp(Z)
+            A = (T / np.sum(T, axis=0, keepdims=True))  # Softmax
+            cache["A{}".format(layer)] = A
+        else:
+            A = np.tanh(Z)
+            dropout_mask = np.random.binomial(n=1, p=keep_prob, size=A.shape)
+            A = (A * dropout_mask) / keep_prob
+            cache["A{}".format(layer)] = A
+            cache["D{}".format(layer)] = dropout_mask
+    return cache
