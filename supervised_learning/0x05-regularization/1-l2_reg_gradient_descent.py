@@ -32,7 +32,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
             dZi = dAi_next * 1 - (Ai ** 2)  # tanh_prime
         Wi = weights["W{}".format(i)]
         bi = weights["b{}".format(i)]
-        dWi = (np.matmul(dZi, Ai_next.T) / m) 
+        dWi = (np.matmul(dZi, Ai_next.T) / m)
         dbi = (np.sum(dZi, axis=1, keepdims=True) / m)
         dAi_next = np.matmul(Wi.T, dZi)
         l2 = (1 - alpha * (lambtha / m))
