@@ -18,4 +18,8 @@ def dropout_create_layer(prev, n, activation, keep_prob):
     Returns:
         The output of the new layer.
     """
-    # Code
+    init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    reg = tf.layers.Dropout(rate=keep_prob)
+    layer = tf.layers.Dense(units=n, activation=activation, name="layer",
+                            kernel_initializer=init, kernel_regularizer=reg)
+    return layer(prev)
