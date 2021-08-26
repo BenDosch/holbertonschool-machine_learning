@@ -21,4 +21,19 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         keep_prob (flat): The probability that a node will be kept
         L (int): The number of layers of the network.
     """
-    # Code
+    m = Y.shape[1]
+    for i in range(L, 0, -1):
+        Ai = cache["A{}".format(i)]
+        Ai_next = cache["A{}".format(i - 1)]
+        if i == L:
+            dZi = (Ai - Y)
+        else:
+            dZi = dAi_next * (1 - (Ai ** 2))  # tanh_prime
+            dZi = (dZi * cache["D{}".format(i)]) / keep_prob
+        Wi = weights["W{}".format(i)]
+        bi = weights["b{}".format(i)]
+        dWi = np.matmul(dZi, Ai_next.T) / m
+        dbi = (np.sum(dZi, axis=1, keepdims=True) / m)
+        dAi_next = np.matmul(Wi.T, dZi)
+        weights["W{}".format(i)] -= (alpha * dWi)
+        weights["b{}".format(i)] -= (alpha * dbi)
