@@ -23,9 +23,9 @@ def train_model(network, data, labels, batch_size, epochs,
             gradient descent.
         validation_data(tuple, optional): The data to validate the model with.
             Defaults to None.
-        early_stopping([bool, optional]): A boolean that indicates whether
+        early_stopping(bool, optional): A boolean that indicates whether
             early stopping should be used.
-        patience([int]): The patience used for early stopping.
+        patience(int): The patience used for early stopping.
         verbose (bool, optional): A boolean that determines if output should be
             printed during training. Defaults to True.
         shuffle (bool, optional): A boolean that determines whether to shuffle
