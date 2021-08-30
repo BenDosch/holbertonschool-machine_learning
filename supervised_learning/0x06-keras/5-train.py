@@ -4,13 +4,14 @@
 
 import tensorflow.keras as K
 
+
 def train_model(network, data, labels, batch_size, epochs,
                 validation_data=None, verbose=True, shuffle=False):
     """Function that trains a model using mini-batch gradient descent which
     also analyzes validaiton data.
 
     Args:
-        network ([type]): The model to train.
+        network (keras.Model): The model to train.
         data (numpy.ndarray): A numpy.ndarray of shape (m, nx) containing the
             input data.
         labels (numpy.ndarray): A one-hot numpy.ndarray of shape (m, classes)
@@ -19,8 +20,8 @@ def train_model(network, data, labels, batch_size, epochs,
             gradient descent.
         epochs (int): The number of passes through data for mini-batch
             gradient descent.
-        validation_data([type]): The data to validate the model with. Defaults
-            to None.
+        validation_data(tuple, optional): The data to validate the model with.
+            Defaults to None.
         verbose (bool, optional): A boolean that determines if output should be
             printed during training. Defaults to True.
         shuffle (bool, optional): A boolean that determines whether to shuffle
@@ -29,4 +30,12 @@ def train_model(network, data, labels, batch_size, epochs,
     Returns:
         The History object generated after training the model.
     """
-    # Code         
+    return network.fit(
+        x=data,
+        y=labels,
+        batch_size=batch_size,
+        epochs=epochs,
+        validation_data=validation_data,
+        verbose=verbose,
+        shuffle=shuffle
+    )
