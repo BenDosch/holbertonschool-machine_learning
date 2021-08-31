@@ -44,46 +44,36 @@ def train_model(network, data, labels, batch_size, epochs,
     Returns:
         The History object generated after training the model.
     """
-    callbacks = []
-    if validation_data is not None:
-        if early_stopping is not None:
-            callbacks.append(K.callbacks.EarlyStopping(
-                    monitor='loss',
-                    patience=patience
-                ))
+    callback = []
 
-        if learning_rate_decay is not None:
-            def scheduler(epoch):
-                """Function that takes and epoch index and curent learning rate
-                and preforms inverse time decay.
+    if early_stopping and validation_data:
+        callback.append(
+            K.callbacks.EarlyStopping(monitor='loss', patience=patience))
 
-                Args:
-                    epoch (int): The epoch index.
-                    lr (float): The current learning rate.
+    def learning_rate(epoch):
+        """
+        calculates learning rate
+        initial_learning_rate / (1 + decay_rate * (step / decay_step))
+        """
+        return (alpha / (1 + decay_rate * epoch))
 
-                Returns:
-                    float: The decay rate
-                """
-                return (alpha / (1 + decay_rate * epoch))
+    if learning_rate_decay and validation_data:
+        callback.append(
+            K.callbacks.LearningRateScheduler(learning_rate, verbose=1))
 
-            callbacks.append(K.callbacks.LearningRateScheduler(
-                    schedule=scheduler, verbose=1
-                ))
+    if save_best:
+        callback.append(
+            K.callbacks.ModelCheckpoint(filepath=filepath,
+                                        save_best_only=True))
 
-    if save_best is True:
-        callbacks.append(K.callbacks.ModelCheckpoint(
-            filepath=filepath,
-            save_best_only=True,
-        ))
+    if callback == []:
+        callback = None
 
-    history = network.fit(
-        x=data,
-        y=labels,
-        batch_size=batch_size,
-        epochs=epochs,
-        validation_data=validation_data,
-        verbose=verbose,
-        callbacks=callbacks,
-        shuffle=shuffle
-    )
+    history = network.fit(x=data, y=labels,
+                          batch_size=batch_size,
+                          epochs=epochs,
+                          validation_data=validation_data,
+                          callbacks=callback,
+                          verbose=verbose,
+                          shuffle=shuffle)
     return history
