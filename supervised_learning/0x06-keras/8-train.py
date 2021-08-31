@@ -76,7 +76,7 @@ def train_model(network, data, labels, batch_size, epochs,
             save_best_only=True,
         ))
 
-    return network.fit(
+    history = network.fit(
         x=data,
         y=labels,
         batch_size=batch_size,
@@ -86,3 +86,4 @@ def train_model(network, data, labels, batch_size, epochs,
         callbacks=callbacks,
         shuffle=shuffle
     )
+    return history
