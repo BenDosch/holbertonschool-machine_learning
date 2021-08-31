@@ -8,19 +8,24 @@ import tensorflow.keras as K
 def save_model(network, filename):
     """Function that saves an entire model.
     Args:
-        network ([type]): The model to save.
-        filename ([type]): The path of the file that the model should be saved
+        network (keras.Model): The model to save.
+        filename (str): The path of the file that the model should be saved
             to.
     """
-    # Code
+    K.models.save_model(
+        model=network,
+        filepath=filename,
+    )
+
 
 def load_model(filename):
     """Loads an entire model.
 
     Args:
-        filename (str): The path of the file that the model should be loaded from.
+        filename (str): The path of the file that the model should be loaded
+            from.
 
     Returns:
         The loaded model.
     """
-    # Code
+    return K.models.load_model(filepath=filename)
