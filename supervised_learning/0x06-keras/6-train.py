@@ -36,7 +36,7 @@ def train_model(network, data, labels, batch_size, epochs,
     """
     if early_stopping is not None and validation_data is not None:
         e_s = K.callbacks.EarlyStopping(
-                monitor='validation_loss',
+                monitor='loss',
                 patience=patience
             )
     else:
