@@ -9,10 +9,20 @@ def save_config(network, filename):
     """Function that  saves a model’s configuration in JSON format.
 
     Args:
-        network ([type]): The saves a model’s configuration in JSON format.
-        filename (str): The path of the file that the configuration should be saved to.
+        network (keras.Model): The saves a model’s configuration in JSON
+            format.
+        filename (str): The path of the file that the configuration should
+            be saved to.
+
+    Returns:
+        None
     """
-    # Code
+    json_string = network.to_json(filename)
+    with open(filename, 'w') as file:
+        file.write(json_string)
+
+    return None
+
 
 def load_config(filename):
     """Function that loads a model with a specific configuration.
@@ -24,4 +34,7 @@ def load_config(filename):
     Returns:
         The loaded model.
     """
-    # Code
+    with open(filename, 'r') as file:
+        json_string = file.read()
+
+    return K.models.model_from_json(json_string)
