@@ -46,7 +46,7 @@ def train_model(network, data, labels, batch_size, epochs,
     """
     callbacks = []
     if early_stopping and validation_data:
-        callback.append(
+        callbacks.append(
             K.callbacks.EarlyStopping(monitor='loss', patience=patience))
 
     def learning_rate(epoch):
@@ -57,7 +57,7 @@ def train_model(network, data, labels, batch_size, epochs,
         return (alpha / (1 + decay_rate * epoch))
 
     if learning_rate_decay and validation_data:
-        callback.append(
+        callbacks.append(
             K.callbacks.LearningRateScheduler(learning_rate, verbose=1))
 
     if save_best:
