@@ -45,20 +45,30 @@ def train_model(network, data, labels, batch_size, epochs,
         The History object generated after training the model.
     """
     callbacks = []
-    if early_stopping and validation_data:
-        callbacks.append(
-            K.callbacks.EarlyStopping(monitor='loss', patience=patience))
+    if validation_data:
+        if early_stopping:
+            callbacks.append(K.callbacks.EarlyStopping(
+                    monitor='loss',
+                    patience=patience
+                ))
 
-    def learning_rate(epoch):
-        """
-        calculates learning rate
-        initial_learning_rate / (1 + decay_rate * (step / decay_step))
-        """
-        return (alpha / (1 + decay_rate * epoch))
+        if learning_rate_decay:
+            def scheduler(epoch):
+                """Function that takes and epoch index and curent learning rate
+                and preforms inverse time decay.
 
-    if learning_rate_decay and validation_data:
-        callbacks.append(
-            K.callbacks.LearningRateScheduler(learning_rate, verbose=1))
+                Args:
+                    epoch (int): The epoch index.
+                    lr (float): The current learning rate.
+
+                Returns:
+                    float: The decay rate
+                """
+                return (alpha / (1 + decay_rate * epoch))
+
+            callbacks.append(K.callbacks.LearningRateScheduler(
+                    schedule=scheduler, verbose=1
+                ))
 
     if save_best:
         callbacks.append(K.callbacks.ModelCheckpoint(
