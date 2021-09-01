@@ -1,0 +1,1 @@
+Directory containing Holberton school projects related to convolution.
