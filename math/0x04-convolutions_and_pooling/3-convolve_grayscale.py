@@ -48,7 +48,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     i = 0
     for x in range(0, (h + (2 * pad_h) - kh + 1), sh):
         j = 0
-        for y in range(0, (w + (2 * pad_w) - kw + 1), sh):
+        for y in range(0, (w + (2 * pad_w) - kw + 1), sw):
             output = np.sum(images[:, x: x + kh, y: y + kw] * kernel,
                             axis=(1, 2))
             convol[:, i, j] = output
