@@ -5,7 +5,7 @@
 import numpy as np
 
 
-def convolve_grayscale(images, kernel, padding, stride=(1, 1)):
+def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     """Function that that performs a convolution on grayscale images..
 
     Args:
@@ -16,10 +16,11 @@ def convolve_grayscale(images, kernel, padding, stride=(1, 1)):
         kernel (numpy.ndarray): N-dimensional array with shape (kh, kw)
             containing the kernel for the convolution where kh is the
             height of the kernel and kw is the width of the kernel.
-        padding (tuple): Tuple of containing (ph, pw) where ph is the padding
-            for the height of the image and pw is the padding for the width of
-            the image. OR string containging either 'same' or 'valid', if so, the
-            function preforms a same or valid convoultion convolution respectively.
+        padding (tuple, optional): Tuple of containing (ph, pw) where ph is
+            the padding for the height of the image and pw is the padding for
+            the width of the image. OR string containging either 'same' or
+            'valid', if so, the function preforms a same or valid convoultion
+            convolution respectively. Defaults to 'same'.
         stride (tuple): A tuple containing (sh, sw) where sh is the stride for
             the height of the image and sw is the stride for the width of the
             image.
