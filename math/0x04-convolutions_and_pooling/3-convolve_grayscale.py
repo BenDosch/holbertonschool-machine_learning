@@ -31,23 +31,20 @@ def convolve_grayscale(images, kernel, padding, stride=(1, 1)):
     m, h, w = images.shape[0], images.shape[1], images.shape[2]
     kh, kw = kernel.shape[0], kernel.shape[1]
     sh, sw = stride[0], stride[1]
-    if isinstance(padding, tuple):
-        pad_h, pad_w = padding[0], padding[1]
-        images = np.pad(images, ((0,0), (pad_h, pad_h), (pad_w, pad_w)),
-                        "constant", constant_values=0)
-        convol = np.zeros((m, (floor(h + (2 * pad_h) - kh) / sh) + 1,
-                       floor((w + (2 * pad_w) - kw) / sw) + 1))
-    elif padding == 'same':
-        pad_h = floor((kh - 1) / 2)
-        pad_w = floor((kw - 1) / 2)
-        images = np.pad(images, ((0,0), (pad_h, pad_h), (pad_w, pad_w)),
-                    "constant", constant_values=0)
-        convol = np.zeros((m, floor(h / sh), floor(w / sw)))
-
-    elif padding == 'valid':
-        convol = np.zeros((m, floor((h - kh) / sh) + 1,
-                           floor((w - kw) / sw) + 1))
-
+    
+    if padding is 'same':
+        pad_h = ((((h - 1) * sh) + kh - h) // 2) + 1
+        pad_w = ((((w - 1) * sw) + kw - w) // 2) + 1
+    elif padding is 'valid':
+        pad_h = 0
+        pad_w = 0
+    else:
+        pad_h, pad_w = padding
+    images = np.pad(images, ((0, 0), (pad_h, pad_h), (pad_w, pad_w)),
+                    'constant', constant_values=0)
+    conv_h = ((h + (2 * pad_h) - kh) // sh) + 1
+    conv_w = ((w + (2 * pad_w) - kw) // sw) + 1
+    convol = np.zeros((m, conv_h, conv_w))
     
     for x in range(convol.shape[1]):
         for y in range(convol.shape[2]):
