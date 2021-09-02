@@ -3,7 +3,6 @@
 """
 
 import numpy as np
-from math import floor
 
 
 def convolve_grayscale(images, kernel, padding, stride=(1, 1)):
@@ -31,7 +30,7 @@ def convolve_grayscale(images, kernel, padding, stride=(1, 1)):
     m, h, w = images.shape[0], images.shape[1], images.shape[2]
     kh, kw = kernel.shape[0], kernel.shape[1]
     sh, sw = stride[0], stride[1]
-    
+
     if padding is 'same':
         pad_h = ((((h - 1) * sh) + kh - h) // 2) + 1
         pad_w = ((((w - 1) * sw) + kw - w) // 2) + 1
