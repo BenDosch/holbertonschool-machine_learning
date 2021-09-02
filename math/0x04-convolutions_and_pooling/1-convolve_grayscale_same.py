@@ -3,7 +3,7 @@
 """
 
 import numpy as np
-from math import floor
+
 
 def convolve_grayscale_same(images, kernel):
     """Function that that performs a same convolution on grayscale images.
@@ -22,8 +22,14 @@ def convolve_grayscale_same(images, kernel):
     """
     m, h, w = images.shape[0], images.shape[1], images.shape[2]
     kh, kw = kernel.shape[0], kernel.shape[1]
-    pad_h = floor((kh - 1) / 2)
-    pad_w = floor((kw - 1) / 2)
+    if (kh % 2) is 1:
+        pad_h = (kh - 1) // 2
+    else:
+        pad_h = kh // 2
+    if (kw % 2) is 1:
+        pad_w = (kw - 1) // 2
+    else:
+        pad_w = kw // 2
     images = np.pad(images, ((0,0), (pad_h, pad_h), (pad_w, pad_w)),
                     "constant", constant_values=0)
     convol = np.zeros((m, h, w))
