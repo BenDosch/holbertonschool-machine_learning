@@ -29,10 +29,9 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     Returns:
         A numpy.ndarray containing the convolved images.
     """
-    m, h, w = images.shape[0], images.shape[1], images.shape[2]
-    kh, kw, nc = kernels.shape[0], kernels.shape[1], kernels.shape[2]
-    sh, sw = stride[0], stride[1]
-
+    m, h, w = images.shape
+    kh, kw, nc = kernels.shape
+    sh, sw = stride
     if padding is 'same':
         pad_h = ((((h - 1) * sh) + kh - h) // 2) + 1
         pad_w = ((((w - 1) * sw) + kw - w) // 2) + 1
@@ -41,11 +40,13 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
         pad_w = 0
     else:
         pad_h, pad_w = padding
+
     images = np.pad(images, ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)),
                     'constant', constant_values=0)
     conv_h = ((h + (2 * pad_h) - kh) // sh) + 1
     conv_w = ((w + (2 * pad_w) - kw) // sw) + 1
     convol = np.zeros((m, conv_h, conv_w, nc))
+
     i = 0
     for x in range(0, (h + (2 * pad_h) - kh + 1), sh):
         j = 0
