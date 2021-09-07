@@ -42,8 +42,9 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
                 pooled[:, i, j, :] = np.max(A_prev[:, x:x + kh, y:y + kw, :],
                                             axis=(1, 2))
             elif mode == 'avg':
-                pooled[:, i, j, :] = np.average(A_prev[:, x:x + kh, y:y + kw, :],
-                                    axis=(1, 2))
+                pooled[:, i, j, :] = np.average(
+                    A_prev[:, x:x + kh, y:y + kw, :], axis=(1, 2)
+                    )
             j += 1
         i += 1
     return pooled
