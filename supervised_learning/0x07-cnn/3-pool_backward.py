@@ -4,6 +4,7 @@
 
 import numpy as np
 
+
 def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
     """Function that that performs back propagation over a pooling layer of a
     neural network.
@@ -31,3 +32,32 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
     Returns:
         The partial derivatives with respect to the previous layer (dA_prev).
     """
+    # Retrieve dimensions
+    m, h_new, w_new, c_new = dA.shape
+    m, h_prev, w_prev, c_prev = A_prev.shape
+    kh, kw = kernel_shape
+    sh, sw = stride
+
+    # Initialize dA_prev
+    dA_prev = np.zeros_like(A_prev)
+
+    # Back propigate
+    for e in range(m):
+        for h in range(h_new):
+            i = h * sh
+            for w in range(w_new):
+                j = w * sw
+                for c in range(c_new):
+                    if mode is "avg":
+                        avg_dA = dA[e, h, w, c] / kh / kw
+                        dA_prev[e, i: i + kh, j: j + kw, c] += (
+                            np.ones((kh, kw)) * avg_dA
+                            )
+                    elif mode is 'max':
+                        A_slice = A_prev[e, i: i + kh, j + kw, c]
+                        mask = (A_slice == np.max(A_slice))
+                        dA_prev[e, i: i + kh, j: j + kw, c] += (
+                            mask * dA[e, h, w, c]
+                            )
+
+    return dA_prev
