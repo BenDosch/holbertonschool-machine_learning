@@ -63,7 +63,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                     'constant', constant_values=0)
 
     # Convolve W with dZ for dA and A_prev with dZ for dW
-    for e in range(m): # For the matrix multi c and e must be the same size
+    for e in range(m):  # For the matrix multi c and e must be the same size
         for h in range(h_new):
             i = h * sh
             for w in range(w_new):
