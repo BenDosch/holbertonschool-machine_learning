@@ -1,5 +1,16 @@
 # Convolutional Neural Networks
 
+1. [Learning Objectives](#learning-objectives)
+2. [References](#references)
+3. [Tasks](#tasks)
+    0. [Convolutional Forward Prop](#0-convolutional-forward-prop)
+    1. [Pooling Forward Prop](#1-pooling-forward-prop)
+    2. [Convolutional Back Prop](#2-convolutional-back-prop)
+    3. [Pooling Back Prop](#3-pooling-back-prop)
+    4. [LeNet-5 (Tensorflow)](#4-lenet-5-tensorflow)
+    5. [LeNet-5 (Keras)](5-lenet5.py)
+    6. [Summarize Like a Pro](#6-summarize-like-a-pro)
+
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
