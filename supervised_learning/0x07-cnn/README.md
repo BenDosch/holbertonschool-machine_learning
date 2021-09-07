@@ -1,6 +1,4 @@
-# Project name
-
-(optional) overall project description.
+# Convolutional Neural Networks
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -10,6 +8,11 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * Forward propagation over convolutional and pooling layers
 * Back propagation over convolutional and pooling layers
 * How to build a CNN using Tensorflow and Keras
+
+## References
+* [DeepLearing.AI](https://www.deeplearning.ai/ "DeepLearing.AI")
+* [Convolutional Neural Networks: Course 4 of the Deep Learning Specialization](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF "Convolutional Neural Networks: Course 4 of the Deep Learning Specialization")
+* [Convolutional Neural Networks: Step by Step](https://datascience-enthusiast.com/DL/Convolution_model_Step_by_Stepv2.html "Convolutional Neural Networks: Step by Step")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
