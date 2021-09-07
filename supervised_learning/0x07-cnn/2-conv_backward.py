@@ -37,4 +37,47 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
         The  partial derivatives with respect to the previous layer (dA_prev),
         the kernels (dW), and the biases (db), respectively.
     """
-    # Code
+    # Retrieve diemsions
+    m, h_new, w_new, c_new = dZ.shape
+    m, h_prev, w_prev, c_prev = A_prev.shape
+    kh, kw, c_prev, c_new = W.shape
+    sh, sw = stride
+    if padding is 'same':
+        pad_h = ((((h_prev - 1) * sh) + kh - h_prev) // 2) + 1
+        pad_w = ((((w_prev - 1) * sw) + kw - w_prev) // 2) + 1
+    elif padding is 'valid':
+        pad_h = 0
+        pad_w = 0
+    else:
+        pad_h, pad_w = padding
+
+    # Initialize returns & set db
+    dA_prev = np.zeros_like(A_prev)
+    dW = np.zeros_like(W)
+    db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
+
+    # Initialize padded shapes.
+    A_pad = np.pad(A_prev, ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)),
+                   'constant', constant_values=0)
+    dA_pad = np.pad(dA_prev, ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)),
+                    'constant', constant_values=0)
+
+    # Convolve W with dZ for dA and A_prev with dZ for dW
+    for e in range(m):
+        for h in range(h_new):
+            i = h * sh
+            for w in range(w_new):
+                j = w * sw
+                for c in range(c_new):
+                    dA_pad[e, i:i + kh, j:j + kw, :] += (W[:, :, :, c] *
+                                                         dZ[e, h, w, c])
+                    dW[:, :, :, c] += (A_pad[e, i:i + kh, j:j + kw, :] *
+                                       dZ[e, h, w, c])
+
+    # Adjust for padding
+    if padding is 'same':
+        dA_prev = dA_pad[:, pad_h: -pad_h, pad_w: -pad_w, :]
+    else:
+        dA_prev = dA_pad
+
+    return dA_prev, dW, db
