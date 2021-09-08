@@ -43,14 +43,14 @@ def lenet5(x, y):
                          kernel_initializer=init)(S4)
     F6 = tf.layers.Dense(units=84, name="F6", activation="relu",
                          kernel_initializer=init)(C5)
-    output = tf.layers.Dense(units=10, name="F6", kernel_initializer=init)(F6)
-    softmax = tf.nn.softmax(output)
+    OUTPUT = tf.layers.Dense(units=10, name="F6", kernel_initializer=init)(F6)
+    softmax = tf.nn.softmax(OUTPUT)
 
     # Calcualte accuracy & loss
     correct_prediction = tf.equal(tf.argmax(y, axis=1),
-                                  tf.argmax(output, axis=1))
+                                  tf.argmax(OUTPUT, axis=1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-    loss = tf.losses.softmax_cross_entropy(y, logits=output)
+    loss = tf.losses.softmax_cross_entropy(y, logits=OUTPUT)
 
     # Create training opperation
     train = tf.train.AdamOptimizer().minimize(loss)
