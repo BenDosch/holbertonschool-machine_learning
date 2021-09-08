@@ -4,6 +4,7 @@
 
 import tensorflow as tf
 
+
 def lenet5(x, y):
     """Function that builds a modified version of the LeNet-5 architecture
     using tensorflow.
@@ -16,8 +17,42 @@ def lenet5(x, y):
 
     Returns:
         A tensor for the softmax activated output.
-        A training operation that utilizes Adam optimization (with default hyperparameters)
+        A training operation that utilizes Adam optimization (with default
+            hyperparameters)
         A tensor for the loss of the netowrk
         A tensor for the accuracy of the network
     """
-    # Code
+    # Create layers and forward propigate
+    init = tf.contrib.layers.variance_scaling_initializer()
+    C1 = tf.layers.Conv2D(
+        filters=6, kernel_size=(5, 5), strides=(1, 1), padding="same",
+        activation="relu", name="C1", kernel_initializer=init
+        )(x)
+    S2 = tf.layers.MaxPooling2D(
+        pool_size=(2, 2), strides=(2, 2), padding="valid", name="S2"
+        )(C1)
+    C3 = tf.layers.Conv2D(
+        filters=16, kernel_size=(5, 5), strides=(1, 1), padding="valid",
+        activation="relu", name="C3", kernel_initializer=init
+        )(S2)
+    S4 = tf.layers.MaxPooling2D(
+        pool_size=(2, 2), strides=(2, 2), padding="valid", name="S4"
+        )(C3)
+    S4 = tf.layers.Flatten()(S4)
+    C5 = tf.layers.Dense(units=120, name="F6", activation="relu",
+                         kernel_initializer=init)(S4)
+    F6 = tf.layers.Dense(units=84, name="F6", activation="relu",
+                         kernel_initializer=init)(C5)
+    output = tf.layers.Dense(units=10, name="F6", kernel_initializer=init)(F6)
+    softmax = tf.nn.softmax(output)
+
+    # Calcualte accuracy & loss
+    correct_prediction = tf.equal(tf.argmax(y, axis=1),
+                                  tf.argmax(output, axis=1))
+    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+    loss = tf.losses.softmax_cross_entropy(y, logits=output)
+
+    # Create training opperation
+    train = tf.train.AdamOptimizer().minimize(loss)
+
+    return (softmax, train, loss, accuracy)
