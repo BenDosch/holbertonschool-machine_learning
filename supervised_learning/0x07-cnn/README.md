@@ -24,6 +24,9 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [DeepLearing.AI](https://www.deeplearning.ai/ "DeepLearing.AI")
 * [Convolutional Neural Networks: Course 4 of the Deep Learning Specialization](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF "Convolutional Neural Networks: Course 4 of the Deep Learning Specialization")
 * [Convolutional Neural Networks: Step by Step](https://datascience-enthusiast.com/DL/Convolution_model_Step_by_Stepv2.html "Convolutional Neural Networks: Step by Step")
+* [Convolutional Neural Network (CNN) – Backward Propagation of the Pooling Layers](https://lanstonchu.wordpress.com/2018/09/01/convolutional-neural-network-cnn-backward-propagation-of-the-pooling-layers/ "Convolutional Neural Network (CNN) – Backward Propagation of the Pooling Layers")
+* [Gradient-Based Learning Applied to Document Recognition (LeNet-5)](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf "Gradient-Based Learning Applied to Document Recognition (LeNet-5)")
+* [LeNet-5 - A Classic CNN Architecture](https://www.datasciencecentral.com/profiles/blogs/lenet-5-a-classic-cnn-architecture "LeNet-5 - A Classic CNN Architecture")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
