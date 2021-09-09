@@ -84,7 +84,7 @@ All hidden layers requiring activation should use the relu activation function
 You may import tensorflow.keras as K.
 
 ---
-### [6. Summarize Like a Pro](www..com "6. Summarize Like a Pro")
+### [6. Summarize Like a Pro](https://medium.com/@BenDosch/breakdown-of-the-paper-imagenet-classification-with-deep-convolutional-neural-networks-7ccb7afbcfbd "6. Summarize Like a Pro")
 
 A common practice in the machine learning industry is to read and review journal articles on a weekly basis. Read and write a summary of Krizhevsky et. al.‘s 2012 paper ImageNet Classification with Deep Convolutional Neural Networks. Your summary should include:
 * Introduction: Give the necessary background to the study and state its purpose.
