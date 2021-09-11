@@ -82,19 +82,9 @@ F) Nothing
 
 Given the following training and validation confusion matrices and the fact that human level performance has an error of ~14%, determine what the most important issue is and write the lettered answer in the file 6-compare_and_contrast
 
-                          |Predicted Classes|
-Training Confusion Matrix |  a  |  b  |  c  |
-                          -------------------
-                    |  A  | 54  |  2  |  4  |
-Actual Classes      |  B  |  5  | 52  |  3  |
-                    |  c  | 15  |  4  | 41  |
+![Training](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/03c511c109a790a30bbe.png)
 
-                            |Predicted Classes|
-Validation Confusion Matrix |  a  |  b  |  c  |
-                            -------------------
-                      |  A  | 53  |  1  |  6  |
-Actual Classes        |  B  |  7  | 51  |  2  |
-                      |  c  | 15  |  5  | 40  |
+![Validation](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/8f5d5fdab6420a22471b.png)
 
 Most important issue:
 
