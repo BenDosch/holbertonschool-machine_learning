@@ -68,6 +68,6 @@ Write a function that creates a layer of a neural network using dropout.
 ---
 ### [7. Early Stopping](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x05-regularization/7-early_stopping.py "7. Early Stopping")
 
-Write the function that determines if you should stop gradient descent early.
+Write a function that determines if you should stop gradient descent early.
 
 ---

@@ -34,27 +34,27 @@ List of tasks with brief descriptions of each task.
 
 ### [0. Create Confusion](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/0-create_confusion.py "0. Create Confusion")
 
-Write the function that creates a confusion matrix.
+Write a function that creates a confusion matrix.
 
 ---
 ### [1. Sensitivity](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/1-sensitivity.py "0. Task Name")
 
-Write the function that calculates the sensitivity for each class in a confusion matrix.
+Write a function that calculates the sensitivity for each class in a confusion matrix.
 
 ---
 ### [2. Precision](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/2-precision.py "2. Precision")
 
-Write the function that calculates the precision for each class in a confusion matrix.
+Write a function that calculates the precision for each class in a confusion matrix.
 
 ---
 ### [3. Specificity](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/3-specificity.py "3. Specificity")
 
-Write the function that calculates the specificity for each class in a confusion matrix.
+Write a function that calculates the specificity for each class in a confusion matrix.
 
 ---
 ### [4. F1 score](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/4-f1_score.py "4. F1 score")
 
-Write the function that calculates the F1 score of a confusion matrix.
+Write a function that calculates the F1 score of a confusion matrix.
 
 ---
 ### [5. Dealing with Error](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x04-error_analysis/5-error_handling "5. Dealing with Error")
