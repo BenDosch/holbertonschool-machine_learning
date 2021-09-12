@@ -32,6 +32,7 @@
     27. [Persistence is Key](#26-persistence-is-key)
     28. [Update DeepNeuralNetwork](#27-update-deepneuralnetwork)
     29. [All the Activations](#28-all-the-activations)
+    20. [Blogpost](#29-blogpost)
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -539,5 +540,17 @@ Update the class DeepNeuralNetwork to perform multiclass classification (based o
 ### [28. All the Activations](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x01-classification/28-deep_neural_network.py "28. All the Activations")
 
 Update the class DeepNeuralNetwork to allow different activation functions (based on 27-deep_neural_network.py).
+
+---
+### [29. Blogpost](https://medium.com/@BenDosch/ml-activation-functions-f851fd6334d2 "29. Blogpost")
+
+Write a blog post that explains the purpose of activation functions and compares and contrasts (at the minimum) the following functions:
+
+* Binary
+* Linear
+* Sigmoid
+* Tanh
+* ReLU
+* Softmax
 
 ---
