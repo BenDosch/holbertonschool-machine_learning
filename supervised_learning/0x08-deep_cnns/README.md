@@ -44,48 +44,48 @@ List of tasks with brief descriptions of each task.
 
 ### [0. Inception Block](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/0-inception_block.py "0. Inception Block")
 
-Write a function that builds an inception block as described in [Going Deeper with Convolutions (2014)](#-deep-residual-learning-for-image-recognition-(2015)). All convolutions inside and outside the inception block should use a rectified linear activation (ReLU).
+Write a function that builds an inception block as described in [Going Deeper with Convolutions (2014)](https://arxiv.org/pdf/1409.4842.pdf). All convolutions inside and outside the inception block should use a rectified linear activation (ReLU).
 
 ---
 
 ### [1. Inception Network](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/1-inception_network.py "1. Inception Network")
 
-Write a function that builds the inception network as described in [Going Deeper with Convolutions (2014)](#-deep-residual-learning-for-image-recognition-(2015)). You can assume the input data will have shape (224, 224, 3). All convolutions inside and outside the inception block should use a rectified linear activation (ReLU).
+Write a function that builds the inception network as described in [Going Deeper with Convolutions (2014)](https://arxiv.org/pdf/1409.4842.pdf). You can assume the input data will have shape (224, 224, 3). All convolutions inside and outside the inception block should use a rectified linear activation (ReLU).
 
 ---
 
 ### [2. Identity Block](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/2-identityblock.py "2. Identity Block")
 
-Write a function that builds an identity block as described in [Deep Residual Learning for Image Recognition (2015)](#deep-residual-learning-for-image-recognition-(2015)). All convolutions inside the block should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
+Write a function that builds an identity block as described in [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf). All convolutions inside the block should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
 
 ---
 
 ### [3. Projection Block](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/3-projection_block.py "3. Projection Block")
 
-Write a function that builds a projection block as described in [Deep Residual Learning for Image Recognition (2015)](#deep-residual-learning-for-image-recognition-(2015)). All convolutions inside the block should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization
+Write a function that builds a projection block as described in [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf). All convolutions inside the block should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization
 
 ---
 
 ### [4. ResNet-50](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/4-resnet50.py "4. ResNet-50")
 
-Write a function that builds the ResNet-50 architecture as described in [Deep Residual Learning for Image Recognition (2015)](#deep-residual-learning-for-image-recognition-(2015)). You can assume the input data will have shape (224, 224, 3). All convolutions inside and outside the blocks should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
+Write a function that builds the ResNet-50 architecture as described in [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf). You can assume the input data will have shape (224, 224, 3). All convolutions inside and outside the blocks should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
 
 ---
 
 ### [5. Dense Block](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/5-dense_block.py "5. Dense Block")
 
-Write a function that builds a dense block as described in [Densely Connected Convolutional Networks](#densely-connected-convolutional-networks). You should use the bottleneck layers used for DenseNet-B. All weights should use he normal initialization. All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively.
+Write a function that builds a dense block as described in [Densely Connected Convolutional Networks](https://arxiv.org/pdf/1608.06993.pdf). You should use the bottleneck layers used for DenseNet-B. All weights should use he normal initialization. All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively.
 
 ---
 
 ### [6. Transition Layer](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/6-transition_layer.py "6. Transition Layer")
 
-Write a function that builds a transition layer as described in [Densely Connected Convolutional Networks](#densely-connected-convolutional-networks). All weights should use he normal initialization. All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively.
+Write a function that builds a transition layer as described in [Densely Connected Convolutional Networks](https://arxiv.org/pdf/1608.06993.pdf). All weights should use he normal initialization. All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively.
 
 ---
 
 ### [7. DenseNet-121](https://github.com/BenDoschGit/blob/main/0x08-deep_cnns/7-densenet121.py "7. DenseNet-121")
 
-Write a function def densenet121(growth_rate=32, compression=1.0): that builds the DenseNet-121 architecture as described in [Densely Connected Convolutional Networks](#densely-connected-convolutional-networks). You can assume the input data will have shape (224, 224, 3). All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
+Write a function def densenet121(growth_rate=32, compression=1.0): that builds the DenseNet-121 architecture as described in [Densely Connected Convolutional Networks](https://arxiv.org/pdf/1608.06993.pdf). You can assume the input data will have shape (224, 224, 3). All convolutions should be preceded by Batch Normalization and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
 
 ---
