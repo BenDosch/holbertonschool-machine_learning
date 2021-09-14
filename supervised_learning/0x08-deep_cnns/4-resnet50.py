@@ -48,7 +48,7 @@ def resnet50():
     IB19 = identity_block(IB18, filters)
 
     AP20 = K.layers.AveragePooling2D(
-        pool_size=(7, 7), strides=(7, 7), padding="same"
+        pool_size=(7, 7), strides=(7, 7), padding="valid"
     )(IB19)
     OUTPUT = K.layers.Dense(
         units=1000, activation="softmax", kernel_initializer=init
