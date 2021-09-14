@@ -9,14 +9,14 @@ def identity_block(A_prev, filters):
     Learning for Image Recognition (2015).
 
     Args:
-        A_prev ([type]): The output from the previous layer.
-        filters ([type]): A tuple or list containing F11, F3, F12,
+        A_prev (tensorflow.Tensor): The output from the previous layer.
+        filters (tuple or list): A tuple or list containing F11, F3, F12,
             respectively. F11 is the number of filters in the first 1x1
             convolution. F3 is the number of filters in the 3x3 convolution.
             F12 is the number of filters in the second 1x1 convolution.
 
     Returns:
-        Activated output of teh identity block.
+        (tensorflow.Tensor): Activated output of the identity block.
     """
     init = K.initializers.he_normal(seed=None)
     F11, F3, F12 = filters
