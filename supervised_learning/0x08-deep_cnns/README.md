@@ -13,6 +13,7 @@
 	8. [DenseNet-121](#7-densenet-121)
 
 ## Learning Objectives
+
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
 * What is a skip connection?
@@ -25,21 +26,30 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 * [Title](www.url.com "Title")
 * [Convolutional Neural Networks (Course 4 of the Deep Learning Specialization)](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF "Convolutional Neural Networks (Course 4 of the Deep Learning Specialization)")
+
 ### GoogleNet
+
 * [1x1 Convolutions](https://www.youtube.com/watch?v=SIpcirNNGAk "1x1 Convolutions")
 * [GoogLeNet Tutorial](https://www.youtube.com/watch?v=_XF7N6rp9Jw "GoogLeNet Tutorial")
 * [Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)](https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7 "Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)")
-* [Title](www.url.com "Title")
+* [A guide to Inception Model in Keras](https://maelfabien.github.io/deeplearning/inception/# "A guide to Inception Model in Keras")
+
 ### ResNet
+
 * [An Overview of ResNet and its Variants](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035 "An Overview of ResNet and its Variants")
+
 ### TBD
+
 * [Title](www.url.com "Title")
-### Refrenced in tasks
+
+### Papers of Origin.
+
 * [Going Deeper with Convolutions (2014)](https://arxiv.org/pdf/1409.4842.pdf "Going Deeper with Convolutions (2014)")
 * [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf "Deep Residual Learning for Image Recognition (2015)")
 * [Densely Connected Convolutional Networks](https://arxiv.org/pdf/1608.06993.pdf "Densely Connected Convolutional Networks")
 
 ## Tasks
+
 List of tasks with brief descriptions of each task.
 
 ### [0. Inception Block](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x08-deep_cnns/0-inception_block.py "0. Inception Block")
