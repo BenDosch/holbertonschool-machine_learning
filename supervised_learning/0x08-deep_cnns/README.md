@@ -33,16 +33,13 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [GoogLeNet Tutorial](https://www.youtube.com/watch?v=_XF7N6rp9Jw "GoogLeNet Tutorial")
 * [Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)](https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7 "Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)")
 * [A guide to Inception Model in Keras](https://maelfabien.github.io/deeplearning/inception/# "A guide to Inception Model in Keras")
+* [Deep Learning in the Trenches: Understanding Inception Network from Scratch](https://www.analyticsvidhya.com/blog/2018/10/understanding-inception-network-from-scratch/ "Deep Learning in the Trenches: Understanding Inception Network from Scratch")
 
 ### ResNet
 
 * [An Overview of ResNet and its Variants](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035 "An Overview of ResNet and its Variants")
 
-### TBD
-
-* [Title](www.url.com "Title")
-
-### Papers of Origin.
+### Task Refrenced Papers
 
 * [Going Deeper with Convolutions (2014)](https://arxiv.org/pdf/1409.4842.pdf "Going Deeper with Convolutions (2014)")
 * [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf "Deep Residual Learning for Image Recognition (2015)")
@@ -64,7 +61,7 @@ Write a function that builds the inception network as described in [Going Deeper
 
 ---
 
-### [2. Identity Block](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x08-deep_cnns/2-identityblock.py "2. Identity Block")
+### [2. Identity Block](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x08-deep_cnns/2-identity_block.py "2. Identity Block")
 
 Write a function that builds an identity block as described in [Deep Residual Learning for Image Recognition (2015)](https://arxiv.org/pdf/1512.03385.pdf). All convolutions inside the block should be followed by batch normalization along the channels axis and a rectified linear activation (ReLU), respectively. All weights should use he normal initialization.
 
