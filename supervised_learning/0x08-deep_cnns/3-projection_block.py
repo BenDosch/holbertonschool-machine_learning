@@ -27,26 +27,26 @@ def projection_block(A_prev, filters, s=2):
     # Branch 0 - Main Path
     C0_0 = K.layers.Conv2D(
         filters=F11, kernel_size=(1, 1), strides=(s, s), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(A_prev)
     BN1_0 = K.layers.BatchNormalization(axis=3)(C0_0)
     A2_0 = K.layers.Activation('relu')(BN1_0)
     C3_0 = K.layers.Conv2D(
         filters=F3, kernel_size=(3, 3), strides=(1, 1), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(A2_0)
     BN4_0 = K.layers.BatchNormalization(axis=3)(C3_0)
     A5_0 = K.layers.Activation('relu')(BN4_0)
     C6_0 = K.layers.Conv2D(
         filters=F12, kernel_size=(1, 1), strides=(1, 1), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(A5_0)
     BN7_0 = K.layers.BatchNormalization(axis=3)(C6_0)
 
     # Branch 1 - Shortcut
     C0_1 = K.layers.Conv2D(
         filters=F12, kernel_size=(1, 1), strides=(s, s), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(A_prev)
     BN1_1 = K.layers.BatchNormalization(axis=3)(C0_1)
 
