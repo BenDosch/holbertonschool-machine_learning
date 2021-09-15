@@ -29,7 +29,7 @@ def identity_block(A_prev, filters):
     A2 = K.layers.Activation('relu')(BN1)
     C3 = K.layers.Conv2D(
         filters=F3, kernel_size=(3, 3), strides=(1, 1), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(A2)
     BN4 = K.layers.BatchNormalization(axis=3)(C3)
     A5 = K.layers.Activation('relu')(BN4)
