@@ -45,7 +45,7 @@ def inception_network():
     I8a = inception_block(A_prev=MP7, filters=[256, 160, 320, 32, 128, 128])
     I8b = inception_block(A_prev=I8a, filters=[384, 192, 384, 48, 128, 128])
     AP9 = K.layers.AveragePooling2D(
-        pool_size=(7, 7), strides=(3, 3), padding="same"
+        pool_size=(7, 7), strides=(7, 7), padding="same"
     )(I8b)
     DO10 = K.layers.Dropout(rate=0.4)(AP9)
     OUTPUT = K.layers.Dense(
