@@ -14,7 +14,7 @@ def resnet50():
     INPUT = K.Input(shape=(224, 224, 3))
     C0 = K.layers.Conv2D(
         filters=64, kernel_size=(7, 7), strides=(2, 2), padding="same",
-        activation="relu", kernel_initializer=init
+        activation="linear", kernel_initializer=init
     )(INPUT)
     BN1 = K.layers.BatchNormalization(axis=3)(C0)
     A2 = K.layers.Activation('relu')(BN1)
