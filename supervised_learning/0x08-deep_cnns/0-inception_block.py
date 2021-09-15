@@ -10,7 +10,7 @@ def inception_block(A_prev, filters):
     Going Deeper with Convolutions (2014).
 
     Args:
-        A_prev (tf.tensor): Output of previous layer.
+        A_prev (tensorflow.Tensor): Output of previous layer.
         filters (list or tuple): A tuple or list containing F1, F3R, F3, F5R,
             F5, FPP, respectively. F1 is the number of filters in the 1x1
             convolution. F3R is the number of filters in the 1x1 convolution
@@ -19,7 +19,7 @@ def inception_block(A_prev, filters):
             before the 5x5 convolution. F5 is the number of filters in the 5x5
             convolution. FPP is the number of filters in the 1x1 convolution
             after the max pooling.
-    Returns (tf.tensor):
+    Returns:
         The concatenated output of the inception block.
     """
     F1, F3R, F3, F5R, F5, FPP = filters
@@ -62,5 +62,4 @@ def inception_block(A_prev, filters):
 
     # Concatinate
     OUTPUT = K.layers.concatenate([C1a, C3, C5, C1d], axis=3)
-    print(type(OUTPUT))
     return OUTPUT
