@@ -26,13 +26,13 @@ def dense_block(X, nb_filters, growth_rate, layers):
         R1 = K.layers.Activation('relu')(B0)
         C2 = K.layers.Conv2D(
             filters=(4 * growth_rate), kernel_size=(1, 1), strides=(1, 1),
-            padding="same", activation="relu", kernel_initializer=init
+            padding="same", activation="linear", kernel_initializer=init
         )(R1)
         B3 = K.layers.BatchNormalization(axis=3)(C2)
         R4 = K.layers.Activation('relu')(B3)
         C5 = K.layers.Conv2D(
             filters=growth_rate, kernel_size=(3, 3), strides=(1, 1),
-            padding="same", activation="relu", kernel_initializer=init
+            padding="same", activation="linear", kernel_initializer=init
         )(R4)
         X = K.layers.Concatenate(axis=3)([X, C5])
         nb_filters += growth_rate
