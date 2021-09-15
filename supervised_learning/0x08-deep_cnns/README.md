@@ -24,12 +24,11 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 ## Refrences
 
-* [Title](www.url.com "Title")
 * [Convolutional Neural Networks (Course 4 of the Deep Learning Specialization)](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF "Convolutional Neural Networks (Course 4 of the Deep Learning Specialization)")
+* [1x1 Convolutions](https://www.youtube.com/watch?v=SIpcirNNGAk "1x1 Convolutions")
 
 ### GoogleNet
 
-* [1x1 Convolutions](https://www.youtube.com/watch?v=SIpcirNNGAk "1x1 Convolutions")
 * [GoogLeNet Tutorial](https://www.youtube.com/watch?v=_XF7N6rp9Jw "GoogLeNet Tutorial")
 * [Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)](https://medium.com/coinmonks/paper-review-of-googlenet-inception-v1-winner-of-ilsvlc-2014-image-classification-c2b3565a64e7 "Review: GoogLeNet (Inception v1)— Winner of ILSVRC 2014 (Image Classification)")
 * [A guide to Inception Model in Keras](https://maelfabien.github.io/deeplearning/inception/# "A guide to Inception Model in Keras")
@@ -38,6 +37,12 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ### ResNet
 
 * [An Overview of ResNet and its Variants](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035 "An Overview of ResNet and its Variants")
+* [Review: ResNet — Winner of ILSVRC 2015 (Image Classification, Localization, Detection)](https://towardsdatascience.com/review-resnet-winner-of-ilsvrc-2015-image-classification-localization-detection-e39402bfa5d8 "Review: ResNet — Winner of ILSVRC 2015 (Image Classification, Localization, Detection)")
+* [Deep Residual Learning for Image Recognition](https://www.youtube.com/watch?v=C6tLw-rPQ2o "Deep Residual Learning for Image Recognition")
+
+### DenseNet
+
+* [Densely Connected Convolutional Networks](https://www.youtube.com/watch?v=-W6y8xnd--U "Densely Connected Convolutional Networks")
 
 ### Task Refrenced Papers
 
