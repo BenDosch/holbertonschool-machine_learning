@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Module containing """
+"""Module containing several functions related to setting up a transfer
+learning model. The main() function trains and saves a model to classify the
+CIFAR10 dataset utilizing transfer learning"""
 
 import numpy as np
 from numpy.core.fromnumeric import resize
@@ -23,7 +25,7 @@ def preprocess_data(X, Y):
         Y_p(numpy.ndarray): A N-dimensional containing the preprocessed Y.
     """
     # Preprocess inputs to between -1 and 1
-    X_p = K.applications.vgg19.preprocess_input(
+    X_p = K.applications.xception.preprocess_input(
         x=X, data_format="channels_last"
     )
     Y_p = K.utils.to_categorical(Y)
@@ -51,22 +53,26 @@ def resize_images(X):
     return processed
 
 
-def build_new():
-    """[summary]
+def build_new_classifyer(input_shape):
+    """Builds a new model to replace the old clasificatin steps of a transfered
+    model.
+
+    Args:
+        input_shape (tuple): shape of input for new model.
 
     Returns:
-        [type]: [description]
+        Model: Model to preform classification
     """
     init = K.initializers.he_normal(seed=None)
-    new_input = K.Input(shape=(4, 4, 512))
-    new_clasifier = K.layers.Flatten()(new_input)
+    new_input = K.Input(shape=input_shape)
     new_clasifier = K.layers.Dense(
             units=1000,  activation="relu", kernel_initializer=init
-        )(new_clasifier)
+        )(new_input)
+    new_clasifier = K.layers.Dropout(0.5)(new_clasifier)
     new_clasifier = K.layers.Dense(
             units=100, activation="relu", kernel_initializer=init
         )(new_clasifier)
-    new_clasifier = K.layers.Dropout(0.3)(new_clasifier)
+    new_clasifier = K.layers.Dropout(0.5)(new_clasifier)
     new_clasifier = K.layers.Dense(
             units=10, activation="softmax", kernel_initializer=init
         )(new_clasifier)
@@ -76,79 +82,43 @@ def build_new():
     return model
 
 
-def extract_features(X, sample_count, batch_size):
-    """[summary]
+def extract_features(X, batch_size):
+    """Gets the output of a base model and returns the output of the final
+    layers as a numpy.ndarray.
 
     Args:
-        X ([type]): [description]
-        sample_count ([type]): [description]
-        batch_size ([type]): [description]
+        X (numpy.ndarray): Input tensor with shape (m, 128, 128, 3) where
+            m is the number of samples.
+        batch_size (int): The size of each batch.
 
     Returns:
-        [type]: [description]
+        numpy.ndarray: The output of the final layer of the model.
     """
-    features = np.zeros(shape=(sample_count, 4, 4, 512))
-
-    # Set up pre-trained model
-    conv_base = K.applications.VGG19(
+    conv_base = K.applications.Xception(
         include_top=False,
         weights="imagenet",
-        input_shape=(128, 128, 3)
+        input_shape=(128, 128, 3),
+        pooling="avg"
     )
+    # conv_base.summary()
 
-    features = conv_base.predict(X, verbose=True, batch_size=batch_size)
-
-    return features
+    return  conv_base.predict(X, verbose=True, batch_size=batch_size)
 
 
-if __name__ == "__main__":
-    # Load data and preprocess data
-    (x_train, y_train), (x_test, y_test) = K.datasets.cifar10.load_data()
-    x_train, y_train = preprocess_data(x_train, y_train)
-    x_test, y_test = preprocess_data(x_test, y_test)
-    """x_train = x_train[0:256, :, :, :]
-    y_train = y_train[0:256, :]
-    x_test = x_test[0:32, :, :, :]
-    y_test = y_test[0:32, :]"""
 
-    # Resize images
-    resized = resize_images(x_train)
-    resized_test = resize_images(x_test)
+def graph_loss_accuray(history):
+    """Takes a History object and graphs the loss and accuray of the training
+    and validation across epochs.
 
-    # Extract features
-    features = extract_features(
-        X=resized, sample_count=int(resized.shape[0]), batch_size=128
-    )
-    features_test = extract_features(
-        X=resized_test, sample_count=int(resized_test.shape[0]), batch_size=128
-    )
-
-    # Build transfer model
-    new_model = build_new()
-
-    # Complie model
-    new_model.compile(
-            loss='categorical_crossentropy', optimizer=K.optimizers.Adam(),
-            metrics=['accuracy']
-        )
-
-    # Train model
-    history = new_model.fit(
-        x=features, y=y_train, validation_data=(features_test, y_test),
-        batch_size=512, epochs=10, verbose=True
-    )
-
-    loss, accuracy = new_model.evaluate(features_test, y_test, verbose=0)
-
-    print('Test loss:', loss)
-    print('Test accuracy:', accuracy)
-
-    # Graph of accuracy and loss
+    Args:
+        history (History): A record of training loss values and metrics values
+            at successive epochs, as well as validation loss values and
+            validation metrics values.
+    """
     acc = history.history['acc']
     val_acc = history.history['val_acc']
     loss = history.history['loss']
     val_loss = history.history['val_loss']
-
     epochs = range(1, len(acc)+1)
 
     plt.plot(epochs, acc, 'g', label='Training accuracy')
@@ -165,7 +135,67 @@ if __name__ == "__main__":
 
     plt.show()
 
+
+if __name__ == "__main__":
+    # Load data and preprocess data
+    (x_train, y_train), (x_test, y_test) = K.datasets.cifar10.load_data()
+    x_train, y_train = preprocess_data(x_train, y_train)
+    x_test, y_test = preprocess_data(x_test, y_test)
+    """x_train = x_train[0:256, :, :, :]
+    y_train = y_train[0:256, :]
+    x_test = x_test[0:32, :, :, :]
+    y_test = y_test[0:32, :]"""
+
+    # Resize images
+    x_train = resize_images(x_train)
+    x_test = resize_images(x_test)
+
+    # Extract features
+    x_train_extract = extract_features(
+        X=x_train[0:32, :, :, :], batch_size=32
+    )
+    """x_test_extract = extract_features(
+        X=x_test, batch_size=32
+    )"""
+
+    # Build transfer model
+    new_model = build_new_classifyer(input_shape=x_train_extract.shape[1:])
+
+    # Complie model
+    new_model.compile(
+            loss='categorical_crossentropy', optimizer=K.optimizers.Adam(),
+            metrics=['accuracy']
+        )
+
+    # Train model
+    callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=2)
+    """history = new_model.fit(
+        x=x_train_extract, y=y_train, validation_data=(x_test_extract, y_test),
+        batch_size=512, epochs=15, callbacks=[callback], verbose=True
+    )"""
+
+    # Graph of accuracy and loss
+    # graph_loss_accuray(history=history)
+
     # Finetune model
+    base_model = K.applications.Xception(
+        include_top=False,
+        weights="imagenet",
+        input_shape=(128, 128, 3),
+        pooling="avg"
+    )
+    X = new_model(base_model.output)
+    model = K.Model(inputs=base_model.inputs, outputs=X)
+    model.compile(
+        loss='categorical_crossentropy', optimizer=K.optimizers.Adam(),
+        metrics=['accuracy']
+    )
+    history = model.fit(
+        x=x_train, y=y_train, validation_data=(x_test, y_test),
+        batch_size=128, epochs=2, callbacks=[callback], verbose=True
+    )
+
+    # graph_loss_accuray(history=history)
 
     # Save model
-    # model.save('cifar10.h5')
+    model.save('cifar10.h5')
