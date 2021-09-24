@@ -192,10 +192,10 @@ if __name__ == "__main__":
     )
     history = model.fit(
         x=x_train, y=y_train, validation_data=(x_test, y_test),
-        batch_size=128, epochs=2, callbacks=[callback], verbose=True
+        batch_size=128, epochs=3, callbacks=[callback], verbose=True
     )
 
-    # graph_loss_accuray(history=history)
+    graph_loss_accuray(history=history)
 
     # Save model
     model.save('cifar10.h5')
