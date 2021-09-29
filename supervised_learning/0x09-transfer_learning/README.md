@@ -27,7 +27,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ## Tasks
 List of tasks with brief descriptions of each task.
 
-### [0. Transfer Knowledge](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/g/0-transfer.py "0. Transfer Knowledge")
+### [0. Transfer Knowledge](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/g/0-transfer.py "0-transfer.")
 
 Write a python script that trains a convolutional neural network to classify the [CIFAR 10 dataset](https://keras.io/api/datasets/cifar10/ "CIFAR 10 dataset").
 
@@ -44,7 +44,7 @@ In the same file, write a function that pre-processes the data for your model.
 
 ---
 
-### [1. "Research is what I'm doing when I don't know what I'm doing." - Wernher von Braun](https://medium.com/@BenDosch/first-experience-with-transfer-learning-7f54e1ec786d "First experience with transfer learning.")
+### [1. "Research is what I'm doing when I don't know what I'm doing." - Wernher von Braun](https://medium.com/@BenDosch/first-experience-with-transfer-learning-7f54e1ec786d "Research is what I'm doing when I don't know what I'm doing. - Wernher von Braun")
 
 Write a blog post explaining your experimental process in completing the task above written as a journal-style scientific paper. Your posts should have examples and at least one picture, at the top.
 
