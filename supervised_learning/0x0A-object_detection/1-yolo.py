@@ -5,6 +5,7 @@ import tensorflow as tf
 import tensorflow.keras as K
 import numpy as np
 
+
 class Yolo():
     """Class that uses the Yolo v3 algorithm to perform object detection.
 
@@ -46,13 +47,13 @@ class Yolo():
         self.class_t = class_t
         self.nms_t = nms_t
         self.anchors = anchors
-    
+
     def process_outputs(self, outputs, image_size):
         """Processses the output of the Darkent Model.
 
         Args:
             outputs (list[numpy.ndarray]): A list containing the predictions
-                from the Darknet model for a single image. 
+                from the Darknet model for a single image.
             image_size (numpy.ndarray): A tensor containing the image’s
                 original size [image_height, image_width].
 
@@ -77,11 +78,11 @@ class Yolo():
         boxes, box_confidences, box_class_probs = [], [], []
         image_width = self.model.input.shape[1].value
         image_height = self.model.input.shape[2].value
-        
+
         for i, output in enumerate(outputs):
             output_boxes = output[..., :4]
             grid_height, grid_width, anchors = output.shape[:3]
-            
+
             cx = np.arange(grid_width).reshape(1, grid_width)
             cx = np.repeat(cx, grid_height, axis=0)
             cx = np.repeat(cx[..., np.newaxis], anchors, axis=2)
@@ -96,7 +97,7 @@ class Yolo():
 
             pw = self.anchors[i, :, 0]
             ph = self.anchors[i, :, 1]
-            
+
             bx = (sigmoid(tx) + cx) / grid_width
             by = (sigmoid(ty) + cy) / grid_height
             bw = (pw * np.exp(tw)) / image_width
@@ -104,8 +105,8 @@ class Yolo():
 
             x1 = (bx - (bw / 2)) * image_size[1]
             y1 = (by - (bh / 2)) * image_size[0]
-            x2 = (by + (bw / 2)) * image_size[1]
-            y2 = (bx + (bh / 2)) * image_size[0]
+            x2 = (bx + (bw / 2)) * image_size[1]
+            y2 = (by + (bh / 2)) * image_size[0]
 
             output_boxes[..., 0] = x1
             output_boxes[..., 1] = y1
