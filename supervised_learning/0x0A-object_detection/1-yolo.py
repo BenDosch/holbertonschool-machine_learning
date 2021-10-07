@@ -114,7 +114,7 @@ class Yolo():
             output_boxes[..., 3] = y2
 
             boxes.append(output_boxes)
-            box_confidences.append(sigmoid(output[..., 4]))
+            box_confidences.append(sigmoid(output[..., 4:5]))
             box_class_probs.append(sigmoid(output[..., 5:]))
 
         return (boxes, box_confidences, box_class_probs)
