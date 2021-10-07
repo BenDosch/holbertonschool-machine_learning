@@ -2,6 +2,7 @@
 """Moduel containing the class Yolo used for Object Detection."""
 
 import tensorflow as tf
+import tensorflow.keras as K
 import numpy as np
 
 class Yolo():
