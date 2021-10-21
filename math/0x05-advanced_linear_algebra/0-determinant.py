@@ -27,7 +27,6 @@ def determinant(matrix):
             raise TypeError("matrix must be a list of lists")
 
     for each in matrix:
-        len(matrix) == len(each)
         if not (len(matrix) == len(each)):
             raise ValueError("matrix must be a square matrix")
 
