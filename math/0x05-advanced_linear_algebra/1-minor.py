@@ -1,6 +1,46 @@
 #!/usr/bin/env python3
-"""Module containing a function that finds the determinant of a square
+"""Module containing a function that calculates the minor matrix of a
 matrix."""
+
+
+def minor(matrix):
+    """Function that calculates the minor matrix of a matrix.
+
+    Args:
+        matrix (list[list]): A list of lists whose minor matrix should be
+            calculated.
+
+    Returns:
+        minor_matrix(list[list]): The minor matrix of matrix.
+    """
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        raise TypeError("matrix must be a list of lists")
+    for each in matrix:
+        if not isinstance(each, list):
+            raise TypeError("matrix must be a list of lists")
+
+    if len(matrix) == 0:
+        raise ValueError("matrix must be a non-empty square matrix")
+
+    for each in matrix:
+        if not (len(matrix) == len(each)):
+            raise ValueError("matrix must be a non-empty square matrix")
+
+    minor_matrix = [[] for list in matrix]
+
+    if len(matrix) == 1:
+        minor_matrix = [[1]]
+        return minor_matrix
+
+    for row in range(len(minor_matrix)):
+        for column in range(len(minor_matrix)):
+            new_matrix = [r.copy() for r in matrix]
+            new_matrix.pop(row)
+            for new_row in range(len(new_matrix)):
+                new_matrix[new_row].pop(column)
+            minor_matrix[row].append(determinant(new_matrix))
+
+    return minor_matrix
 
 
 def determinant(matrix):
@@ -57,7 +97,6 @@ def determinant(matrix):
 
 
 if __name__ == "__main__":
-    mat0 = [[]]
     mat1 = [[5]]
     mat2 = [[1, 2], [3, 4]]
     mat3 = [[1, 1], [1, 1]]
@@ -65,16 +104,15 @@ if __name__ == "__main__":
     mat5 = []
     mat6 = [[1, 2, 3], [4, 5, 6]]
 
-    print(determinant(mat0))
-    print(determinant(mat1))
-    print(determinant(mat2))
-    print(determinant(mat3))
-    print(determinant(mat4))
+    print(minor(mat1))
+    print(minor(mat2))
+    print(minor(mat3))
+    print(minor(mat4))
     try:
-        determinant(mat5)
+        minor(mat5)
     except Exception as e:
         print(e)
     try:
-        determinant(mat6)
+        minor(mat6)
     except Exception as e:
         print(e)
