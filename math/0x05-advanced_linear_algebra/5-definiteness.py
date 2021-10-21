@@ -37,8 +37,6 @@ def definiteness(matrix):
 
     Di = [determinant(x) for x in sub_matracies]
 
-    print(Di)
-
     test = [True if x > 0 else False for x in Di]
     if all(test):
         return "Positive definite"
@@ -56,7 +54,6 @@ def definiteness(matrix):
     test = [True if (x > 0 and i % 2 == 1) or (x < 0 and i % 2 == 0) or
             (Di[i] == 0 and i == len(Di) - 1) else False for i, x in
             enumerate(Di)]
-    print(test)
     if all(test):
         return "Negative semi-definite"
 
