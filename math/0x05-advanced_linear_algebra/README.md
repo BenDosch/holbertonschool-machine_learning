@@ -26,7 +26,8 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [Inverse of a Matrix using Minors, Cofactors and Adjugate](https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html "Inverse of a Matrix
 using Minors, Cofactors and Adjugate")
 * [Tests for Positive Definiteness of a Matrix](https://www.gaussianwaves.com/2013/04/tests-for-positive-definiteness-of-a-matrix/ "Tests for Positive Definiteness of a Matrix")
-* [Positive Definite Matrices and Minima | MIT 18.06SC Linear Algebra, Fall 2011](https://www.youtube.com/watch?v=tccVVUnLdbc "Positive Definite Matrices and Minima | MIT 18.06SC Linear Algebra, Fall 2011")
+* [Definite, Semi-Definite and Indefinite Matrices](http://mathonline.wikidot.com/definite-semi-definite-and-indefinite-matrices "Definite, Semi-Definite and Indefinite Matrices")
+* [Definiteness Of a Matrix (Positive Definite, Negative Definite, Indefinite etc.)](https://www.youtube.com/watch?v=FoiU6rguhyM&t=612s "Definiteness Of a Matrix (Positive Definite, Negative Definite, Indefinite etc.)")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
