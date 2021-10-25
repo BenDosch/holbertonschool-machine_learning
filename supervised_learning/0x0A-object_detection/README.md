@@ -46,7 +46,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ## Tasks
 List of tasks with brief descriptions of each task.
 
-### [0. Initialize Yolo](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/0-yolo.py "0. Initialize Yolo")
+### [0. Initialize Yolo](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/0-yolo.py "0. Initialize Yolo")
 
 Write a class Yolo that uses the Yolo v3 algorithm to perform object detection:
 
@@ -68,7 +68,7 @@ Write a class Yolo that uses the Yolo v3 algorithm to perform object detection:
 
 ---
 
-### [1. Process Outputs](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/1-yolo.py "1. Process Outputs")
+### [1. Process Outputs](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/1-yolo.py "1. Process Outputs")
 
 Write a class Yolo (Based on 0-yolo.py):
 
@@ -90,7 +90,7 @@ Write a class Yolo (Based on 0-yolo.py):
 
 ---
 
-### [2. Filter Boxes](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/2-yolo.py "2. Filter Boxes")
+### [2. Filter Boxes](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/2-yolo.py "2. Filter Boxes")
 
 Write a class Yolo (Based on 1-yolo.py):
 
@@ -105,7 +105,7 @@ Write a class Yolo (Based on 1-yolo.py):
 
 ---
 
-### [3. Non-max Suppression](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/3-yolo.py "3. Non-max Suppression")
+### [3. Non-max Suppression](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/3-yolo.py "3. Non-max Suppression")
 
 Write a class Yolo (Based on 2-yolo.py):
 
@@ -120,7 +120,7 @@ Write a class Yolo (Based on 2-yolo.py):
 
 ---
 
-### [4. Load images](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/4-yolo.py "4. Load images")
+### [4. Load images](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/4-yolo.py "4. Load images")
 
 Write a class Yolo (Based on 3-yolo.py):
 
@@ -132,7 +132,7 @@ Write a class Yolo (Based on 3-yolo.py):
 
 ---
 
-### [5. Preprocess images](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/5-yolo.py "5. Preprocess images")
+### [5. Preprocess images](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/5-yolo.py "5. Preprocess images")
 
 Write a class Yolo (Based on 4-yolo.py):
 
@@ -151,7 +151,7 @@ Write a class Yolo (Based on 4-yolo.py):
 
 ---
 
-### [6. Show boxes](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/6-yolo.py "6. Show boxes")
+### [6. Show boxes](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/6-yolo.py "6. Show boxes")
 
 Write a class Yolo (Based on 5-yolo.py):
 
@@ -180,7 +180,7 @@ Write a class Yolo (Based on 5-yolo.py):
 
 ---
 
-### [7. Predict](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/n/7-yolo.py "7. Predict")
+### [7. Predict](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/supervised_learning/0x0A-object_detection/7-yolo.py "7. Predict")
 
 Write a class Yolo (Based on 6-yolo.py):
 
