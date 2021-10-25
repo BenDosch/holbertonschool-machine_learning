@@ -3,7 +3,7 @@
 covariance of a data set."""
 
 import numpy as np
-from numpy.core.fromnumeric import shape
+
 
 def mean_cov(X):
     """Function that calculates the mean and covariance of a data set.
@@ -14,27 +14,30 @@ def mean_cov(X):
             in each data point.
 
     Returns:
-        x_mean (numpy.ndarray): Tensor of shape (1, d) containing the mean of the
-            data set.
+        x_mean (numpy.ndarray): Tensor of shape (1, d) containing the mean of
+            the data set.
         cov (numpy.ndarray): Tensor of shape (d, d) containing the covariance
             matrix of the data set.
     """
     if not len(X.shape) == 2:
         raise TypeError("X must be a 2D numpy.ndarray")
-    
+
     n, d = X.shape
 
     if n < 2:
         raise ValueError("X must contain multiple data points")
 
-    mean = 
-    cov = 
+    mean = np.mean(X, axis=0, keepdims=True)
+    cov = ((X.T - mean.T) @ (X - mean)) / n - 1  # @ shorthand for np.matmul
 
     return mean, cov
 
+
 if __name__ == "__main__":
     np.random.seed(0)
-    X = np.random.multivariate_normal([12, 30, 10], [[36, -30, 15], [-30, 100, -20], [15, -20, 25]], 10000)
+    X = np.random.multivariate_normal([12, 30, 10], [[36, -30, 15],
+                                      [-30, 100, -20], [15, -20, 25]],
+                                      10000)
     mean, cov = mean_cov(X)
     print(mean)
     print(cov)
