@@ -11,6 +11,7 @@
 	6. [Preprocess images](#5-preprocess-images)
 	7. [Show boxes](#6-show-boxes)
 	8. [Predict](#7-predict)
+4. [Author](#author)
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -193,3 +194,7 @@ Write a class Yolo (Based on 6-yolo.py):
 		* image_paths: a list of image paths corresponding to each prediction in predictions
 
 ---
+
+## Author
+
+[Benjamin Dosch](https://github.com/BenDoschGit)

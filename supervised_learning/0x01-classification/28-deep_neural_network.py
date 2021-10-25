@@ -305,7 +305,8 @@ class DeepNeuralNetwork():
         Returns:
             Activation values of the layer of nodes.
         """
-        return (np.exp(Z) - np.exp(-Z)) / (np.exp(Z) + np.exp(-Z))
+        # (np.exp(Z) - np.exp(-Z)) / (np.exp(Z) + np.exp(-Z))
+        return np.tanh(Z)
 
     def tanh_prime(self, A):
         """Does the math for the Tanh` activation function.

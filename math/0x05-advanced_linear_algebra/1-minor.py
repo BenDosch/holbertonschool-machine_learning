@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module containing a function that calculates the minor matrix of a
+"""Module containing functions that calculates the minor matrix of a
 matrix."""
 
 

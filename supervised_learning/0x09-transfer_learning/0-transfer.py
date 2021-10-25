@@ -25,7 +25,7 @@ def preprocess_data(X, Y):
         Y_p(numpy.ndarray): A N-dimensional containing the preprocessed Y.
     """
     # Preprocess inputs to between -1 and 1
-    X_p = K.applications.xception.preprocess_input(
+    X_p = K.applications.preprocess_input(
         x=X, data_format="channels_last"
     )
     Y_p = K.utils.to_categorical(Y)
