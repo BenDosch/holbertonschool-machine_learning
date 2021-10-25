@@ -19,7 +19,7 @@ def mean_cov(X):
         cov (numpy.ndarray): Tensor of shape (d, d) containing the covariance
             matrix of the data set.
     """
-    if not len(X.shape) == 2:
+    if not isinstance(X, np.ndarray) or not len(X.shape) == 2:
         raise TypeError("X must be a 2D numpy.ndarray")
 
     n, d = X.shape
@@ -28,7 +28,7 @@ def mean_cov(X):
         raise ValueError("X must contain multiple data points")
 
     mean = np.mean(X, axis=0, keepdims=True)
-    cov = ((X.T - mean.T) @ (X - mean)) / n - 1  # @ shorthand for np.matmul
+    cov = ((X.T - mean.T) @ (X - mean)) / (n - 1)  # @ shorthand for np.matmul
 
     return mean, cov
 
