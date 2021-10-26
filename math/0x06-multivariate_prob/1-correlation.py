@@ -22,8 +22,12 @@ def correlation(C):
     if (not len(C.shape) == 2) or (not C.shape[0] == C.shape[1]):
         raise ValueError("C must be a 2D square matrix")
 
-    correlation_matrix = np.corrcoef(C, rowvar=False)
-    
+    step_1 = np.diag(np.diag(C))  # Isolate variances from matrix.
+    step_2 = np.sqrt(step_1)  # Get standard deviations
+    step_3 = np.linalg.inv(step_2)  # Get inverse / standardizing matrix
+
+    correlation_matrix = (step_3 @ C) @ step_3
+
     return correlation_matrix
 
 
