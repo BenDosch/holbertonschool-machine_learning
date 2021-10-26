@@ -45,7 +45,7 @@ class MultiNormal:
         d, one = x.shape
 
         if not len(x.shape) == 2 or not one == 1 or not d == self.cov.shape[0]:
-            raise ValueError("x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
 
         μ = self.mean
         Σ = self.cov
