@@ -26,6 +26,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [What Do Correlation Coefficients Positive, Negative, and Zero Mean?](https://www.investopedia.com/ask/answers/032515/what-does-it-mean-if-correlation-coefficient-positive-negative-or-zero.asp "What Do Correlation Coefficients Positive, Negative, and Zero Mean?")
 * [An Introduction to Variance, Covariance & Correlation](https://www.alchemer.com/resources/blog/variance-covariance-correlation/ "An Introduction to Variance, Covariance & Correlation")
 * [The Covariance Matrix : Data Science Basics](https://www.youtube.com/watch?v=152tSYtiQbw "The Covariance Matrix : Data Science Basics")
+* [Standardizing and Correlation Matrices](https://www.youtube.com/watch?v=sZdMeSrDSTY "3 12 Standardizing and Correlation Matrices")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
