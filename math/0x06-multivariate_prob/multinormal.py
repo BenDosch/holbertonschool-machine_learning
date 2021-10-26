@@ -42,9 +42,10 @@ class MultiNormal:
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
 
-        d, one = x.shape
+        d = self.cov.shape[0]
+        x_d, one = x.shape
 
-        if not len(x.shape) == 2 or not one == 1 or not d == self.cov.shape[0]:
+        if not len(x.shape) == 2 or not one == 1 or not d == x_d:
             raise ValueError("x must have the shape ({}, 1)".format(d))
 
         μ = self.mean
