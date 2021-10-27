@@ -6,7 +6,8 @@ import numpy as np
 
 
 def pca(X, var=0.95):
-    """Function that performs PCA on a dataset.
+    """Function that performs PCA on a dataset using Singular Value
+    Decomposition.
 
     Args:
         X (numpy.ndarray): Tensor of shape (n, d) where, n is the number of
@@ -20,7 +21,12 @@ def pca(X, var=0.95):
             fraction of X‘s original variance where, nd is the new
             dimensionality of the transformed X.
     """
-    W = 0
+    u, s, vh = np.linalg.svd(X)  # U, Σ, V*
+    V = vh.T
+    s_percentages = s / np.sum(s)
+    variance_cumsum = np.cumsum(s_percentages)
+    nd = np.argmax(np.where(variance_cumsum <= var, variance_cumsum, 0)) + 1
+    W = V[:, :(nd + 1)]
     return W
 
 

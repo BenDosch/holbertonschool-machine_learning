@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Module that contains the function pca which deterimins dimensionality by input."""
+"""Module that contains the function pca which deterimins dimensionality by
+input."""
 
 import numpy as np
 
 
 def pca(X, ndim):
-    """Function that performs PCA on a dataset.
+    """Function that performs PCA on a dataset, using Singular Value
+    Decomposition.
 
     Args:
         X (numpy.ndarray): Tensor of shape (n, d) where, n is the number of
@@ -16,7 +18,11 @@ def pca(X, ndim):
         T (numpy.ndarray): Tensor of shape (n, ndim) containing the transformed
             version of X.
     """
-    T = 0
+    X_m = X - np.mean(X, axis=0)
+    u, s, vh = np.linalg.svd(X_m)  # U, Σ, V*
+    V = vh.T
+    W = V[:, :ndim]
+    T = X_m @ W
     return T
 
 
