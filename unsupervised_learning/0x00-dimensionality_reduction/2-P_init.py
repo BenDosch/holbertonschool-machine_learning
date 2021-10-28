@@ -79,7 +79,6 @@ def distance_matrix(A, B, squared=False):
 
 
 if __name__ == "__main__":
-    # pca = __import__('1-pca').pca
 
     X = np.loadtxt("mnist2500_X.txt")
     X = pca(X, 50)
