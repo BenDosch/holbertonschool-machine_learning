@@ -23,7 +23,9 @@ def intersection(x, n, P, Pr):
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
     if not isinstance(x, int) or x < 0:
-        raise ValueError("x must be an integer that is greater than or equal to 0")
+        raise ValueError(
+            "x must be an integer that is greater than or equal to 0"
+            )
     if x > n:
         raise ValueError("x cannot be greater than n")
     if not (isinstance(P, np.ndarray) and len(P.shape) == 1):
@@ -49,7 +51,9 @@ def intersection(x, n, P, Pr):
     Intersection = Likelihood * Pr
     return Intersection
 
+
 if __name__ == "__main__":
     P = np.linspace(0, 1, 11)
-    Pr = np.ones(11) / 11 # this prior assumes that everything is equally as likely
+    Pr = np.ones(11) / 11
+    # this prior assumes that everything is equally as likely 
     print(intersection(26, 130, P, Pr))
