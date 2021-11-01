@@ -3,6 +3,7 @@
 centroids for K-means."""
 
 import numpy as np
+from numpy.core.fromnumeric import size
 
 
 def initialize(X, k):
@@ -19,12 +20,18 @@ def initialize(X, k):
             initialized centroids for each cluster
         None on failure.
     """
-    centroids = None
+    if (not isinstance(X, np.ndarray) or not isinstance(k, int) or k <= 0 or
+        len(X.shape) != 2 or k > X.shape[0]):
+        return None
+    n, d = X.shape
+    low = X.min(axis=0)
+    high = X.max(axis=0)
+    centroids = np.random.uniform(low=low, high=high, size=(k, d))
     return centroids
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
+    # import matplotlib.pyplot as plt
 
 
     np.random.seed(0)
