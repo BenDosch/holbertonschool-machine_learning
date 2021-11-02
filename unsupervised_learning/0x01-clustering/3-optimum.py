@@ -26,7 +26,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             smallest cluster size for each cluster size.
         None, None on failure
     """
-    if kmax and (not isinstance(kmax, int) or kmax <= 0):
+    if kmax != None and (not isinstance(kmax, int) or kmax <= 0):
         return None, None
 
     if (not isinstance(X, np.ndarray) or not isinstance(kmin, int)
