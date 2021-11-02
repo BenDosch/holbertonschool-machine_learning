@@ -5,7 +5,6 @@ centroids for K-means."""
 import numpy as np
 
 
-
 def initialize(X, k):
     """Function that initializes cluster centroids for K-means.
 
@@ -31,6 +30,8 @@ def initialize(X, k):
 
 
 if __name__ == "__main__":
+    # matplotlib.pyplot as plt
+
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
     b = np.random.multivariate_normal([10, 25], [[16, 0], [0, 16]], size=50)
