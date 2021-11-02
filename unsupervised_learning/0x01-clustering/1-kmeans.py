@@ -62,7 +62,7 @@ def kmeans(X, k, iterations=1000):
 
 
 if __name__ == "__main__":
-    # matplotlib.pyplot as plt
+    """matplotlib.pyplot as plt
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     print(C)
     plt.scatter(X[:, 0], X[:, 1], s=10, c=clss)
     plt.scatter(C[:, 0], C[:, 1], s=50, marker='*', c=list(range(5)))
-    plt.show()
+    plt.show()"""
