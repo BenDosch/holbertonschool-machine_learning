@@ -26,16 +26,18 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             smallest cluster size for each cluster size.
         None, None on failure
     """
+    if kmax and (not isinstance(kmax, (int) or kmax <= 0)):
+        return None, None
+    if not kmax:
+        kmax = X.shape[0]
+
     if (not isinstance(X, np.ndarray) or not isinstance(kmin, int)
-            or not isinstance(kmax, int) or not isinstance(iterations, int) or
-            kmin <= 0 or kmax <= 0 or (kmax and kmin >= kmax) or
+            or not isinstance(iterations, int) or kmin <= 0 or kmin >= kmax or
             len(X.shape) != 2) or iterations <= 0:
         return None, None
 
     results = []
     d_vars = []
-    if not kmax:
-        kmax = X.shape[0]
 
     for k in range(kmin, kmax + 1):
         C, clss = kmeans(X, k, iterations)
@@ -48,7 +50,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
 
 
 if __name__ == "__main__":
-    """matplotlib.pyplot as plt
+    """import matplotlib.pyplot as plt
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
@@ -67,3 +69,13 @@ if __name__ == "__main__":
     plt.ylabel('Delta Variance')
     plt.title('Optimizing K-means')
     plt.show()"""
+    np.random.seed(0)
+    means = np.random.uniform(0, 100, (3, 2))
+    a = np.random.multivariate_normal(means[0], 10 * np.eye(2), size=10)
+    b = np.random.multivariate_normal(means[1], 10 * np.eye(2), size=10)
+    c = np.random.multivariate_normal(means[2], 10 * np.eye(2), size=10)
+    X = np.concatenate((a, b, c), axis=0)
+    np.random.shuffle(X)
+    res, v = optimum_k(X)
+    print(res)
+    print(np.round(v, 5))
