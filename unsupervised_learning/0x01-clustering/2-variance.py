@@ -3,7 +3,6 @@
 intra-cluster variance for a data set."""
 
 import numpy as np
-from numpy.core.fromnumeric import shape
 
 
 def variance(X, C):
@@ -19,6 +18,10 @@ def variance(X, C):
         var(float): The total variance
         None on failure.
     """
+    if (not isinstance(X, np.ndarray) or not isinstance(C, np.ndarray) or
+            X.shape[1] != C.shape[0] or C.shape[1] <= 0 or X.size == 0 or
+            C.size == 0):
+        return None
     n, d = X.shape
     k = C.shape[0]
     # Seperate X into clusters
