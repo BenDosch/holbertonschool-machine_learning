@@ -23,6 +23,11 @@ def kmeans(X, k, iterations=1000):
             the cluster in C that each data point belongs to.
         None, None on failure.
     """
+    if (not isinstance(X, np.ndarray) or not isinstance(k, int) or k <= 0 or
+            len(X.shape) != 2 or k > X.shape[0] or iterations <= 0 or
+            not isinstance(iterations, int)):
+        return None, None
+
     # Initialize centroids
     n, d = X.shape
     low = X.min(axis=0)
@@ -77,3 +82,18 @@ if __name__ == "__main__":
     plt.scatter(X[:, 0], X[:, 1], s=10, c=clss)
     plt.scatter(C[:, 0], C[:, 1], s=50, marker='*', c=list(range(5)))
     plt.show()"""
+
+    np.random.seed(1)
+    a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
+    b = np.random.multivariate_normal([10, 25], [[16, 0], [0, 16]], size=50)
+    c = np.random.multivariate_normal([40, 20], [[16, 0], [0, 16]], size=50)
+    d = np.random.multivariate_normal([60, 30], [[16, 0], [0, 16]], size=50)
+    e = np.random.multivariate_normal([20, 70], [[16, 0], [0, 16]], size=50)
+    X = np.concatenate((a, b, c, d, e), axis=0)
+    np.random.shuffle(X)
+    C, clss = kmeans(X, 5, iterations=1)
+    print(C)
+    print(clss)
+    C, clss = kmeans(X, 5, iterations=5)
+    print(C)
+    print(clss)
