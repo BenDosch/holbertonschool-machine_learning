@@ -2,7 +2,6 @@
 """Module that contains the function kmeans that performs K-means on a
 dataset."""
 
-from operator import itemgetter
 import numpy as np
 
 

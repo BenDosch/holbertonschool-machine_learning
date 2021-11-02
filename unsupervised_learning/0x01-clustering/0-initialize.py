@@ -3,7 +3,7 @@
 centroids for K-means."""
 
 import numpy as np
-from numpy.core.fromnumeric import size
+
 
 
 def initialize(X, k):
