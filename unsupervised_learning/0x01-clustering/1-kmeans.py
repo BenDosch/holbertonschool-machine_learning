@@ -2,6 +2,7 @@
 """Module that contains the function kmeans that performs K-means on a
 dataset."""
 
+from operator import itemgetter
 import numpy as np
 
 
@@ -15,7 +16,7 @@ def kmeans(X, k, iterations=1000):
         k (int): The number of clusters.
         iterations (int, optional): The maximum number of iterations that
             should be performed. Defaults to 1000.
-    
+
     Returns:
         C (numpy.ndarray) A tensor of shape (k, d) containing the centroid
             means for each cluster.
@@ -23,14 +24,46 @@ def kmeans(X, k, iterations=1000):
             the cluster in C that each data point belongs to.
         None, None on failure.
     """
-    C = None
-    clss = None
+    # Initialize centroids
+    n, d = X.shape
+    low = X.min(axis=0)
+    high = X.max(axis=0)
+    centroids = np.random.uniform(low=low, high=high, size=(k, d))
+
+    for i in range(iterations):
+        # Calculate distance between centroids and data points
+        diffrence = (X[:, :, None] - centroids.T[None, :, :])  # (n, d, k)
+        dist = np.squeeze(
+            np.linalg.norm(diffrence, axis=1, keepdims=True)
+            )  # (n, k)
+        # Seperate into clusters
+        clss = np.argmin(dist, axis=1)
+        labeled = np.concatenate((X, np.reshape(clss, (n, 1))), axis=1)
+
+        # Calculate the means of each cluster
+        C = np.empty((k, d))
+        filler = np.empty((n, d))
+        for j in range(k):
+            temp = labeled[labeled[:, -1] == j]
+            temp = temp[:, :2]
+            if temp.size == 0:
+                re_init = np.random.uniform(low=low, high=high, size=(1, d))
+                C[j] = re_init
+            else:
+                C[j] = np.mean(temp, axis=0)
+
+        # Check for change
+        if np.array_equal(centroids, C):
+            break
+
+        # Assign new centroids
+        centroids = C[:, :]
+
     return C, clss
 
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
