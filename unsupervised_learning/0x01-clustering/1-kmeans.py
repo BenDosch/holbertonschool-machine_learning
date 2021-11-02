@@ -47,7 +47,7 @@ def kmeans(X, k, iterations=1000):
         filler = np.empty((n, d))
         for j in range(k):
             temp = labeled[labeled[:, -1] == j]
-            temp = temp[:, :2]
+            temp = temp[:, :d]
             if temp.size == 0:
                 re_init = np.random.uniform(low=low, high=high, size=(1, d))
                 C[j] = re_init
