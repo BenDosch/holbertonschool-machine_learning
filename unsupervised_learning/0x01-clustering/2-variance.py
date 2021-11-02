@@ -3,6 +3,7 @@
 intra-cluster variance for a data set."""
 
 import numpy as np
+from numpy.core.fromnumeric import shape
 
 
 def variance(X, C):
@@ -13,19 +14,24 @@ def variance(X, C):
         X (numpy.ndarray): A tensor of shape (n, d) containing the data set.
         C (numpy.ndarray): A tensor of shape (k, d) containing the centroid
             means for each cluster.
-    
+
     Returns:
         var(float): The total variance
         None on failure.
     """
-    var = None
+    n, d = X.shape
+    k = C.shape[0]
+    # Seperate X into clusters
+    diffrence = (X - C[:, None])  # (k, n, d)
+    dist = np.linalg.norm(diffrence, axis=2).T  # (n, k)
+    minimums = np.min(dist, axis=1)
+    total_var = np.sum(np.square(minimums))
+
+    var = total_var
     return var
 
 
 if __name__ == "__main__":
-    kmeans = __import__('1-kmeans').kmeans
-
-
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
     b = np.random.multivariate_normal([10, 25], [[16, 0], [0, 16]], size=50)
