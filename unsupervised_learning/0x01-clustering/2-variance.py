@@ -20,7 +20,7 @@ def variance(X, C):
     """
     if (not isinstance(X, np.ndarray) or not isinstance(C, np.ndarray) or
             len(X.shape) != 2 or len(C.shape) != 2 or
-            X.shape[1] != C.shape[0] or C.shape[1] <= 0 or X.size == 0 or
+            X.shape[1] != C.shape[1] or C.shape[1] <= 0 or X.size == 0 or
             C.size == 0):
         return None
     n, d = X.shape
@@ -52,3 +52,13 @@ if __name__ == "__main__":
         print(
             'Variance with {} clusters: {}'.format(k, variance(X, C).round(5))
             )"""
+    np.random.seed(0)
+    means = np.array([[30, 40], [10, 25], [40, 20], [60, 30], [20, 70]])
+    a = np.random.multivariate_normal(means[0], [[16, 0], [0, 16]], size=50)
+    b = np.random.multivariate_normal(means[1], [[16, 0], [0, 16]], size=50)
+    c = np.random.multivariate_normal(means[2], [[16, 0], [0, 16]], size=50)
+    d = np.random.multivariate_normal(means[3], [[16, 0], [0, 16]], size=50)
+    e = np.random.multivariate_normal(means[4], [[16, 0], [0, 16]], size=50)
+    X = np.concatenate((a, b, c, d, e), axis=0)
+    np.random.shuffle(X)
+    print(variance(X, means).round(5)) #7975.6784
