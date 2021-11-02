@@ -50,7 +50,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
 
 
 if __name__ == "__main__":
-    """import matplotlib.pyplot as plt
+    """matplotlib.pyplot as plt
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
@@ -69,6 +69,7 @@ if __name__ == "__main__":
     plt.ylabel('Delta Variance')
     plt.title('Optimizing K-means')
     plt.show()"""
+    
     np.random.seed(0)
     means = np.random.uniform(0, 100, (3, 2))
     a = np.random.multivariate_normal(means[0], 10 * np.eye(2), size=10)
