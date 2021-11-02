@@ -2,6 +2,7 @@
 """Module that contains the function kmeans that performs K-means on a
 dataset."""
 
+from matplotlib.pyplot import axis
 import numpy as np
 
 
@@ -40,11 +41,10 @@ def kmeans(X, k, iterations=1000):
         dist = np.linalg.norm(diffrence, axis=2).T  # (n, k)
         # Seperate into clusters
         clss = np.argmin(dist, axis=1)
-        labeled = np.concatenate((X, np.reshape(clss, (n, 1))), axis=1)
+        labeled = np.concatenate((X.copy(), np.reshape(clss, (n, 1))), axis=1)
 
         # Calculate the means of each cluster
         C = np.empty((k, d))
-        filler = np.empty((n, d))
         for j in range(k):
             temp = labeled[labeled[:, -1] == j]
             temp = temp[:, :d]
@@ -56,6 +56,10 @@ def kmeans(X, k, iterations=1000):
 
         # Check for change
         if np.array_equal(centroids, C):
+            # Recalculate clss
+            clss = np.argmin(
+                np.linalg.norm((X - C[:, None, :]), axis=2).T, axis=1
+                )
             break
 
         # Assign new centroids
