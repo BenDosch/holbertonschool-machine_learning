@@ -19,6 +19,7 @@ def variance(X, C):
         None on failure.
     """
     if (not isinstance(X, np.ndarray) or not isinstance(C, np.ndarray) or
+            len(X.shape) != 2 or len(C.shape) != 2 or
             X.shape[1] != C.shape[0] or C.shape[1] <= 0 or X.size == 0 or
             C.size == 0):
         return None
