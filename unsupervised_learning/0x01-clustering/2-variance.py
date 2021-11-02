@@ -61,4 +61,4 @@ if __name__ == "__main__":
     e = np.random.multivariate_normal(means[4], [[16, 0], [0, 16]], size=50)
     X = np.concatenate((a, b, c, d, e), axis=0)
     np.random.shuffle(X)
-    print(variance(X, means).round(5)) #7975.6784
+    print(variance(X, means).round(5))  # 7975.6784
