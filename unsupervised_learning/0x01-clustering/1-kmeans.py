@@ -24,8 +24,8 @@ def kmeans(X, k, iterations=1000):
         None, None on failure.
     """
     if (not isinstance(X, np.ndarray) or not isinstance(k, int) or k <= 0 or
-            len(X.shape) != 2 or k > X.shape[0] or iterations <= 0 or
-            not isinstance(iterations, int)):
+            len(X.shape) != 2 or k > X.shape[0] or
+            not isinstance(iterations, int) or iterations <= 0):
         return None, None
 
     # Initialize centroids
@@ -36,10 +36,8 @@ def kmeans(X, k, iterations=1000):
 
     for i in range(iterations):
         # Calculate distance between centroids and data points
-        diffrence = (X[:, :, None] - centroids.T[None, :, :])  # (n, d, k)
-        dist = np.squeeze(
-            np.linalg.norm(diffrence, axis=1, keepdims=True)
-            )  # (n, k)
+        diffrence = (X - centroids[:, None, :])  # (k, n, d)
+        dist = np.linalg.norm(diffrence, axis=2).T  # (n, k)
         # Seperate into clusters
         clss = np.argmin(dist, axis=1)
         labeled = np.concatenate((X, np.reshape(clss, (n, 1))), axis=1)
@@ -61,7 +59,7 @@ def kmeans(X, k, iterations=1000):
             break
 
         # Assign new centroids
-        centroids = C[:, :]
+        centroids = C
 
     return C, clss
 

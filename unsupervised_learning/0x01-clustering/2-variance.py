@@ -22,7 +22,7 @@ def variance(X, C):
     n, d = X.shape
     k = C.shape[0]
     # Seperate X into clusters
-    diffrence = (X - C[:, None])  # (k, n, d)
+    diffrence = (X - C[:, None, :])  # (k, n, d)
     dist = np.linalg.norm(diffrence, axis=2).T  # (n, k)
     minimums = np.min(dist, axis=1)
     total_var = np.sum(np.square(minimums))
