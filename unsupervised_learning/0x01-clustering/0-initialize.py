@@ -31,7 +31,7 @@ def initialize(X, k):
 
 
 if __name__ == "__main__":
-    # import matplotlib.pyplot as plt
+    """import matplotlib.pyplot as plt"""
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
