@@ -22,7 +22,29 @@ def pdf(X, m, S):
             each data point.
         None on failure.
     """
-    P = None
+    if (not isinstance(X, np.ndarray) or X.ndim != 2 or
+            not isinstance(m, np.ndarray) or m.ndim != 1 or
+            not isinstance(S, np.ndarray) or S.ndim != 2 or
+            X.shape[1] != m.shape[0] or m.shape[0] != S.shape[0] or
+            S.shape[0] != S.shape[1]):
+        return None
+
+    # Multi-dimensional Gaussian Model
+    # P(x) =∑[i, k] ϕ_i N(x∣μ_i, Σ_i)
+    # N(x∣μ_i, Σ_i) = (1 / sqrt(2π**K |Σ|))exp(-(1/2)(x-μ_i).T(Σ_i**-1)(x-μ_i)
+    # ∑[i, k] ϕ_i = 1
+
+    d = X.shape[1]
+    μ = m[None, :]  # Mean
+    Σ = S  # Covariance
+    π = np.pi
+    X_μ = X - μ
+    determinant = np.linalg.det(Σ)  # |Σ|
+    inverse = np.linalg.inv(Σ)  # Σ ** -1
+    norm = 1 / (np.sqrt((((2 * π) ** (d)) * (determinant))))
+    res = np.exp(-0.5 * np.sum(((X_μ @ inverse) * X_μ), axis=1))  # sum to (n,)
+    pdf = (norm * res)
+    P = np.maximum(pdf, 1e-300)
     return P
 
 
