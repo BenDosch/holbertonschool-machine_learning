@@ -2,6 +2,7 @@
 """Module that contains the function kmeans that performs K-means on a
 dataset."""
 
+from matplotlib.pyplot import axis
 import numpy as np
 
 
@@ -52,13 +53,11 @@ def kmeans(X, k, iterations=1000):
                 C[j] = re_init
             else:
                 C[j] = np.mean(temp, axis=0)
+        # Recalculate clss
+        clss = np.argmin(np.linalg.norm((X - C[:, None, :]), axis=2).T, axis=1)
 
         # Check for change
         if np.array_equal(centroids, C):
-            # Recalculate clss
-            clss = np.argmin(
-                np.linalg.norm((X - C[:, None, :]), axis=2).T, axis=1
-                )
             break
 
         # Assign new centroids
