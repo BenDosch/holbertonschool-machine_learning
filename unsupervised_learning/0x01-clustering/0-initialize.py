@@ -14,14 +14,14 @@ def initialize(X, k):
             that will be used for K-means clustering, where n is the number of
             data points and d is the number of dimensions for each data point.
         k (int): The number of clusters.
-    
+
     Returns:
         centroids (numpy.ndarray): Tensor of shape (k, d) containing the
             initialized centroids for each cluster
         None on failure.
     """
     if (not isinstance(X, np.ndarray) or not isinstance(k, int) or k <= 0 or
-        len(X.shape) != 2 or k > X.shape[0]):
+            len(X.shape) != 2 or k > X.shape[0]):
         return None
     n, d = X.shape
     low = X.min(axis=0)
@@ -32,7 +32,6 @@ def initialize(X, k):
 
 if __name__ == "__main__":
     # import matplotlib.pyplot as plt
-
 
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
