@@ -44,12 +44,12 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
                 l (float): The log likelihood of the model.
         None, None, None, None on failure.
 """
-    if kmax is None:
+    if kmax is None and isinstance(X, np.ndarray) and X.ndim == 2:
         kmax = X.shape[0]
 
     if (not isinstance(X, np.ndarray) or X.ndim != 2 or
             not isinstance(kmin, int) or kmin <= 0 or kmin > X.shape[0] or
-            not isinstance(kmax, int) or kmax <= 0 or kmax < kmin or
+            not isinstance(kmax, int) or kmax <= 0 or kmax <= kmin or
             kmax > X.shape[0] or not isinstance(iterations, int) or
             iterations <= 0 or not isinstance(tol, float) or tol < 0 or
             not isinstance(verbose, bool)):
