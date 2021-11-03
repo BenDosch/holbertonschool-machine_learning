@@ -49,8 +49,8 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
     for i in range(iterations):
         if i != 0:
             l_prev = log
+            pi, m, S = maximization(X, g)
         g, log = expectation(X, pi, m, S)
-        pi, m, S = maximization(X, g)
         if g is None or log is None or pi is None or m is None or S is None:
             return None, None, None, None, None
         if verbose and i % 10 == 0:
