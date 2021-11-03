@@ -31,21 +31,20 @@ def expectation(X, pi, m, S):
             not isinstance(S, np.ndarray) or S.ndim != 3 or
             pi.shape[0] != m.shape[0] or m.shape[0] != S.shape[0] or
             X.shape[1] != m.shape[1] or m.shape[1] != S.shape[1] or
-            S.shape[1] != S.shape[2]):
+            S.shape[1] != S.shape[2] or pi.shape[0] > X.shape[0] or
+            not np.isclose(np.sum(pi), [1])[0]):
         return None, None
 
     k = pi.shape[0]  # Clusters
     n, d = X.shape  # Number and dimesions of datapoints.
 
     g = np.empty((k, n))
-    total_likelihood = np.empty((k, n))
 
     for i in range(k):
         # P(A|B) = P(B|A) * P(A) / P(B)
         # Prior = Likelihood * Prior / Marginal(a.k.a. Evidence)
         # pi[i] = P(A), P = P(B|A), sum(P * pi) = P(B)
         likelihood = pdf(X, m[i], S[i])  # (n,)
-        total_likelihood[i] = likelihood
         prior = pi[i]  # (1,)
         intersection = prior * likelihood  # (n,)
         g[i] = intersection
@@ -53,7 +52,7 @@ def expectation(X, pi, m, S):
     marginal = np.sum(g, axis=0, keepdims=True)  # Marginal across cluster
     g /= marginal
 
-    log = np.sum(np.log(np.sum(total_likelihood, axis=0)), axis=0)
+    log = np.sum(np.log(np.sum(marginal, axis=0)), axis=0)
     return g, log
 
 
