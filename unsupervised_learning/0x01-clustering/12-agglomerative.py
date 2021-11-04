@@ -2,7 +2,6 @@
 """Module that contains the function agglomerative that performs agglomerative
 clustering on a dataset."""
 
-import numpy as np
 import scipy.cluster.hierarchy
 import matplotlib.pyplot as plt
 
@@ -13,14 +12,23 @@ def agglomerative(X, dist):
     Args:
         X (numpy.ndarray): A tensor of shape (n, d) containing the dataset.
         dist (int): The maximum cophenetic distance for all clusters.
-    
+
     Returns:
         clss (numpy.ndarray): A tensor of shape (n,) containing the cluster
             indices for each data point.
     """
+    hierarchy = scipy.cluster.hierarchy
+    Z = hierarchy.ward(X)
+    hierarchy.fcluster(Z=Z, t=dist, criterion="distance")
+
+    plt.figure()
+    hierarchy.dendrogram(Z, color_threshold=dist)
+    plt.show()
 
 
 if __name__ == "__main__":
+    """impo numpy as np
+
     np.random.seed(0)
     a = np.random.multivariate_normal([30, 40], [[16, 0], [0, 16]], size=50)
     b = np.random.multivariate_normal([10, 25], [[16, 0], [0, 16]], size=50)
@@ -32,4 +40,4 @@ if __name__ == "__main__":
 
     clss = agglomerative(X, 100)
     plt.scatter(X[:, 0], X[:, 1], s=10, c=clss)
-    plt.show()
+    plt.show()"""
