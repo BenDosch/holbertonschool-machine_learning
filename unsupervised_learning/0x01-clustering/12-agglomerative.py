@@ -19,11 +19,13 @@ def agglomerative(X, dist):
     """
     hierarchy = scipy.cluster.hierarchy
     Z = hierarchy.ward(X)
-    hierarchy.fcluster(Z=Z, t=dist, criterion="distance")
+    clss = hierarchy.fcluster(Z=Z, t=dist, criterion="distance")
 
     plt.figure()
     hierarchy.dendrogram(Z, color_threshold=dist)
     plt.show()
+
+    return clss
 
 
 if __name__ == "__main__":
