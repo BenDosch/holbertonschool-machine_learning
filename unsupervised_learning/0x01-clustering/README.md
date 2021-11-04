@@ -55,6 +55,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [What is Hierarchical Clustering?](https://www.displayr.com/what-is-hierarchical-clustering/ "What is Hierarchical Clustering?")
 * [Lecture 59 — Hierarchical Clustering | Stanford University](https://www.youtube.com/watch?v=rg2cjfMsCk4 "Lecture 59 — Hierarchical Clustering | Stanford University")
 * [Steps to calculate centroids in cluster using K-means clustering algorithm](https://www.datasciencecentral.com/profiles/blogs/steps-to-calculate-centroids-in-cluster-using-k-means-clustering "Steps to calculate centroids in cluster using K-means clustering algorithm")
+* [A Gentle Introduction to Bayes Theorem for Machine Learning](https://machinelearningmastery.com/bayes-theorem-for-machine-learning/ "A Gentle Introduction to Bayes Theorem for Machine Learning")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
@@ -235,7 +236,7 @@ Write a function def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbos
 	* l is a numpy.ndarray of shape (kmax - kmin + 1) containing the log likelihood for each cluster size tested
 	* b is a numpy.ndarray of shape (kmax - kmin + 1) containing the BIC value for each cluster size tested
 		* Use: BIC = p * ln(n) - 2 * l
-		* p is the number of parameters required for the model : number-of-parameters-to-be-learned-in-k-guassian-mixture-model
+		* p is the number of parameters required for the model : [Number of Parameters to be learned in k Guassian Mixture model?](https://stats.stackexchange.com/questions/436181/number-of-parameters-to-be-learned-in-k-guassian-mixture-model "Number of Parameters to be learned in k Guassian Mixture model?")
 		* n is the number of data points used to create the model
 		* l is the log likelihood of the model
 
