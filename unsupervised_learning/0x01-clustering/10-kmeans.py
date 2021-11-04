@@ -3,6 +3,7 @@
 dataset."""
 
 import numpy as np
+import sklearn.cluster
 
 
 def kmeans(X, k):
@@ -18,13 +19,15 @@ def kmeans(X, k):
         clss (numpy.ndarray): A tensor of shape (n,) containing the index of
             the cluster in C that each data point belongs to.
     """
-    C = [[]]
-    clss = []
+    n, d = X.shape
+    kmeans = sklearn.cluster.KMeans(n_clusters=k).fit(X)
+    C = kmeans.cluster_centers_
+    clss = kmeans.labels_
     return C, clss
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
+    """impo matplotlib.pyplot as plt
 
 
     np.random.seed(0)
@@ -40,4 +43,4 @@ if __name__ == "__main__":
     print(C)
     plt.scatter(X[:, 0], X[:, 1], s=10, c=clss)
     plt.scatter(C[:, 0], C[:, 1], s=50, marker='*', c=list(range(5)))
-    plt.show()
+    plt.show()"""
