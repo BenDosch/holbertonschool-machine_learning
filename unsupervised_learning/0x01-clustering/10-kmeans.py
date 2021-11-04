@@ -2,7 +2,6 @@
 """Module that contains the function kmeans that performs K-means on a
 dataset."""
 
-import numpy as np
 import sklearn.cluster
 
 
@@ -28,6 +27,7 @@ def kmeans(X, k):
 
 if __name__ == "__main__":
     """impo matplotlib.pyplot as plt
+    impo numpy as np
 
 
     np.random.seed(0)
