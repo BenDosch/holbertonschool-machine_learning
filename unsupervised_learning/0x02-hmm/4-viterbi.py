@@ -29,8 +29,43 @@ def viterbi(Observation, Emission, Transition, Initial):
         P (float): The probability of obtaining the path sequence.
         None, None on failure
     """
+    if (not isinstance(Observation, np.ndarray) or Observation.ndim != 1 or
+            not isinstance(Emission, np.ndarray) or Emission.ndim != 2 or
+            not isinstance(Transition, np.ndarray) or Transition.ndim != 2 or
+            Emission.shape[0] != Transition.shape[0] or
+            Transition.shape[0] != Transition.shape[1] or
+            not isinstance(Initial, np.ndarray) or Initial.ndim != 2 or
+            Initial.shape[0] != Emission.shape[0] or Initial.shape[1] != 1):
+        return None, None
+
+    T = Observation.shape[0]
+    N = Emission.shape[0]
+    mu = np.zeros((N, T))
+    trail = np.zeros((N, T))
     path = []
-    P = 0.0
+
+    # Step 0
+    mu[:, 0] = Initial.T * Emission[:, Observation[0]]
+
+    # Steps until N
+    for t in range(1, T):
+        for n in range(N):
+            # hidden node of max probablity & probalbity for observation
+            trail[n, t] = np.argmax(
+                Emission[n, Observation[t]] * Transition[:, n] * mu[:, t - 1]
+            )
+            mu[n, t] = np.max(
+                Emission[n, Observation[t]] * Transition[:, n] * mu[:, t - 1]
+            )
+
+    # Most likly final hiden state
+    P = np.max(mu[:, -1], axis=0)
+    path.append(np.argmax(mu[:, -1], axis=0))
+
+    # Given most likely final state, trace most likely path of hidden states
+    for t in range(T - 1, 0, -1):
+        path.insert(0, int(trail[int(path[0]), t]))
+
     return path, P
 
 
