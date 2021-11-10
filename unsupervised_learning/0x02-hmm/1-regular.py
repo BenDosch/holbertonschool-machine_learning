@@ -3,7 +3,6 @@
 probabilities of a regular markov chain."""
 
 import numpy as np
-from numpy.core.defchararray import equal
 
 
 def regular(P):
