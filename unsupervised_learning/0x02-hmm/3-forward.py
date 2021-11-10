@@ -29,8 +29,32 @@ def forward(Observation, Emission, Transition, Initial):
             state i at time j given the previous observations.
         None, None on failure.
     """
-    P = None
-    F = None
+    if (not isinstance(Observation, np.ndarray) or Observation.ndim != 1 or
+            not isinstance(Emission, np.ndarray) or Emission.ndim != 2 or
+            not isinstance(Transition, np.ndarray) or Transition.ndim != 2 or
+            Emission.shape[0] != Transition.shape[0] or
+            Transition.shape[0] != Transition.shape[1] or
+            not isinstance(Initial, np.ndarray) or Initial.ndim != 2 or
+            Initial.shape[0] != Emission.shape[0] or Initial.shape[1] != 1):
+        return None, None
+
+    T = Observation.shape[0]
+    N = Emission.shape[0]
+    F = np.zeros((N, T))
+
+    α_1 = Initial.T * Emission[:, Observation[0]]
+    F[:, 0] = α_1
+
+    for t in range(1, T):  # For each observation past the initial
+        for n in range(N):  # For each hidden state
+            # Emission probablities for hidden state at obeservation,
+            # Transition probablities for that state,
+            # & previous state's probablity.
+            F[n, t] = np.sum(
+                Emission[n, Observation[t]] * Transition[:, n] * F[:, t - 1]
+                )
+
+    P = np.sum(F[:, -1])
     return P, F
 
 
