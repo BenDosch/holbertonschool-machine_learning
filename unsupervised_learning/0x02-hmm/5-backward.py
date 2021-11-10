@@ -21,7 +21,7 @@ def backward(Observation, Emission, Transition, Initial):
             of transitioning from the hidden state i to j.
         Initial (numpy.ndarray): A tensor of shape (N, 1) containing the
             probability of starting in a particular hidden state.
-    
+
     Returns:
         P(float): The likelihood of the observations given the model.
         B (numpy.ndarray): A tensor of shape (N, T) containing the backward
@@ -29,8 +29,33 @@ def backward(Observation, Emission, Transition, Initial):
             the future observations from hidden state i at time j.
         None, None on failure.
     """
-    P = 0.0
-    B = None
+    if (not isinstance(Observation, np.ndarray) or Observation.ndim != 1 or
+            not isinstance(Emission, np.ndarray) or Emission.ndim != 2 or
+            not isinstance(Transition, np.ndarray) or Transition.ndim != 2 or
+            Emission.shape[0] != Transition.shape[0] or
+            Transition.shape[0] != Transition.shape[1] or
+            not isinstance(Initial, np.ndarray) or Initial.ndim != 2 or
+            Initial.shape[0] != Emission.shape[0] or Initial.shape[1] != 1):
+        return None, None
+
+    T = Observation.shape[0]
+    N = Emission.shape[0]
+    B = np.zeros((N, T))
+    B[:, -1] = 1
+
+    for t in range(T - 2, -1, -1):  # For each observation past the initial
+        for n in range(N):  # For each hidden state
+            # Emission probablities for hidden state at next obeservation,
+            # Transition probablities for that state,
+            # & next state's probablity.
+            B[n, t] = np.sum(
+                Emission[:, Observation[t + 1]] *
+                Transition[n, :] *
+                B[:, t + 1]
+                )
+
+    # Sum of states for initial observation multiplied by probablity of state
+    P = np.sum(Initial.T * Emission[:, Observation[0]] * B[:, 0], axis=1)[0]
     return P, B
 
 
