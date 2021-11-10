@@ -35,7 +35,7 @@ def regular(P):
     M = np.vstack((Q.T[:-1], np.ones(n)))
     b = np.vstack((np.zeros((n - 1, 1)), [1]))
 
-    v = np.linalg.solve(M, b).T[0]
+    v = np.linalg.solve(M, b).T
     return v
 
 
