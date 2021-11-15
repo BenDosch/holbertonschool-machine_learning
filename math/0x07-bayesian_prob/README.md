@@ -25,6 +25,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [Bayes' Theorem - The Simplest Case](https://www.youtube.com/watch?v=XQoLVl31ZfQ "Bayes' Theorem - The Simplest Case")
 * [A visual guide to Bayesian thinking](https://www.youtube.com/watch?v=BrK7X_XlGB8 "A visual guide to Bayesian thinking")
 * [Maximum Likelihood for the Binomial Distribution, Clearly Explained!!!](https://www.youtube.com/watch?v=4KKV9yZCoM4 "Maximum Likelihood for the Binomial Distribution, Clearly Explained!!!")
+* [Stat Trek](https://stattrek.com/probability/probability-rules.aspx "Stat Trek")
 
 ## Tasks
 List of tasks with brief descriptions of each task.

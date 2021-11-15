@@ -10,8 +10,8 @@ def intersection(x, n, P, Pr):
     the various hypothetical probabilities.
 
     Args:
-        x ([type]): The number of patients that develop severe side effects.
-        n ([type]): The total number of patients observed.
+        x (int): The number of patients that develop severe side effects.
+        n (int): The total number of patients observed.
         P (numpy.ndarray): A 1D array containing the various hypothetical
             probabilities of developing severe side effects.
         Pr (numpy.ndarray): A 1D array containing the prior beliefs of P.
