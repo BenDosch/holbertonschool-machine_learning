@@ -34,7 +34,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [mathematicalmonk](https://www.youtube.com/watch?v=vU6AiEYED9E "(ML 19.1) Gaussian processes - definition and first examples")
 * [Machine learning - Introduction to Gaussian processes](https://www.youtube.com/watch?v=4vGiHC35j9s "Machine learning - Introduction to Gaussian processes")
 * [What is the fastest way to compute an RBF kernel in python?](https://stackoverflow.com/questions/47271662/what-is-the-fastest-way-to-compute-an-rbf-kernel-in-python "What is the fastest way to compute an RBF kernel in python?")
-
+* [Radial Basis Function (RBF) Kernel: The Go-To Kernel](https://towardsdatascience.com/radial-basis-function-rbf-kernel-the-go-to-kernel-acf0d22c798a "Radial Basis Function (RBF) Kernel: The Go-To Kernel")
 ## Tasks
 Create the class GaussianProcess that represents a noiseless 1D Gaussian process:
 

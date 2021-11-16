@@ -27,11 +27,15 @@ class GaussianProcess():
             sigma_f (int, optional): The standard deviation given to the output
                 of the black-box function. Defaults to 1.
         """
-        if (not isinstance(X_init, np.ndarray) or X_init.ndim != 2 or
-                not isinstance(Y_init, np.ndarray) or Y_init.ndim != 2 or
-                X_init.shape[0] != Y_init.shape[0] or
-                not isinstance(len, float) or not isinstance(sigma_f, int)):
-            raise Exception
+        if (not isinstance(X_init, np.ndarray) or
+                not isinstance(Y_init, np.ndarray) or
+                not isinstance(Y_init, np.ndarray) or
+                not isinstance(l, float) or
+                not isinstance(sigma_f, int)):
+            raise TypeError("Something's not the right type")
+        if (X_init.ndim != 2 or Y_init.ndim != 2 or
+                X_init.shape[0] != Y_init.shape[0]):
+            raise Exception("Something is not right with the arrys")
 
         self.X = X_init
         self.Y = Y_init
@@ -81,7 +85,7 @@ if __name__ == "__main__":
     print(gp.l)
     print(gp.sigma_f)
     print(gp.K.shape, gp.K)
-    # print(np.allclose(gp.kernel(X_init, X_init), gp.K))
+    print(np.allclose(gp.kernel(X_init, X_init), gp.K))
 
 # Expected output
 """
