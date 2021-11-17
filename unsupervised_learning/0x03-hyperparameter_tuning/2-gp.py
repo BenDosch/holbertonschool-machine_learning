@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Moduel that contians the class CaussianProcess that represents a noiseless
+"""Moduel that contians the class GaussianProcess that represents a noiseless
 1D Gaussian process."""
 
 import numpy as np
@@ -27,14 +27,14 @@ class GaussianProcess():
             sigma_f (int, optional): The standard deviation given to the output
                 of the black-box function. Defaults to 1.
         """
-        if (not isinstance(X_init, np.ndarray) or
-                not isinstance(Y_init, np.ndarray) or
-                not isinstance(Y_init, np.ndarray) or
-                not isinstance(l, float) or
-                not isinstance(sigma_f, int)):
+        if (not isinstance(X_init, np.ndarray) or not
+                isinstance(Y_init, np.ndarray) or not
+                isinstance(Y_init, np.ndarray) or not
+                isinstance(l, (float, int)) or not
+                isinstance(sigma_f, (float, int))):
             raise TypeError("Something's not the right type")
-        if (X_init.ndim != 2 or Y_init.ndim != 2 or
-                X_init.shape[0] != Y_init.shape[0]):
+        if (X_init.ndim != 2 or Y_init.ndim != 2 or not
+                X_init.shape[0] == Y_init.shape[0]):
             raise Exception("Something is not right with the arrys")
 
         self.X = X_init
