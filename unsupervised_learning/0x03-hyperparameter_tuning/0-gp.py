@@ -33,8 +33,8 @@ class GaussianProcess():
                 isinstance(l, (float, int)) or not
                 isinstance(sigma_f, (float, int))):
             raise TypeError("Something's not the right type")
-        if (X_init.ndim != 2 or Y_init.ndim != 2 or
-                X_init.shape[0] != Y_init.shape[0]):
+        if (X_init.ndim != 2 or Y_init.ndim != 2 or not
+                X_init.shape[0] == Y_init.shape[0]):
             raise Exception("Something is not right with the arrys")
 
         self.X = X_init
