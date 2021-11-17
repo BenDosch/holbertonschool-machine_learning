@@ -105,14 +105,14 @@ if __name__ == '__main__':
 
     def f(x):
         """our 'black box' function"""
-        return np.sin(5*x) + 2*np.sin(-2*x)
+        return np.sin(5 * x) + 2 * np.sin(-2 * x)
 
     BO = BayesianOptimization
     np.random.seed(0)
-    X_init = np.random.uniform(-np.pi, 2*np.pi, (2, 1))
+    X_init = np.random.uniform(-np.pi, 2 * np.pi, (2, 1))
     Y_init = f(X_init)
 
-    bo = BO(f, X_init, Y_init, (-np.pi, 2*np.pi), 50, l=0.6,
+    bo = BO(f, X_init, Y_init, (-np.pi, 2 * np.pi), 50, l=0.6,
             sigma_f=2, xsi=0.05)
     X_next, EI = bo.acquisition()
 
