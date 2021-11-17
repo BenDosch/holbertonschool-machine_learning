@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Moduel that contians the class CaussianProcess that represents a noiseless
+"""Moduel that contians the class GaussianProcess that represents a noiseless
 1D Gaussian process."""
 
 import numpy as np
@@ -9,7 +9,7 @@ class GaussianProcess():
     """Class that represents a noiseless 1D Gaussian process.
     """
 
-    def __init__(self, X_init, Y_init, len=1, sigma_f=1):
+    def __init__(self, X_init, Y_init, l=1, sigma_f=1):
         """Constructor function that sets the public instance attributes
         X, Y, l, and sigma_f corresponding to the respective constructor
         inputs. Also sets the public instance attribute K, representing the
@@ -22,7 +22,7 @@ class GaussianProcess():
             Y_init (numpy.ndarray): A tensor of shape (t, 1) representing the
                 outputs of the black-box function for each input in X_init,
                 where t is the number of initial samples.
-            len (float, optional): The length parameter for the kernel.
+            l (float, optional): The length parameter for the kernel.
                 Defaults to 1.
             sigma_f (int, optional): The standard deviation given to the output
                 of the black-box function. Defaults to 1.
@@ -30,8 +30,8 @@ class GaussianProcess():
         if (not isinstance(X_init, np.ndarray) or
                 not isinstance(Y_init, np.ndarray) or
                 not isinstance(Y_init, np.ndarray) or
-                not isinstance(l, float) or
-                not isinstance(sigma_f, int)):
+                not isinstance(l, (float, int)) or
+                not isinstance(sigma_f, (float, int))):
             raise TypeError("Something's not the right type")
         if (X_init.ndim != 2 or Y_init.ndim != 2 or
                 X_init.shape[0] != Y_init.shape[0]):
@@ -39,7 +39,7 @@ class GaussianProcess():
 
         self.X = X_init
         self.Y = Y_init
-        self.l = len
+        self.l = l
         self.sigma_f = sigma_f
         self.K = self.kernel(X1=X_init, X2=X_init)
 
