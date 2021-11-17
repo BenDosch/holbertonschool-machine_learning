@@ -82,8 +82,8 @@ class GaussianProcess():
             sigma (numpy.ndarray): A tensor of shape (s,) containing the
                 variance for each point in X_s, respectively.
         """
-        if (not isinstance(X_s, np.ndarray) or X_s.ndim != 2 or
-                X_s.shape[1] != 1):
+        if (not isinstance(X_s, np.ndarray) or X_s.ndim != 2 or not
+                X_s.shape[1] == 1):
             return None, None
         # mu* = K*.T K^-1 f
         K_s = self.kernel(X1=self.X, X2=X_s)
@@ -105,27 +105,28 @@ class GaussianProcess():
                 new sample function value
 
         """
-        if (not isinstance(X_new, np.ndarray) or X_new.ndim != 1 or
-                X_new.shape[0] != 1 or not isinstance(Y_new, np.ndarray) or
-                Y_new.ndim != 1 or Y_new.shape[0] != 1):
+        if (not isinstance(X_new, np.ndarray) or X_new.ndim != 1 or not
+                X_new.shape[0] == 1 or not isinstance(Y_new, np.ndarray) or not
+                Y_new.ndim == 1 or Y_new.shape[0] != 1):
             raise Exception("Invalid Input")
         self.X = np.concatenate((self.X, X_new[:, None]), axis=0)
         self.Y = np.concatenate((self.Y, Y_new[:, None]), axis=0)
         self.K = self.kernel(X1=self.X, X2=self.X)
+
 
 if __name__ == "__main__":
     GP = GaussianProcess
 
     def f(x):
         """our 'black box' function"""
-        return np.sin(5*x) + 2*np.sin(-2*x)
+        return np.sin(5 * x) + 2 * np.sin(-2 * x)
 
     np.random.seed(0)
-    X_init = np.random.uniform(-np.pi, 2*np.pi, (2, 1))
+    X_init = np.random.uniform(-np.pi, 2 * np.pi, (2, 1))
     Y_init = f(X_init)
 
     gp = GP(X_init, Y_init, l=0.6, sigma_f=2)
-    X_new = np.random.uniform(-np.pi, 2*np.pi, 1)
+    X_new = np.random.uniform(-np.pi, 2 * np.pi, 1)
     print('X_new:', X_new)
     Y_new = f(X_new)
     print('Y_new:', Y_new)
