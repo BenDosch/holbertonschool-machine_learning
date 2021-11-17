@@ -27,11 +27,11 @@ class GaussianProcess():
             sigma_f (int, optional): The standard deviation given to the output
                 of the black-box function. Defaults to 1.
         """
-        if (not isinstance(X_init, np.ndarray) or
-                not isinstance(Y_init, np.ndarray) or
-                not isinstance(Y_init, np.ndarray) or
-                not isinstance(l, (float, int)) or
-                not isinstance(sigma_f, (float, int))):
+        if (not isinstance(X_init, np.ndarray) or not
+                isinstance(Y_init, np.ndarray) or not
+                isinstance(Y_init, np.ndarray) or not
+                isinstance(l, (float, int)) or not
+                isinstance(sigma_f, (float, int))):
             raise TypeError("Something's not the right type")
         if (X_init.ndim != 2 or Y_init.ndim != 2 or
                 X_init.shape[0] != Y_init.shape[0]):
@@ -73,10 +73,10 @@ if __name__ == "__main__":
 
     def f(x):
         """our 'black box' function"""
-        return np.sin(5*x) + 2*np.sin(-2*x)
+        return np.sin(5 * x) + 2 * np.sin(-2 * x)
 
     np.random.seed(0)
-    X_init = np.random.uniform(-np.pi, 2*np.pi, (2, 1))
+    X_init = np.random.uniform(-np.pi, 2 * np.pi, (2, 1))
     Y_init = f(X_init)
 
     gp = GP(X_init, Y_init, l=0.6, sigma_f=2)
