@@ -82,8 +82,8 @@ class GaussianProcess():
             sigma (numpy.ndarray): A tensor of shape (s,) containing the
                 variance for each point in X_s, respectively.
         """
-        if (not isinstance(X_s, np.ndarray) or X_s.ndim != 2 or
-                X_s.shape[1] != 1):
+        if (not isinstance(X_s, np.ndarray) or X_s.ndim != 2 or not
+                X_s.shape[1] == 1):
             return None, None
         # mu* = K*.T K^-1 f
         K_s = self.kernel(X1=self.X, X2=X_s)
@@ -94,19 +94,20 @@ class GaussianProcess():
         sigma = np.diag(covariance_s)
         return mu, sigma
 
+
 if __name__ == "__main__":
     GP = GaussianProcess
 
     def f(x):
         """our 'black box' function"""
-        return np.sin(5*x) + 2*np.sin(-2*x)
+        return np.sin(5 * x) + 2 * np.sin(-2 * x)
 
     np.random.seed(0)
-    X_init = np.random.uniform(-np.pi, 2*np.pi, (2, 1))
+    X_init = np.random.uniform(-np.pi, 2 * np.pi, (2, 1))
     Y_init = f(X_init)
 
     gp = GP(X_init, Y_init, len=0.6, sigma_f=2)
-    X_s = np.random.uniform(-np.pi, 2*np.pi, (10, 1))
+    X_s = np.random.uniform(-np.pi, 2 * np.pi, (10, 1))
     mu, sig = gp.predict(X_s)
     print(mu.shape, mu)
     print(sig.shape, sig)
