@@ -73,14 +73,14 @@ class BayesianOptimization():
         EI = np.zeros(ac_samples)
         μ, σ = self.gp.predict(X_s=self.X_s)  # mu, sigma
         ε = self.xsi  # epislon
-        f = self.gp.Y
+        f_output = self.gp.Y
 
         # Configure for minimization or maximization.
         if self.minimize:
-            μ_pluse = np.min(f)
+            μ_pluse = np.min(f_output)
             numerator = μ_pluse - μ - ε
         else:
-            μ_pluse = np.max(f)
+            μ_pluse = np.max(f_output)
             numerator = μ - μ_pluse - ε
 
         Z = (numerator) / σ  # The standard normal
