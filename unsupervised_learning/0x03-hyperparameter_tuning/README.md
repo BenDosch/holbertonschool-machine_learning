@@ -35,6 +35,12 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [Machine learning - Introduction to Gaussian processes](https://www.youtube.com/watch?v=4vGiHC35j9s "Machine learning - Introduction to Gaussian processes")
 * [What is the fastest way to compute an RBF kernel in python?](https://stackoverflow.com/questions/47271662/what-is-the-fastest-way-to-compute-an-rbf-kernel-in-python "What is the fastest way to compute an RBF kernel in python?")
 * [Radial Basis Function (RBF) Kernel: The Go-To Kernel](https://towardsdatascience.com/radial-basis-function-rbf-kernel-the-go-to-kernel-acf0d22c798a "Radial Basis Function (RBF) Kernel: The Go-To Kernel")
+* [Machine learning - Introduction to Gaussian processes](https://www.youtube.com/watch?v=4vGiHC35j9s "Machine learning - Introduction to Gaussian processes")
+* [Machine learning - Bayesian optimization and multi-armed bandits](https://www.youtube.com/watch?v=vz3D36VXefI "Machine learning - Bayesian optimization and multi-armed bandits")
+* [Martin Krasser - Bayesian optimization](http://krasserm.github.io/2018/03/21/bayesian-optimization/ "Martin Krasser - Bayesian optimization")
+* [Martin Krasser - Gaussian processes](http://krasserm.github.io/2018/03/19/gaussian-processes/ "Martin Krasser - Gaussian processes")
+* [Bayesian Optimization](https://www.cse.wustl.edu/~garnett/cse515t/spring_2015/files/lecture_notes/12.pdf "Bayesian Optimization")
+
 ## Tasks
 Create the class GaussianProcess that represents a noiseless 1D Gaussian process:
 
