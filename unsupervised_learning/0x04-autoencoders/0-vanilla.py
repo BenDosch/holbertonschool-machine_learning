@@ -17,9 +17,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
             space.
 
     Returns:
-        encoder(): The encoder model.
-        decoder(): The decoder model.
-        auto(): The full autoencoder model.
+        encoder(keras.models.Model): The encoder model.
+        decoder(keras.models.Model): The decoder model.
+        auto(keras.models.Model): The full autoencoder model.
     """
     # Encoder
     enco_in = keras.Input(shape=(input_dims,))
@@ -57,11 +57,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
 
 if __name__ == "__main__":
-    """impo rt matplotlib.pyplot as plt
-    impo rt numpy as np
-    impo rt tensorflow as tf
-    fr om tensorflow.keras.datasets import mnist"""
-
     (x_train, _), (x_test, _) = mnist.load_data()
     x_train = x_train.astype('float32') / 255.
     x_test = x_test.astype('float32') / 255.
