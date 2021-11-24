@@ -19,11 +19,46 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
             regularization on the encoded output.
 
     Returns:
-        encoder(): The encoder model.
-        decoder(): The decoder model.
-        auto(): The sparse autoencoder model.
+        encoder(keras.models.Model): The encoder model.
+        decoder(keras.models.Model): The decoder model.
+        auto(keras.models.Model): The sparse autoencoder model.
     """
-    pass
+    # Encoder
+    enco_in = keras.Input(shape=(input_dims,))
+    enco_hid = keras.layers.Dense(hidden_layers[0], activation='relu')(enco_in)
+    if len(hidden_layers) > 1:
+        for i in range(1, len(hidden_layers)):
+            enco_hid = keras.layers.Dense(
+                hidden_layers[i], activation='relu'
+            )(enco_hid)
+    enco_out = keras.layers.Dense(
+        latent_dims, activation='relu',
+        activity_regularizer=keras.regularizers.l1(lambtha)
+        )(enco_hid)
+
+    encoder = keras.models.Model(inputs=enco_in, outputs=enco_out)
+
+    # Decoder
+    deco_in = keras.Input(shape=(latent_dims,))
+    deco_hid = keras.layers.Dense(
+        hidden_layers[-1], activation='relu'
+    )(deco_in)
+    if len(hidden_layers) > 1:
+        for j in range(len(hidden_layers) - 2, -1, -1):
+            deco_hid = keras.layers.Dense(
+                hidden_layers[j], activation='relu'
+            )(deco_hid)
+    deco_out = keras.layers.Dense(input_dims, activation='sigmoid')(deco_hid)
+
+    decoder = keras.models.Model(deco_in, deco_out)
+
+    # Auto
+    auto_in = encoder(enco_in)
+    auto_out = decoder(auto_in)
+    auto = keras.models.Model(inputs=enco_in, outputs=auto_out)
+    auto.compile(loss='binary_crossentropy', optimizer='adam')
+
+    return encoder, decoder, auto
 
 
 if __name__ == "__main__":
