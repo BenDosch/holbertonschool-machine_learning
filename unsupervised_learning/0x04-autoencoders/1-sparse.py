@@ -10,9 +10,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     Args:
         input_dims (int): An integer containing the dimensions of the model
             input.
-        hidden_layers (list[int]): A list containing the number of nodes for each
-            hidden layer in the encoder, respectively. The hidden layers should
-            be reversed for the decoder.
+        hidden_layers (list[int]): A list containing the number of nodes for
+            each hidden layer in the encoder, respectively. The hidden layers
+            should be reversed for the decoder.
         latent_dims (int): An integer containing the dimensions of the latent
             space representation.
         lambtha (float): The regularization parameter used for L1
@@ -70,8 +70,8 @@ if __name__ == "__main__":
     np.random.seed(0)
     tf.set_random_seed(0)
     encoder, decoder, auto = autoencoder(784, [128, 64], 32, 10e-6)
-    auto.fit(x_train, x_train, epochs=100,batch_size=256, shuffle=True,
-                    validation_data=(x_test, x_test))
+    auto.fit(x_train, x_train, epochs=100, batch_size=256, shuffle=True,
+             validation_data=(x_test, x_test))
     encoded = encoder.predict(x_test[:10])
     print(np.mean(encoded))
     reconstructed = decoder.predict(encoded)
