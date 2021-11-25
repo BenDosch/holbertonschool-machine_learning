@@ -84,11 +84,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import tensorflow as tf
-    from tensorflow.keras.datasets import mnist
-
     (x_train, _), (x_test, _) = mnist.load_data()
     x_train = x_train.astype('float32') / 255.
     x_test = x_test.astype('float32') / 255.
