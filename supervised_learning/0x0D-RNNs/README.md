@@ -15,7 +15,14 @@
 
 ## Refrences
 
-* [Title](www.url.com "Title")
+* [MIT 6.S191 (2019): Recurrent Neural Networks](https://www.youtube.com/watch?v=_h66BW-xNgk "MIT 6.S191 (2019): Recurrent Neural Networks")
+* [Introduction to Recurrent Neural Network](https://www.geeksforgeeks.org/introduction-to-recurrent-neural-network/ "Introduction to Recurrent Neural Network")
+* [Illustrated Guide to Recurrent Neural Networks: Understanding the Intuition](https://www.youtube.com/watch?v=LHXXI4-IEns "Illustrated Guide to Recurrent Neural Networks: Understanding the Intuition")
+* [Illustrated Guide to LSTM's and GRU's: A step by step explanation](https://www.youtube.com/watch?v=8HyCNIVRbSU "Illustrated Guide to LSTM's and GRU's: A step by step explanation")
+* [Implementing Recurrent Neural Network using Numpy](https://towardsdatascience.com/implementing-recurrent-neural-network-using-numpy-c359a0a68a67 "Implementing Recurrent Neural Network using Numpy")
+* [Building your Recurrent Neural Network - Step by Step](https://datascience-enthusiast.com/DL/Building_a_Recurrent_Neural_Network-Step_by_Step_v1.html "Building your Recurrent Neural Network - Step by Step")
+* [Bidirectional RNN Indepth Intuition- Deep Learning Tutorial](https://www.youtube.com/watch?v=D-a6dwXzJ6s "Bidirectional RNN Indepth Intuition- Deep Learning Tutorial")
+
 
 ## Tasks
 List of tasks with brief descriptions of each task.
