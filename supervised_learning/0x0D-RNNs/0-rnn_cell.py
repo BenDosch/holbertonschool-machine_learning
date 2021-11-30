@@ -22,7 +22,10 @@ class RNNCell():
             h (int): The dimensionality of the hidden state.
             o (int): The dimensionality of the outputs.
         """
-        pass
+        self.Wh = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=(h, o))
+        self.bh = np.zeros((1, h))
+        self.by = np.zeros((1, o))
 
     def forward(self, h_prev, x_t):
         """Public instance method that performs forward propagation for one
@@ -37,12 +40,37 @@ class RNNCell():
                 i is the dimensionality of the data.
 
         Returns:
-            h_next (numpy.ndarray): Tensor of shape ( , ) that contains the
-                next hidden state.
-            y (numpy.ndarray): Tensor of shape ( , ) that contains the output
-                of the cell.
+            h_next (numpy.ndarray): Tensor of shape (m, h) containing the
+                next hidden state,  where m is the batch size for the data
+                and h is the dimensionality of the hidden state.
+            y (numpy.ndarray): Tensor of shape (m, i) that contains the data
+                output for the cell, where m is the batch size for the data and
+                i is the dimensionality of the data.
         """
-        pass
+        m, h = h_prev.shape
+        _, i = x_t.shape
+        W_hh = self.Wh[:h, :]  # Shape = (h, h)
+        W_hx = self.Wh[h:, :]  # Shape = (i, h)
+        W_yh = self.Wy  # Shape = (h, o)
+        b_h = self.bh
+        b_y = self.by
+
+        # h[t] = tanh(W_hh * h[t−1] + W_hx * x[t] + b_h)
+        h_next = np.tanh((h_prev @ W_hh) + ((x_t @ W_hx) + b_h))
+        # ŷ[t] = softmax(W_yh * h[t] + b_y)
+        y = self.softmax((h_next @ W_yh) + b_y)
+        return h_next, y
+
+    def softmax(self, y):
+        """Softmax activation function.
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The softmax activated version of y.
+        """
+        return np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
 
 
 # Testing

@@ -3,6 +3,7 @@
 simple RNN."""
 
 import numpy as np
+RNNCell = __import__('0-rnn_cell').RNNCell
 
 
 def rnn(rnn_cell, X, h_0):
@@ -18,19 +19,31 @@ def rnn(rnn_cell, X, h_0):
             hidden state, where m is the batch size and h is the dimensionality
             of the hidden state.
 
-    Returns: H, Y
-        H (numpy.ndarray): A tensor of shape ( , ) containing all of the
-            hidden states.
-        Y (numpy.ndarray): A tensor of shape ( , ) containing all of the
+    Returns:
+        H (numpy.ndarray): A tensor of shape (t + 1, m, h) containing all of
+            the hidden states.
+        Y (numpy.ndarray): A tensor of shape (t, m, o) containing all of the
             outputs.
     """
-    pass
+    t, m, i = X.shape
+    _, h = h_0.shape
+    _, o = rnn_cell.by.shape
+
+    H = np.zeros(shape=(t + 1, m, h))
+    Y = np.zeros(shape=(t, m, o))
+
+    H[0, ...] = h_0
+
+    for time in range(t):
+        h_next, y = rnn_cell.forward(H[time, ...], X[time, ...])
+        H[time + 1, ...] = h_next
+        Y[time, ...] = y
+
+    return H, Y
 
 
 # Testing
 if __name__ == "__main__":
-    RNNCell = __import__('0-rnn_cell').RNNCell
-
     np.random.seed(1)
     rnn_cell = RNNCell(10, 15, 5)
     rnn_cell.bh = np.random.randn(1, 15)
