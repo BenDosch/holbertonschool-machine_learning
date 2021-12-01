@@ -24,7 +24,14 @@ class GRUCell():
             h (int): The dimensionality of the hidden state.
             o (int): The dimensionality of the outputs.
         """
-        pass
+        self.Wz = np.random.normal(size=(h + i, h))
+        self.Wr = np.random.normal(size=(h + i, h))
+        self.Wh = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=(h, o))
+        self.bz = np.zeros((1, h))
+        self.br = np.zeros((1, h))
+        self.bh = np.zeros((1, h))
+        self.by = np.zeros((1, o))
 
     def forward(self, h_prev, x_t):
         """Public instance method that performs forward propagation for one
@@ -32,20 +39,64 @@ class GRUCell():
 
         Args:
             h_prev (numpy.ndarray): A tensor of shape (m, h) containing the
-                previous hidden state, where m is the batche size for the data
+                previous hidden state, where m is the batch size for the data
                 and i is the dimensionality of the data.
             x_t (numpy.ndarray): A tensor of shape (m, i) that contains the
-                data input for the cell, where m is the batche size for the
+                data input for the cell, where m is the batch size for the
                 data and i is the dimensionality of the data.
 
 
         Returns:
-            h_next (numpy.ndarray): A tensor of shape ( , ) containing the
-                next hidden state.
-            y (numpy.ndarray): A tensor of shape ( , ) containing the output
-                of the cell.
+            h_next (numpy.ndarray): A tensor of shape (m, h) containing the
+                next hidden state, where m is the batch size for the data and i
+                is the dimensionality of the data.
+            y (numpy.ndarray): A tensor of shape (m, o) that contains the
+                data input for the cell, where m is the batch size for the
+                data and o is the dimensionality of the outputs.
         """
-        pass
+        cell_input = np.concatenate((h_prev, x_t), axis=1)  # Shape=(m, h + i)
+        # Reset gate: r[t] = σ((Wr ∙ x[t]) + (Ur ∙ h[t-1]) + br)
+        # For concatonated (Wr ∙ x[t]) + (Ur ∙ h[t-1]) = Wr ∙ cell_input
+        r_t = self.sigmoid(cell_input @ self.Wr + self.br)
+
+        # Update gate: z[t] = σ((Wz ∙ x[t]) + (Uz ∙ h[t-1]) + bz)
+        # For concatonated (Wz ∙ x[t]) + (Uz ∙ h[t-1]) = Wz ∙ cell_input
+        z_t = self.sigmoid(cell_input @ self.Wz + self.bz)
+
+        reset_prev = r_t * h_prev
+        reset_input = np.concatenate((reset_prev, x_t), axis=1)  # (m, h + i)
+        # ĥ[t] = tanh((Wh ∙ x[t]) + (Uh ∙ (r_t * h[t-1])) + bh)
+        # For concat (Wh ∙ x[t]) + (Uh ∙ (r_t * h[t-1])) = Wh ∙ reset_input
+        ĥ_t = np.tanh((reset_input @ self.Wh) + self.bh)
+
+        # h[t] = (1 - z[t]) * h[t-1] + z[t] * ĥ[t]
+        h_next = ((1 - z_t) * h_prev) + (z_t * ĥ_t)
+
+        y = self.softmax((h_next @ self.Wy) + self.by)
+
+        return h_next, y
+
+    def sigmoid(self, y):
+        """Sigmoid activation function
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The sigmoid activated version of y.
+        """
+        return 1 / (1 + np.exp(-y))
+
+    def softmax(self, y):
+        """Softmax activation function.
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The softmax activated version of y.
+        """
+        return np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
 
 
 # Testing
