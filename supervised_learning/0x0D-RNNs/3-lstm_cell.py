@@ -22,7 +22,16 @@ class LSTMCell():
             h (int): The dimensionality of the hidden state.
             o (int): The dimensionality of the outputs.
         """
-        pass
+        self.Wf = np.random.normal(size=(h + i, h))
+        self.Wu = np.random.normal(size=(h + i, h))
+        self.Wc = np.random.normal(size=(h + i, h))
+        self.Wo = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=(h, o))
+        self.bf = np.zeros((1, h))
+        self.bu = np.zeros((1, h))
+        self.bc = np.zeros((1, h))
+        self.bo = np.zeros((1, h))
+        self.by = np.zeros((1, o))
 
     def forward(self, h_prev, c_prev, x_t):
         """Function that performs forward propagation for one time step.
@@ -39,14 +48,56 @@ class LSTMCell():
                 data and i is the dimensionality of the data.
 
         Returns:
-            h_next (numpy.ndarray): A tensor of shape ( ,  ) that contains the
-                next hidden state.
-            c_next (numpy.ndarray): A tensor of shape ( ,  ) that contains the
-                next cell state.
-            y (numpy.ndarray): A tensor of shape ( ,  ) that contains the
-                output of the cell.
+            h_next (numpy.ndarray): A tensor of shape (m, h) that contains the
+                next hidden state, where m is the batch size for the data and h
+                is the dimensionality of the hidden state.
+            c_next (numpy.ndarray): A tensor of shape (m, h) that contains the
+                next cell state, where m is the batch size for the data and h
+                is the dimensionality of the hidden state.
+            y (numpy.ndarray): A tensor of shape (m, o) that contains the
+                output of the cell, where m is the batch size for the
+                data and o is the dimensionality of the outputs.
         """
-        pass
+        # Combine input and hidden state
+        combined = np.concatenate((h_prev, x_t), axis=1)  # (m, h + i)
+        # Forget gate
+        forget_g = self.sigmoid((combined @ self.Wf) + self.bf)  # (m, h)
+        # Update gate
+        update_g = self.sigmoid((combined @ self.Wu) + self.bu)  # (m, h)
+        # Candidate
+        candidate = np.tanh((combined @ self.Wc) + self.bc)  # (m, h)
+        # Output gate
+        output_g = self.sigmoid((combined @ self.Wo) + self.bo)  # (m, h)
+        # New cell state = (f[t] * c[t-1]) + (u[t] * ca[t])
+        c_next = (forget_g * c_prev) + (update_g * candidate)  # (m, h)
+        # Hidden state
+        h_next = (output_g * np.tanh(c_next))  # (m, h)
+        # Output to find y
+        y = self.softmax((h_next @ self.Wy) + self.by)  # (m, o)
+
+        return h_next, c_next, y
+
+    def sigmoid(self, y):
+        """Sigmoid activation function
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The sigmoid activated version of y.
+        """
+        return 1 / (1 + np.exp(-y))
+
+    def softmax(self, y):
+        """Softmax activation function.
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The softmax activated version of y.
+        """
+        return np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
 
 
 # Testing
