@@ -20,12 +20,35 @@ def deep_rnn(rnn_cells, X, h_0):
             and h is the dimensionality of the hidden state.
 
     Returns:
-        H (numpy.ndarray): A tensor of shape ( ,  ,  ) containing all of the
-            hidden states.
-        Y (numpy.ndarray): A tensor of shape ( ,  ,  ) containing all of the
-            outputs.
+        H (numpy.ndarray): A tensor of shape (t+1, l, m, h) containing all of
+            the hidden states, where t is the maximum number of time steps, l
+            is the number of layers, m is the batch size, and h is the
+            dimensionality of the hidden state.
+        Y (numpy.ndarray): A tensor of shape (t, m, o) containing all of the
+            outputs, where t is the maximum number of time steps, m is the
+            batch size, and o is the dimensionality of the outputs.
     """
-    pass
+    T, _, _ = X.shape
+    L, m, h = h_0.shape
+    o = rnn_cells[-1].by.shape[1]
+    H = np.zeros((T + 1, L, m, h))
+    H[0, :, :, :] = h_0[None, ...]
+    Y = np.zeros((T, m, o))
+
+    for t in range(T):
+        for lay in range(L):
+            if (lay == 0):
+                x_t = X[t, ...]
+            else:
+                x_t = H[t + 1, lay - 1, ...]
+            h_next, y = rnn_cells[lay].forward(
+                h_prev=H[t, lay, ...], x_t=x_t
+            )
+            H[t + 1, lay, ...] = h_next[None, None, ...]
+            if (lay == L - 1):
+                Y[t, ...] = y[None, ...]
+
+    return H, Y
 
 
 # Testing
