@@ -93,7 +93,7 @@ class BidirectionalCell():
 
         for t in range(T):
             Y[t] = self.softmax((H[t] @ self.Wy) + self.by)
-            
+
         return Y
 
     def softmax(self, y):
