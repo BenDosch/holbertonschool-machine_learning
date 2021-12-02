@@ -5,7 +5,73 @@ bidirectional cell of an RNN."""
 import numpy as np
 
 
-# Code for 6-bi_backward.py
+class BidirectionalCell():
+    """Class that represents a bidirectional cell of an RNN."""
+
+    def __init__(self, i, h, o):
+        """Class constructor that creates the public instance attributes
+        Whf, Whb, Wy, bhf, bhb, by that represent the weights and biases of the
+        cell. Whf and bhf are for the hidden states in the forward direction.
+        Whb and bhb are for the hidden states in the backward direction. Wy and
+        by are for the outputs. The weights are initialized using a random
+        normal distribution in the order listed previously. The weights will be
+        used on the right side for matrix multiplication. The biases are
+        initialized as zeros.
+
+        Args:
+            i (int): The dimensionality of the data.
+            h (int): The dimensionality of the hidden state.
+            o (int): The dimensionality of the outputs.
+        """
+        self.Whf = np.random.normal(size=(h + i, h))
+        self.Whb = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=(h + h, o))
+        self.bhf = np.zeros((1, h))
+        self.bhb = np.zeros((1, h))
+        self.by = np.zeros((1, o))
+
+    def forward(self, h_prev, x_t):
+        """Public instance method that calculates the hidden state in the
+        forward direction for one time step.
+
+        Args:
+            h_prev (numpy.ndarray): Tensor of shape (m, h) containing the
+                previous hidden state, where m is the batch size for the data
+                and h is the dimensionality of the hidden state.
+            x_t (numpy.ndarray): Tensor of shape (m, i) that contains the data
+                input for the cell, where m is the batch size for the data and
+                i is the dimensionality of the data.
+
+        Returns:
+            h_next (numpy.ndarray): Tensor of shape (m, h) contaiing the next
+                hidden state, where m is the batch size for the data and h is
+                the dimensionality of the hidden state.
+        """
+        combined = np.concatenate((h_prev, x_t), axis=1)
+        h_next = np.tanh((combined @ self.Whf) + self.bhf)
+        return h_next
+
+    def backward(self, h_next, x_t):
+        """Public instance method that calculates the hidden state in the
+        backward direction for one time step.
+
+        Args:
+            h_next (numpy.ndarray): A tensor (m, h) containing the next hidden
+                state, where m is the batch size for the data and h is the
+                dimensionality of the hidden state.
+            x_t (numpy.ndarray):  A tensor of shape (m, i) that contains the
+                data input for the cell, where m is the batch size for the data
+                and i is the dimensionality of the data.
+
+        Returns:
+            h_prev(numpy.ndarray):  Tensor of shape (m, h) contaiing the
+                previous hidden state, where m is the batch size for the data
+                and h is the dimensionality of the hidden state.
+        """
+        combined = np.concatenate((h_next, x_t), axis=1)
+        h_prev = np.tanh((combined @ self.Whb) + self.bhb)
+        return h_prev
+
     def output(self, H):
         """Public instance method that calculates all outputs for the RNN.
 
@@ -17,8 +83,29 @@ import numpy as np
                 hidden states.
 
         Returns:
-        Y (numpy.ndarray): A tensor of shape () containing the outputs.
+        Y (numpy.ndarray): A tensor of shape (t, m, o) containing the
+            outputs,where t is the number of time steps, m is the batch size
+            for the data, and o is the dimensionality of the output.
         """
+        T, m, _ = H.shape
+        _, o = self.Wy.shape
+        Y = np.zeros((T, m, o))
+
+        for t in range(T):
+            Y[t] = self.softmax((H[t] @ self.Wy) + self.by)
+            
+        return Y
+
+    def softmax(self, y):
+        """Softmax activation function.
+
+        Args:
+            y (numpy.ndarray): A 2D tensor to apply the soft max activation on.
+
+        Returns:
+            The softmax activated version of y.
+        """
+        return np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
 
 
 # Testing
