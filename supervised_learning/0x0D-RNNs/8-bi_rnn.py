@@ -3,7 +3,6 @@
 for a bidirectional RNN."""
 
 import numpy as np
-BidirectionalCell = __import__('7-bi_output').BidirectionalCell
 
 
 def bi_rnn(bi_cell, X, h_0, h_t):
@@ -57,6 +56,8 @@ def bi_rnn(bi_cell, X, h_0, h_t):
 
 # Testing
 if __name__ == "__main__":
+    # BidirectionalCell = __impo rt__('7-bi_output').BidirectionalCell
+    
     np.random.seed(8)
     bi_cell = BidirectionalCell(10, 15, 5)
     X = np.random.randn(6, 8, 10)
