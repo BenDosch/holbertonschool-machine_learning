@@ -3,7 +3,6 @@
 simple RNN."""
 
 import numpy as np
-RNNCell = __import__('0-rnn_cell').RNNCell
 
 
 def rnn(rnn_cell, X, h_0):
@@ -44,6 +43,8 @@ def rnn(rnn_cell, X, h_0):
 
 # Testing
 if __name__ == "__main__":
+    # RNNCell = __impo rt__('0-rnn_cell').RNNCell
+
     np.random.seed(1)
     rnn_cell = RNNCell(10, 15, 5)
     rnn_cell.bh = np.random.randn(1, 15)

@@ -3,7 +3,6 @@
 for a deep RNN."""
 
 import numpy as np
-RNNCell = __import__('0-rnn_cell').RNNCell
 
 
 def deep_rnn(rnn_cells, X, h_0):
@@ -53,6 +52,8 @@ def deep_rnn(rnn_cells, X, h_0):
 
 # Testing
 if __name__ == "__main__":
+    # RNNCell = __impo rt__('0-rnn_cell').RNNCell
+
     np.random.seed(1)
     cell1 = RNNCell(10, 15, 1)
     cell2 = RNNCell(15, 15, 1)
