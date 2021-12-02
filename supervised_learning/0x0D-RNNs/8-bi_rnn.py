@@ -45,8 +45,8 @@ def bi_rnn(bi_cell, X, h_0, h_t):
         else:
             h_prev = H_f[t - 1]
             h_next = H_b[T - t]
-        H_f[t] = bi_cell.forward(h_prev=h_prev, x_t=X[t])
-        H_b[T - 1 - t] = bi_cell.backward(h_next=h_next, x_t=X[T - 1 - t])
+        H_f[t] = bi_cell.forward(h_prev, X[t])
+        H_b[T - 1 - t] = bi_cell.backward(h_next, X[T - 1 - t])
 
     H = np.concatenate((H_f, H_b), axis=-1)
     Y = bi_cell.output(H)
@@ -57,7 +57,7 @@ def bi_rnn(bi_cell, X, h_0, h_t):
 # Testing
 if __name__ == "__main__":
     # BidirectionalCell = __impo rt__('7-bi_output').BidirectionalCell
-    
+
     np.random.seed(8)
     bi_cell = BidirectionalCell(10, 15, 5)
     X = np.random.randn(6, 8, 10)
