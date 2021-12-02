@@ -23,11 +23,36 @@ def bi_rnn(bi_cell, X, h_0, h_t):
             and h is the dimensionality of the hidden state.
 
     Returns:
-        H (numpy.ndarray): A tensor of shape () containing all of the
-            concatenated hidden states.
-        Y (numpy.ndarray): A tensor of shape () containing all of the outputs.
+        H (numpy.ndarray): A tensor of shape (t, m, 2 * h) containing all of
+            the concatenated hidden states. t is the number of time steps, m is
+            the batch size for the data, and h is the dimensionality of the
+            hidden states.
+        Y (numpy.ndarray): A tensor of shape (t, m, o) containing the
+            outputs, where t is the number of time steps, m is the batch size
+            for the data, and o is the dimensionality of the output.
     """
-    pass
+    T, m, _ = X.shape
+    _, h = h_0.shape
+    _, o = bi_cell.Wy.shape
+
+    H_f = np.zeros((T, m, h))
+    H_b = np.zeros((T, m, h))
+    Y = np.zeros((T, m, o))
+
+    for t in range(T):
+        if (t == 0):
+            h_prev = h_0
+            h_next = h_t
+        else:
+            h_prev = H_f[t - 1]
+            h_next = H_b[T - t]
+        H_f[t] = bi_cell.forward(h_prev=h_prev, x_t=X[t])
+        H_b[T - 1 - t] = bi_cell.backward(h_next=h_next, x_t=X[T - 1 - t])
+
+    H = np.concatenate((H_f, H_b), axis=-1)
+    Y = bi_cell.output(H)
+
+    return H, Y
 
 
 # Testing
