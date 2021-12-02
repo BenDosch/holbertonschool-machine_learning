@@ -23,7 +23,12 @@ class BidirectionalCell():
             h (int): The dimensionality of the hidden state.
             o (int): The dimensionality of the outputs.
         """
-        pass
+        self.Whf = np.random.normal(size=(h + i, h))
+        self.Whb = np.random.normal(size=(h + i, h))
+        self.Wy = np.random.normal(size=(h + h, o))
+        self.bhf = np.zeros((1, h))
+        self.bhb = np.zeros((1, h))
+        self.by = np.zeros((1, o))
 
     def forward(self, h_prev, x_t):
         """Public instance method that calculates the hidden state in the
@@ -38,10 +43,13 @@ class BidirectionalCell():
                 i is the dimensionality of the data.
 
         Returns:
-            h_next(numpy.ndarray): Tensor of shape ( ,  ) contaiing the next
-                hidden state.
+            h_next (numpy.ndarray): Tensor of shape (m, h) contaiing the next
+                hidden state, where m is the batch size for the data and h is
+                the dimensionality of the hidden state.
         """
-        pass
+        combined = np.concatenate((h_prev, x_t), axis=1)
+        h_next = np.tanh((combined @ self.Whf) + self.bhf)
+        return h_next
 
 
 # Testing
