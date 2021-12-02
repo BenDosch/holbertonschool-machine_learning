@@ -22,6 +22,9 @@
 * [Implementing Recurrent Neural Network using Numpy](https://towardsdatascience.com/implementing-recurrent-neural-network-using-numpy-c359a0a68a67 "Implementing Recurrent Neural Network using Numpy")
 * [Building your Recurrent Neural Network - Step by Step](https://datascience-enthusiast.com/DL/Building_a_Recurrent_Neural_Network-Step_by_Step_v1.html "Building your Recurrent Neural Network - Step by Step")
 * [Bidirectional RNN Indepth Intuition- Deep Learning Tutorial](https://www.youtube.com/watch?v=D-a6dwXzJ6s "Bidirectional RNN Indepth Intuition- Deep Learning Tutorial")
+* [Gated recurrent unit](https://en.wikipedia.org/wiki/Gated_recurrent_unit "Gated recurrent unit")
+* [Recurrent Neural Networks cheatsheet](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks "Recurrent Neural Networks cheatsheet")
+* [RNN W1L11 : Bidirectional RNN](https://www.youtube.com/watch?v=bTXGpATdKRY "RNN W1L11 : Bidirectional RNN")
 
 
 ## Tasks
