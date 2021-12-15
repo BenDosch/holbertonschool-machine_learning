@@ -22,7 +22,7 @@ def tf_idf(sentences, vocab=None):
     vectorizer = TfidfVectorizer(lowercase=True, vocabulary=vocab)
     X = vectorizer.fit_transform(sentences)
     embeddings = X.toarray()
-    features = vectorizer.get_feature_names_out()
+    features = vectorizer.get_feature_names()
     return embeddings, features
 
 
