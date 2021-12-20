@@ -64,7 +64,7 @@ def n_gram_maker(list, n):
         n (int): Size of n-grams to use.
 
     Returns:
-        n_grams [list]: List of n-grams from origional list of size n. 
+        n_grams [list]: List of n-grams from origional list of size n.
     """
     n_grams = []
     for index in range(len(list) - n + 1):
