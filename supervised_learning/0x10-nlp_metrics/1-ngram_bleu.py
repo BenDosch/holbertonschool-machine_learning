@@ -57,6 +57,15 @@ def ngram_bleu(references, sentence, n):
 
 
 def n_gram_maker(list, n):
+    """Converst a lsit of words into n-grams.
+
+    Args:
+        list (list[str]): The list to convert.
+        n (int): Size of n-grams to use.
+
+    Returns:
+        n_grams [list]: List of n-grams from origional list of size n. 
+    """
     n_grams = []
     for index in range(len(list) - n + 1):
         temp = list[index:index + n]
