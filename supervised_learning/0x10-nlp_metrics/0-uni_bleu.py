@@ -54,4 +54,4 @@ if __name__ == "__main__":
                   ["there", "is", "a", "cat", "on", "the", "mat"]]
     sentence = ["there", "is", "a", "cat", "here"]
 
-print(uni_bleu(references, sentence))
+    print(uni_bleu(references, sentence))
