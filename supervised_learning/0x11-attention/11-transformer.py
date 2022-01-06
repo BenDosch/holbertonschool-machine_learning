@@ -2,13 +2,11 @@
 """Module that contains """
 
 import tensorflow as tf
-from tensorflow.keras import Model
-from tensorflow.keras.layers import Dense
 Encoder = __import__('9-transformer_encoder').Encoder
 Decoder = __import__('10-transformer_decoder').Decoder
 
 
-class Transformer(Model):
+class Transformer(tf.keras.Model):
     """Class that"""
 
     def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
@@ -19,7 +17,7 @@ class Transformer(Model):
                                drop_rate)
         self.decoder = Decoder(N, dm, h, hidden, target_vocab, max_seq_target,
                                drop_rate)
-        self.linear = Dense(target_vocab)
+        self.linear = tf.keras.layers.Dense(target_vocab)
 
     def call(self, inputs, target, training, encoder_mask,
              look_ahead_mask, decoder_mask):

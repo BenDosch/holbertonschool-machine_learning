@@ -2,15 +2,13 @@
 """Moduel that contain the class RNNEncoder."""
 
 import tensorflow as tf
-import numpy as np
-from tensorflow.keras.layers import Layer
 
 
-class RNNEncoder(Layer):
+class RNNEncoder(tf.keras.layers.Layer):
     """Class that encodes for machine translation."""
 
     def __init__(self, vocab, embedding, units, batch):
-        """Class constructor that sets the batch size and units in the RNN cell,
+        """Class constructor that sets the batch size and units in the RNN cell
         in addition to an Embedding and a GRU layer."""
         super().__init__()
         self.batch = batch
@@ -24,8 +22,8 @@ class RNNEncoder(Layer):
                                        )
 
     def initialize_hidden_state(self):
-        """Public instance method that Initializes the hidden states for the RNN
-        cell to a tensor of zeros."""
+        """Public instance method that Initializes the hidden states for the
+        RNN cell to a tensor of zeros."""
         initializer = tf.keras.initializers.Zeros()
         return initializer(shape=(self.batch, self.units))  # Tensor
 
@@ -33,7 +31,7 @@ class RNNEncoder(Layer):
         """Public instance method that passes input to the embedding then on to
         the gru layer and returns the ouptuts and last hidden state of the
         encoder.
-        
+
         Args:
             x (): A tensor of shape (batch, input_seq_len) containing the input
                 to the encoder layer as word indices within the vocabulary.

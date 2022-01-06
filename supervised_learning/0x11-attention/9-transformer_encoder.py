@@ -2,12 +2,11 @@
 """Module that contains """
 
 import tensorflow as tf
-from tensorflow.keras.layers import Layer, Embedding, Dropout
 positional_encoding = __import__('4-positional_encoding').positional_encoding
 EncoderBlock = __import__('7-transformer_encoder_block').EncoderBlock
 
 
-class Encoder(Layer):
+class Encoder(tf.keras.layers.Layer):
     """Class that """
 
     def __init__(self, N, dm, h, hidden, input_vocab, max_seq_len,
@@ -16,11 +15,12 @@ class Encoder(Layer):
         super().__init__()
         self.N = N
         self.dm = dm
-        self.embedding = Embedding(input_dim=input_vocab, output_dim=dm)
+        self.embedding = tf.keras.layers.Embedding(input_dim=input_vocab,
+                                                   output_dim=dm)
         self.positional_encoding = positional_encoding(max_seq_len, dm)
         self.blocks = [EncoderBlock(dm, h, hidden, drop_rate)
                        for block in range(N)]
-        self.dropout = Dropout(drop_rate)
+        self.dropout = tf.keras.layers.Dropout(drop_rate)
 
     def call(self, x, training, mask):
         """Public instance method that """

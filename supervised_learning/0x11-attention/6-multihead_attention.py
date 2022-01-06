@@ -2,11 +2,10 @@
 """Module that contains """
 
 import tensorflow as tf
-from tensorflow.keras.layers import Layer, Dense
 sdp_attention = __import__('5-sdp_attention').sdp_attention
 
 
-class MultiHeadAttention(Layer):
+class MultiHeadAttention(tf.keras.layers.Layer):
     """Class that"""
 
     def __init__(self, dm, h):
@@ -15,12 +14,18 @@ class MultiHeadAttention(Layer):
         self.h = h
         self.dm = dm
         self.depth = int(dm / h)  # the depth of each attention head
-        self.Wq = Dense(dm)  # Used to generate the query matrix
-        self.Wk = Dense(dm)  # Used to generate the key matrix
-        self.Wv = Dense(dm)  # Used to generate the value matrix
-        self.linear = Dense(dm) # Used to generate the attention output
+        self.Wq = tf.keras.layers.Dense(dm)
+        # Used to generate the query matrix
 
-    
+        self.Wk = tf.keras.layers.Dense(dm)
+        # Used to generate the key matrix
+
+        self.Wv = tf.keras.layers.Dense(dm)
+        # Used to generate the value matrix
+
+        self.linear = tf.keras.layers.Dense(dm)
+        # Used to generate the attention output
+
     def call(self, Q, K, V, mask):
         """Public instance method"""
         batch_size, seq_len_q, dq = Q.shape
