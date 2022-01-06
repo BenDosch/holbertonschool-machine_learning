@@ -4,7 +4,7 @@
 import tensorflow as tf
 
 
-class SelfAttention(tf.keras.layersLayer):
+class SelfAttention(tf.keras.layers.Layer):
     """Class that"""
 
     def __init__(self, units):
