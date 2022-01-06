@@ -10,6 +10,8 @@ class RNNDecoder(tf.keras.layers.Layer):
     def __init__(self, vocab, embedding, units, batch):
         """Class constructor that"""
         super().__init__()
+        self.batch = batch
+        self.units = units
         self.embedding = tf.keras.layers.Embedding(input_dim=vocab,
                                                    output_dim=embedding)
         self.gru = tf.keras.layers.GRU(units=units,
