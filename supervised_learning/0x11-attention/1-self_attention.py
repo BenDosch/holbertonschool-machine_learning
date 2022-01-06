@@ -4,15 +4,15 @@
 import tensorflow as tf
 
 
-class SelfAttention(tensorflow.keras.layersLayer):
+class SelfAttention(tf.keras.layersLayer):
     """Class that"""
 
     def __init__(self, units):
         """Class constructor that"""
         super().__init__()
-        self.W = tensorflow.keras.layers.Dense(units=units)
-        self.U = tensorflow.keras.layers.Dense(units=units)
-        self.V = tensorflow.keras.layers.Dense(units=1)
+        self.W = tf.keras.layers.Dense(units=units)
+        self.U = tf.keras.layers.Dense(units=units)
+        self.V = tf.keras.layers.Dense(units=1)
 
     def call(self, s_prev, hidden_states):
         """Public instance method that"""
