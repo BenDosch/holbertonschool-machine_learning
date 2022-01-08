@@ -33,6 +33,7 @@ class RNNDecoder(tf.keras.layers.Layer):
         decoder_outputs, last_hidden_state = self.gru(inputs)
         # (batch, 1, units) & (batch, embedding)
 
-        decoder_outputs = tf.reshape(decoder_outputs, (batch, units))
+        decoder_outputs = tf.reshape(decoder_outputs,
+                                     (-1, decoder_outputs.shape[2]))
         y = self.F(decoder_outputs)  # (batch, vocab)
         return y, last_hidden_state
