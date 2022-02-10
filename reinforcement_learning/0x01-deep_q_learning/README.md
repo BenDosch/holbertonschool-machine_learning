@@ -21,12 +21,9 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602 "Playing Atari with Deep Reinforcement Learning")
 * [Build your first Reinforcement learning agent in Keras [Tutorial]](https://hub.packtpub.com/build-reinforcement-learning-agent-in-keras-tutorial/ "Build your first Reinforcement learning agent in Keras [Tutorial]")
 * [Reinforcement Learning w/ Keras + OpenAI: DQNs](https://towardsdatascience.com/reinforcement-learning-w-keras-openai-dqns-1eed3a5338c "Reinforcement Learning w/ Keras + OpenAI: DQNs")
-* []( "")
-* []( "")
-* []( "")
-* []( "")
-* []( "")
-* []( "")
+* [Deep Reinforcement Learning Tutorial for Python in 20 Minutes](https://www.youtube.com/watch?v=cO5g5qLrLSo "Deep Reinforcement Learning Tutorial for Python in 20 Minutes")
+* [Reinforcement Learning - Developing Intelligent Agents](https://www.youtube.com/playlist?list=PLZbbT5o_s2xoWNVdDudn51XM8lOuZ_Njv "Reinforcement Learning - Developing Intelligent Agents")
+
 
 ## Tasks
 List of tasks with brief descriptions of each task.
