@@ -8,15 +8,15 @@ import numpy as np
 
 def monte_carlo(env, V, policy, episodes=5000, max_steps=100, alpha=0.1,
                 gamma=0.99):
-    """Function that preforms the Online First-Visit Monte Carlo algorithm.
+    """Function that preforms the Frist-Visit Monte Carlo algorithm.
 
     Args:
-        env (_type_): The openAI environment instance.
+        env (gym.wrappers.time_limit.TimeLimit): The openAI environment
+            instance.
         V (numpy.ndarray): A tensor of shape (state,) containing the value
             estimate.
         policy (function): A function that takes in a state and returns the
-            next.
-            action to take.
+            next action to take.
         episodes (int, optional): The total number of episodes to train over.
             Defaults to 5000.
         max_steps (int, optional): The maximum number of steps per episode.
@@ -42,15 +42,16 @@ def monte_carlo(env, V, policy, episodes=5000, max_steps=100, alpha=0.1,
 
         results = np.array(results, dtype=int)
 
-        # Update Value estimate
-        # V(St) = V(St) + alpha * (Gt - V(St))
+        # Update Value estimate by going backwards through results
         Gt = 0
         for step, result in enumerate(results[::-1]):
             state, reward = result
+            # Get discounted reward for state
             Gt = (gamma * Gt) + reward
 
-            # If
+            # If not a previously explored state.
             if state not in results[:episode, 0]:
+                # V(St) = V(St) + alpha * (Gt - V(St))
                 V[state] = V[state] + (alpha * (Gt - V[state]))
 
     return V

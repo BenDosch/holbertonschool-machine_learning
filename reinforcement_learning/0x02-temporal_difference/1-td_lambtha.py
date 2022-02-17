@@ -8,15 +8,16 @@ import numpy as np
 
 def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
                alpha=0.1, gamma=0.99):
-    """Function that performs the TD(λ) algorithm.
+    """Function that performs the backward view TD(λ) algorithm.
 
     Args:
-        env (_type_): The openAI environment instance.
+        env (gym.wrappers.time_limit.TimeLimit): The openAI environment
+            instance.
         V (numpy.ndarray): A tensor of shape (s,) containing the value
             estimate.
+        lambtha (float): The eligibility trace factor.
         policy (function): A function that takes in a state and returns the
-            next.
-            action to take.
+            next action to take.
         episodes (int, optional): The total number of episodes to train over.
             Defaults to 5000.
         max_steps (int, optional): The maximum number of steps per episode.
@@ -28,7 +29,33 @@ def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100,
         V (numpy.ndarray): A tensor of shape (s,) containing the updated value
             estimate.
     """
-    # Code goes here
+    # Sample episodes
+    for episode in range(episodes):
+        # Get innitial state
+        state = env.reset()
+        # Initiliaze Eligibility Traces
+        ET = np.zeros(V.shape[0])
+        for step in range(max_steps):
+            # Get action and next state
+            action = policy(state)
+            next_state, reward, done, _ = env.step(action)
+
+            # Update all ETs
+            # Et(s) = gamma * lambtha * Et-1(s) + 1(St = s)
+            ET *= lambtha * gamma  # gamma * lambtha * Et-1(s)
+            ET[state] += 1.0  # + 1(St = s)
+
+            # Update Value estimate
+            delta = reward + gamma * V[next_state] - V[state]
+            V += alpha * delta * ET
+
+            # Check for termination
+            if done:
+                break
+            # Move to next state
+            state = next_state
+
+    return V
 
 
 if __name__ == "__main__":
@@ -63,14 +90,3 @@ if __name__ == "__main__":
 
     test = td_lambtha(env, V, policy, 0.9).reshape((8, 8))
     print(test)
-
-    Exp = """[[ 0.5314  0.5905  0.3138  0.3138  0.6561  0.9     0.81    0.9   ]
-     [ 0.5314  0.5905  0.4783  0.6561  0.5905  0.6561  0.6561  0.5314]
-     [ 0.6561  0.729   0.5905 -1.      0.9     0.9     0.5905  0.3874]
-     [ 0.729   0.81    0.81    0.9     1.     -1.      0.5314  0.4305]
-     [ 0.5905  0.6561  0.81   -1.      1.      1.      0.729   0.4783]
-     [ 0.9    -1.     -1.      1.      1.      1.     -1.      0.81  ]
-     [ 1.     -1.      1.      1.     -1.      1.     -1.      1.    ]
-     [ 0.9     0.81    1.     -1.      1.      1.      1.      1.    ]]"""
-
-    print("Passed") if test == Exp else print("Failed")
