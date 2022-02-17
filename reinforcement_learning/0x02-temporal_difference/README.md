@@ -4,8 +4,8 @@
 2. [References](#references)
 3. [Tasks](#tasks)
 	1. [Monte Carlo](#0-monte-carlo)
-	2. [TD(λ)](#1-td(λ))
-	3. [SARSA(λ)](#2-sarsa(λ))
+	2. [TD(λ)](#1-td-λ)
+	3. [SARSA(λ)](#2-sarsa-λ)
 
 4. [Author](#author)
 ## Learning Objectives
@@ -36,13 +36,13 @@ Write a function using the prototpye def monte_carlo(env, V, policy, episodes=50
 
 ---
 
-### [1. TD(λ)](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py "1. TD(λ)")
+### [1. TD λ](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/reinforcement_learning/0x02-temporal_difference/1-td_lambtha.py "1. TD(λ)")
 
 Write a function using the prototype def td_lambtha(env, V, policy, lambtha, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99) that performs the TD(λ) algorithm. Return a numpy.ndarray with the value estimates of each state.
 
 ---
 
-### [2. SARSA(λ)](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py "2. SARSA(λ)")
+### [2. SARSA λ](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/reinforcement_learning/0x02-temporal_difference/2-sarsa_lambtha.py "2. SARSA(λ)")
 
 Write a function using the prototype def sarsa_lambtha(env, Q, lambtha, episodes=5000, max_steps=100, alpha=0.1, gamma=0.99, epsilon=1, min_epsilon=0.1, epsilon_decay=0.05) that performs the SARSA(λ) algorithm. Return the updated Q table.
 
