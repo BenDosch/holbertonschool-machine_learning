@@ -5,17 +5,22 @@ import numpy as np
 import gym
 
 
-def policy(matrix, weight):
+def policy(state, weight):
     """Function that computes to policy with a weight of a matrix.
 
     Args:
-        matrix (numpy.ndarray): The matrix representing the current observation.
+        state (numpy.ndarray): The vector representing the current
+            state.
         weight (numpy.ndarray): The matrix of random weight.
-    
+
     Returns:
-        return (numpy.ndarray): 
+        softmax (numpy.ndarray): The softmax of the given weight and
+            state.
     """
-    pass
+    z = state.dot(weight)
+    exp = np.exp(z)
+    softmax = exp/np.sum(exp)
+    return softmax
 
 
 def policy_gradient(state, weight):
@@ -28,22 +33,31 @@ def policy_gradient(state, weight):
         weight (numpy.ndarray): The matrix of random weight.
 
     Returns: action, gradient
-        action (numpy.ndarray):
-        gradient (float):
+        action (int): Index of action for agent to take.
+        gradient (np.ndarray): The gradient of the policy. 
     """
-    pass
+    prob = policy(state, weight)
+    action = np.random.choice(len(prob[0]), p=prob[0])
+
+    soft_grad = np.diagflat(prob.T) - np.dot(prob.T, prob)
+    d_soft_grad = soft_grad[action, :]
+    d_log = d_soft_grad / prob[0, action]
+    gradient = state.T.dot(d_log[None, :])
+
+    return action, gradient
+
 
 if __name__ == "__main__":
     weight = np.ndarray((4, 2), buffer=np.array([
-        [4.17022005e-01, 7.20324493e-01], 
-        [1.14374817e-04, 3.02332573e-01], 
-        [1.46755891e-01, 9.23385948e-02], 
+        [4.17022005e-01, 7.20324493e-01],
+        [1.14374817e-04, 3.02332573e-01],
+        [1.46755891e-01, 9.23385948e-02],
         [1.86260211e-01, 3.45560727e-01]
         ]))
     state = np.ndarray((1, 4), buffer=np.array([
         [-0.04428214,  0.01636746,  0.01196594, -0.03095031]
         ]))
-    
+
     res = policy(state, weight)
     print(res)
 
@@ -53,7 +67,7 @@ if __name__ == "__main__":
     np.random.seed(1)
 
     weight = np.random.rand(4, 2)
-    state = env.reset()[None,:]
+    state = env.reset()[None, :]
     print(weight)
     print(state)
 

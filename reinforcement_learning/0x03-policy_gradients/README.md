@@ -22,6 +22,8 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 * [Policy Gradients in a Nutshell](https://towardsdatascience.com/policy-gradients-in-a-nutshell-8b72f9743c5d "Policy Gradients in a Nutshell")
 * [Policy Gradient Algorithms](https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html "Policy Gradient Algorithms")
 * [RL Course by David Silver - Lecture 7: Policy Gradient Methods](https://www.youtube.com/watch?v=KHZVXao4qXs "RL Course by David Silver - Lecture 7: Policy Gradient Methods")
+* [Reinforcement learning with policy gradients in pure Python](https://www.janisklaise.com/post/rl-policy-gradients/ "Reinforcement learning with policy gradients in pure Python")
+* [REINFORCE Policy Gradients From Scratch In Numpy](https://medium.com/samkirkiles/reinforce-policy-gradients-from-scratch-in-numpy-6a09ae0dfe12 "REINFORCE Policy Gradients From Scratch In Numpy")
 
 ## Tasks
 List of tasks with brief descriptions of each task.
