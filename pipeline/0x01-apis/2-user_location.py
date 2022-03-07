@@ -8,10 +8,9 @@ import time
 
 
 if __name__ == "__main__":
-    url = 'https://api.github.com/users/'
     if len(sys.argv) > 1:
         user = sys.argv[1]
-        r = requests.get(url + user)
+        r = requests.get(user)
 
         if r.status_code == 404:
             print('Not found')
@@ -21,6 +20,9 @@ if __name__ == "__main__":
             print('Reset in {} min'.format(minutes))
         elif r.status_code == 200:
             r_json = r.json()
-            print(r_json['location'])
+            if r_json['location']:
+                print(r_json['location'])
+            else:
+                print('Not found')
     else:
-        print("Please pass a user as an argument to the srcipt")
+        print("Please pass a full user url as an argument to the srcipt")
