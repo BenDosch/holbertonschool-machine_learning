@@ -25,8 +25,8 @@ def sentientPlanets():
 
     for s in species:
         if ((s['designation'] == 'sentient' or
-             s['classification'] == 'sentient') and
-             s['homeworld'] is not None):
+                s['classification'] == 'sentient') and
+                s['homeworld'] is not None):
             planets_url.append(s['homeworld'])
 
     for planet in planets_url:
