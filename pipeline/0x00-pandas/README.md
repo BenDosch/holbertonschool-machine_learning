@@ -1,4 +1,4 @@
-# Pipeline
+# Pandas
 
 1. [Learning Objectives](#learning-objectives)
 2. [References](#references)
