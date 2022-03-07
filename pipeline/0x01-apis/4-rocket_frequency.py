@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-""" """
+"""Script that uses the SpaceX API to show the number of launches per
+rocket."""
 
 import requests
+
 
 if __name__ == "__main__":
     url = 'https://api.spacexdata.com/v4/launches'
