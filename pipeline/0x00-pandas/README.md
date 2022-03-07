@@ -34,26 +34,26 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 List of tasks with brief descriptions of each task.
 Some tasks use a [Coinbase](https://drive.google.com/file/d/16MgiuBfQKzXPoWFWi2w-LKJuZ7LgivpE/view) or [Bitstamp](https://drive.google.com/file/d/15A-rLSrfZ0td7muSrYHy0WX9ZqrMweES/view) dataset.
 
-### [0. From Numpy](https://github.com/BenDoschGit/pipeline/blob/main//0-from_numpy.py "0. From Numpy")
+### [0. From Numpy](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/0-from_numpy.py "0. From Numpy")
 
 Write a function using the prototype from_numpy(array) that creates a pandas DataFrame from a numpy ndarray. array is the array from which you should create the DataFrame. The columns of the DataFrame should be labeled in alphabetical order and capitalized. Return the newly created DataFrame.
 
 ---
 
-### [1. From Dictionary](https://github.com/BenDoschGit/pipeline/blob/main//1-from_dictionary.py "1. From Dictionary")
+### [1. From Dictionary](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/1-from_dictionary.py "1. From Dictionary")
 
 Write a script that, that creates a pandas DataFrame from a dictionary. The first column should be labeled First and have the values 0.0, 0.5, 1.0, and 1.5.
 The second column should be labeled Second and have the values one, two, three, four. The rows should be labeled A, B, C, and D, respectively. The pd.DataFrame should be saved into the variable df.
 
 ---
 
-### [2. From File](https://github.com/BenDoschGit/pipeline/blob/main//2-from_file.py "2. From File")
+### [2. From File](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/2-from_file.py "2. From File")
 
 Write a function using the prototype from_file(filename, delimiter) that loads data from a file as a pandas DataFrame. filename is the file to load from and delimiter is the column separator. Return the loaded pandas DataFrame.
 
 ---
 
-### [3. Rename](https://github.com/BenDoschGit/pipeline/blob/main//3-rename.py "3. Rename")
+### [3. Rename](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/3-rename.py "3. Rename")
 
 Complete the script below to perform the following:
 
@@ -75,7 +75,7 @@ print(df.tail())
 
 ---
 
-### [4. To Numpy](https://github.com/BenDoschGit/pipeline/blob/main//4-array.py "4. To Numpy")
+### [4. To Numpy](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/4-array.py "4. To Numpy")
 
 Complete the following script to take the last 10 rows of the columns High and Close and convert them into a numpy.ndarray:
 
@@ -92,7 +92,7 @@ print(A)
 
 ---
 
-### [5. Slice](https://github.com/BenDoschGit/pipeline/blob/main//5-slice.py "5. Slice")
+### [5. Slice](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/5-slice.py "5. Slice")
 
 Complete the following script to slice the pd.DataFrame along the columns High, Low, Close, and Volume_BTC, taking every 60th row:
 
@@ -111,7 +111,7 @@ print(df.tail())
 
 ---
 
-### [6. Flip it and Switch it](https://github.com/BenDoschGit/pipeline/blob/main//6-flip_switch.py "6. Flip it and Switch it")
+### [6. Flip it and Switch it](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/6-flip_switch.py "6. Flip it and Switch it")
 
 Complete the following script to alter the pd.DataFrame such that the rows and columns are transposed and the data is sorted in reverse chronological order:
 
@@ -130,7 +130,7 @@ print(df.tail(8))
 
 ---
 
-### [7. Sort](https://github.com/BenDoschGit/pipeline/blob/main//7-high.py "7. Sort")
+### [7. Sort](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/7-high.py "7. Sort")
 
 Complete the following script to sort the pd.DataFrame by the High price in descending order:
 
@@ -147,7 +147,7 @@ print(df.head())
 
 ---
 
-### [8. Prune](https://github.com/BenDoschGit/pipeline/blob/main//8-prune.py "8. Prune")
+### [8. Prune](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/8-prune.py "8. Prune")
 
 Complete the following script to remove the entries in the pd.DataFrame where Close is NaN:
 
@@ -166,7 +166,7 @@ print(df.head())
 
 ---
 
-### [9. Fill](https://github.com/BenDoschGit/pipeline/blob/main//9-fill.py "9. Fill")
+### [9. Fill](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/9-fill.py "9. Fill")
 
 Complete the following script to fill in the missing data points in the pd.DataFrame:
 
@@ -191,7 +191,7 @@ print(df.tail())
 
 ---
 
-### [10. Indexing](https://github.com/BenDoschGit/pipeline/blob/main//10-index.py "10. Indexing")
+### [10. Indexing](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/10-index.py "10. Indexing")
 
 Complete the following script to index the pd.DataFrame on the Timestamp column:
 
@@ -210,7 +210,7 @@ print(df.tail())
 
 ---
 
-### [11. Concat](https://github.com/BenDoschGit/pipeline/blob/main//11-concat.py "11. Concat")
+### [11. Concat](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/11-concat.py "11. Concat")
 
 Complete the following script to index the pd.DataFrames on the Timestamp columns and concatenate them:
 
@@ -236,7 +236,7 @@ print(df)
 
 ---
 
-### [12. Hierarchy](https://github.com/BenDoschGit/pipeline/blob/main//12-hierarchy.py "12. Hierarchy")
+### [12. Hierarchy](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/12-hierarchy.py "12. Hierarchy")
 
 Based on 11-concat.py, rearrange the MultiIndex levels such that timestamp is the first level:
 
@@ -246,7 +246,7 @@ Display the rows in chronological order
 
 ---
 
-### [13. Analyze](https://github.com/BenDoschGit/pipeline/blob/main//13-analyze.py "13. Analyze")
+### [13. Analyze](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/13-analyze.py "13. Analyze")
 
 Complete the following script to calculate descriptive statistics for all columns in pd.DataFrame except Timestamp:
 
@@ -265,7 +265,7 @@ print(stats)
 
 ---
 
-### [14. Visualize](https://github.com/BenDoschGit/pipeline/blob/main//14-visualize.py "14. Visualize")
+### [14. Visualize](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/pipeline/14-visualize.py "14. Visualize")
 
 Complete the following script to visualize the pd.DataFrame:
 
