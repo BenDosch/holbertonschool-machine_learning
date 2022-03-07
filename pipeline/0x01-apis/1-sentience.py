@@ -29,8 +29,7 @@ def sentientPlanets():
 
     for planet in planets_url:
         name = requests.get(planet).json()['name']
-        if name != 'unknown':
-            planets.append(name)
+        planets.append(name)
 
     return planets
 
