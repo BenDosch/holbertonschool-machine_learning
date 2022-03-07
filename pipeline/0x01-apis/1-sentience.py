@@ -24,7 +24,9 @@ def sentientPlanets():
         url = r_json['next']
 
     for s in species:
-        if s['designation'] == 'sentient' and s['homeworld'] is not None:
+        if ((s['designation'] == 'sentient' or
+             s['classification'] == 'sentient') and
+             s['homeworld'] is not None):
             planets_url.append(s['homeworld'])
 
     for planet in planets_url:
