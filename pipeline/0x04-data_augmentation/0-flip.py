@@ -16,7 +16,8 @@ def flip_image(image):
     Returns: (fliped)
         fliped (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    fliped = tf.image.flip_left_right(image)
+    return fliped
 
 
 if __name__ == "__main__":

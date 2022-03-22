@@ -16,7 +16,8 @@ def rotate_image(image):
     Returns: (rotated)
         rotated (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    rotated = tf.image.rot90(image)
+    return rotated
 
 
 if __name__ == "__main__":

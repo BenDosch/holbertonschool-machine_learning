@@ -18,7 +18,10 @@ def shear_image(image, intensity):
     Returns: (sheared)
         sheared (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    array = tf.keras.preprocessing.image.img_to_array(image)
+    sheared_array = tf.keras.preprocessing.image.random_shear(array, intensity)
+    sheared = tf.keras.preprocessing.image.array_to_img(sheared_array)
+    return sheared
 
 
 if __name__ == "__main__":

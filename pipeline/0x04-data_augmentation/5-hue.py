@@ -16,7 +16,8 @@ def change_hue(image, delta):
     Returns: (altered)
         altered (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    altered = tf.image.adjust_hue(image, delta)
+    return altered
 
 
 if __name__ == "__main__":

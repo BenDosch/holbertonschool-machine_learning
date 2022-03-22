@@ -17,7 +17,8 @@ def crop_image(image, size):
     Returns: (cropped)
         cropped (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    cropped = tf.image.random_crop(image, size)
+    return cropped
 
 
 if __name__ == "__main__":

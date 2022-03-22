@@ -18,7 +18,8 @@ def change_brightness(image, max_delta):
     Returns: (altered)
         altered (tensorflow.Tensor): 3D Tensor containing an image.
     """
-    pass
+    altered = tf.image.random_brightness(image, max_delta)
+    return altered
 
 
 if __name__ == "__main__":
