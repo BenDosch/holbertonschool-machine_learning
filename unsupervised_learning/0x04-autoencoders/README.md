@@ -3,7 +3,7 @@
 1. [Learning Objectives](#learning-objectives)
 2. [References](#references)
 3. [Tasks](#tasks)
-	1. ["Vanilla" Autoencoder](#0-"vanilla"-autoencoder)
+	1. ["Vanilla" Autoencoder](#0-vanilla-autoencoder)
 	2. [Sparse Autoencoder](#1-sparse-autoencoder)
 	3. [Convolutional Autoencoder](#2-convolutional-autoencoder)
 	4. [Variational Autoencoder](#3-variational-autoencoder)
@@ -34,7 +34,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ## Tasks
 List of tasks with brief descriptions of each task.
 
-### [0. "Vanilla" Autoencoder](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/unsupervised_learning/0x04-autoencoders/0-vanilla.py "0. "Vanilla" Autoencoder")
+### [0. Vanilla Autoencoder](https://github.com/BenDoschGit/holbertonschool-machine_learning/blob/main/unsupervised_learning/0x04-autoencoders/0-vanilla.py "0. Vanilla Autoencoder")
 
 Function def autoencoder(input_dims, hidden_layers, latent_dims): that creates an autoencoder.
 
